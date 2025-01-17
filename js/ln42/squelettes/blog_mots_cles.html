@@ -1,0 +1,16 @@
+<!-- debut des mots-cles attaches au blog -->
+	<BOUCLE_principale(BREVES){id_breve}>
+	<div id="mots_cles">
+	<B_motscles>
+	<img src="[(#CHEMIN{images/blog/blog_cle.gif})]" alt="Mots cl&#xe9;s">
+	<ul> 
+	<BOUCLE_motscles(MOTS){id_breve}{par titre}{id_groupe!=1}>
+	<li>
+	[<a href="#URL_MOT">(#TITRE|supprimer_numero)</a>]
+	</li>
+	</BOUCLE_motscles>
+	</ul>
+	</B_motcles>
+	</div> <!-- mots_cles -->
+	</BOUCLE_principale>
+<!-- fin des mots-cles attaches au blog -->

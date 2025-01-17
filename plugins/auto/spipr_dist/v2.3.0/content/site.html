@@ -1,0 +1,18 @@
+<BOUCLE_content(SITES){id_syndic}>
+<section>
+	[(#ENV{cartouche,1}|oui)<INCLURE{fond=cartouche/#ENV{type-page},env} />]
+
+	<div class="main">
+		[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF)</div>]
+		[<p class="#EDIT{url_site} hyperlien"><a href="#URL_SITE" class="spip_out">(#URL_SITE|couper{80})</a></p>]
+	</div>
+
+	<aside>
+		<INCLURE{fond=liste/syndicarticles,id_syndic,env,ajax} />
+	</aside>
+
+	<footer>
+		[<div class="notes"><hr />(#NOTES)</div>]
+	</footer>
+</section>
+</BOUCLE_content>

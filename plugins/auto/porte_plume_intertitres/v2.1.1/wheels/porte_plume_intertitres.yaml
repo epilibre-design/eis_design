@@ -1,0 +1,10 @@
+--- # Syntaxe des raccourcis SPIP, version 0.0.1
+    #
+    # Si on nomme une regle, elle devient surchargeable
+    # http://lumadis.be/regex/test_regex.php?id=2935
+intertitres:
+  # raccourcis en {{{*..}}} ou {{{#..}}}
+  match: "/({{{)((?:\*|#){0,5})(.*?)(}}})(?:{(.*?)})?/s"
+  is_callback: y
+  replace: intertitres
+  priority: -50

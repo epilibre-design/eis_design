@@ -1,0 +1,32 @@
+[(#AUTORISER{voir,_calendrier}|sinon_interdire_acces)]
+<div id="calendrier-loading" style="position:absolute;top:20px;left:350px;padding:5px 30px;display:none;border:1px solid #ddd;background:#eee;z-index:100;"><:organiseur:loading:></div>
+<div id="calendrier"></div>
+<link rel='stylesheet' type='text/css' href='[(#CHEMIN{lib/fullcalendar/main.min.css}|timestamp)]' />
+<script type='text/javascript' src='[(#CHEMIN{lib/fullcalendar/main.min.js}|timestamp)]'></script>
+<script type='text/javascript' src='[(#CHEMIN{lib/fullcalendar/locales-all.js}|timestamp)]'></script>
+<script type="text/javascript">
+jQuery(function($) {
+
+	// page is now ready, initialize the calendar...
+	var calendarEl = document.getElementById('calendrier');
+	var is_ltr = [(#LANG_DIR|=={ltr}|?{true,false})];
+
+	calendar = new FullCalendar.Calendar(calendarEl, {
+		locale: '[(#LANG|strtolower)]',
+		editable: false,
+		navLinks: true,
+		events: "[(#URL_ACTION_AUTEUR{quete_calendrier_prive,calendrier}|replace{'&amp;','&'})]",
+		headerToolbar: {
+			left: (is_ltr ? 'prevYear,prev,next,nextYear today' : 'listMonth,dayGridMonth,dayGridWeek,dayGridDay'),
+			center: 'title',
+			right: (is_ltr ? 'dayGridDay,dayGridWeek,dayGridMonth,listMonth' : 'today nextYear,next,prev,prevYear')
+		},
+		fixedWeekCount: false,
+		loading: function(bool) {
+			if (bool) $('#calendrier-loading').show();
+			else $('#calendrier-loading').hide();
+		}
+	});
+	calendar.render();
+});
+</script>

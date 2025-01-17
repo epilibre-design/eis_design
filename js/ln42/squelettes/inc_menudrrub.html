@@ -1,0 +1,71 @@
+<!-- début du menu droite de la page rubrique -->
+<BOUCLE_principale(RUBRIQUES){id_rubrique}>
+	<div class="articledroite">
+
+	 <INCLURE {fond=inc_lastblogs}>
+	 
+	 <INCLURE {fond=inc_motsclesrub}{id_rubrique}>
+
+	
+<!-- debut de derniers articles -->		
+
+
+	<B_derniers_art>	
+	<span class="titreauto">
+	<img height="50px" width="170px" border=0 align="top" src="[(#CHEMIN{/images/m_artrub.gif})]"  alt="Derniers articles">
+	</span>
+	
+	<ul>
+	<BOUCLE_derniers_art(ARTICLES) {id_rubrique} {id_article!=267}{!par date} {0,5} {doublons dernart}>	
+	<li>
+
+		<span class="date">
+		[(#DATE|affdate)]
+		<br />
+		</span>
+
+	<a href="#URL_ARTICLE" title="[(#DATE|jour)/][(#DATE|mois)/][(#DATE|annee)][:(#INTRODUCTION|textebrut|couper{150})]">
+	<span class="textelien">
+	[(#TITRE*|supprimer_numero)]
+	</span>
+	</a>
+	</li>
+	</BOUCLE_derniers_art>
+	</ul>
+	</B_derniers_art>	
+<!-- fin de derniers articles -->	
+	
+<!-- debut des sites de la rubrique -->		
+	<B_sites_web>	
+	<span class="titreauto">
+	<img height="50px" width="170px" border=0 align="top" src="[(#CHEMIN{/images/m_acliquer.gif})]"  alt="Sites web &agrave; visiter">
+	</span>
+	<br />
+	
+	<ul>
+	<BOUCLE_sites_web (SITES) {id_rubrique} {!par date}>	
+	<li>
+
+		<span class="date">
+		[[(#DATE|affdate)]]
+		<br />
+		</span>
+
+	[<a href="#URL_SITE_SPIP/?page=sites&id_syndic=#ID_SYNDIC" title="[(#DESCRIPTIF*|textebrut|PtoBR|couper{150})]" class="textelien">
+	(#LOGO_SITE|right|image_reduire{25,0}|inserer_attribut{title,[(#DESCRIPTIF|textebrut|couper{150})]:}|inserer_attribut{alt,[(#DESCRIPTIF|textebrut|couper{150})]})
+	</a>]
+
+	<a href="#URL_SITE_SPIP/?page=sites&id_syndic=#ID_SYNDIC" title="[(#DESCRIPTIF*|textebrut|PtoBR|couper{150})]" class="textelien">
+	[(#NOM_SITE|couper{80})]
+	</a>
+
+	</li>
+	</BOUCLE_sites_web>
+	</ul>
+	</B_sites_web>	
+<!-- fin des sites de la rubrique -->	
+	
+																		
+</div> <!-- articledroite -->
+</BOUCLE_principale>
+<!-- fin du menu droite de la page rubrique -->

@@ -1,0 +1,37 @@
+[(#PLUGIN{albums}|sinon_interdire_acces{#URL_PAGE{404}})]
+#SET{close,''}
+<B_albums>
+<section>
+	[(#ENV{cartouche,1}|oui)<INCLURE{fond=cartouche/#ENV{type-page},env} />]
+
+	<div class="main">
+		<div class="galerie">
+		<BOUCLE_albums(ALBUMS){!par date}>
+			[(#COMPTEUR_BOUCLE|alterner{' ','',''})
+			#GET{close}
+			<div class="row-fluid">
+			<ul class="thumbnails">
+			#SET{close,'</ul></div>'}
+			]
+				<li class="span4">
+					<div class="thumbnail">
+						#SET{img,''}
+						<BOUCLE_fi(DOCUMENTS){id_album}{media=image}{0,1}>#SET{img,#FICHIER}</BOUCLE_fi>
+						[(#LOGO_ALBUM|sinon{#GET{img}}
+						|image_passe_partout{150,150}
+						|image_recadre{150,150,center,transparent}
+						|image_aplatir{jpg,#ffffff}
+						|inserer_attribut{class,spip_logo spip_logos}
+						|inserer_attribut{alt,[(#TITRE|attribut_html|couper{60})]}
+						)]
+						<div class="caption">
+							<h3>#TITRE</h3>
+							[(#DESCRIPTIF|couper{150})]
+						</div>
+					</div>
+				</li>
+		</BOUCLE_albums>[
+			(#GET{close})
+		</div>
+	</div>
+</section>]

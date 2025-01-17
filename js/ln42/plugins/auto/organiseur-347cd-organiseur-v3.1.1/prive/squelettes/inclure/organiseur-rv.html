@@ -1,0 +1,40 @@
+<div id="loading" style="position:absolute;top:20px;left:350px;padding:5px 30px;display:none;border:1px solid #ddd;background:#eee;z-index:100;"><:organiseur:loading:></div>
+<div id="calendrier"></div>
+
+<link rel='stylesheet' type='text/css' href='[(#CHEMIN{lib/fullcalendar/main.min.css}|timestamp)]' />
+<script type='text/javascript' src='[(#CHEMIN{lib/fullcalendar/main.min.js}|timestamp)]'></script>
+<script type='text/javascript' src='[(#CHEMIN{lib/fullcalendar/locales-all.js}|timestamp)]'></script>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+	// page is now ready, initialize the calendar...
+	var calendarEl = document.getElementById('calendrier');
+	var is_ltr = [(#LANG_DIR|=={ltr}|?{true,false})];
+
+	calendar = new FullCalendar.Calendar(calendarEl, {
+		locale: '[(#LANG|strtolower)]',
+		editable: false,
+		events: "[(#URL_ACTION_AUTEUR{quete_calendrier_prive,calendrier}|parametre_url{quoi,rv,&})]",
+		headerToolbar: {
+			left: (is_ltr ? 'prev,next today' : 'dayGridMonth,dayGridWeek,dayGridDay'),
+			center: 'title',
+			right: (is_ltr ? 'dayGridDay,dayGridWeek,dayGridMonth' : 'today next,prev')
+		},
+		loading: function(bool) {
+			if (bool) $('#loading').show();
+			else $('#loading').hide();
+		},
+		dateClick: function(info) {
+			if (info.view.type == 'dayGridMonth') {
+				calendar.changeView('dayGridWeek');
+				calendar.gotoDate(info.date);
+			} else if (info.view.type == 'dayGridWeek') {
+				calendar.changeView('dayGridDay');
+				calendar.gotoDate(info.date);
+			}
+		},
+	});
+	calendar.render();
+});
+</script>

@@ -1,0 +1,156 @@
+<!-- A REVOIR ENTIEREMENT, BASE SUR ARTICLE-->
+<BOUCLE_principale(BREVE) {id_breve} {doublons 1} {doublons 2}>
+		<div class="categoriec">
+		<div class="articlecentre">
+			<a name="haut"></a>
+			
+		 <!-- début chemin hiérarchie -->
+			<span class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			>
+			<BOUCLE_cascade(HIERARCHIE) {id_article} {id_rubrique!==^[1-9]$} {">"}>
+			<A HREF="#URL_RUBRIQUE" title="[(#DESCRIPTIF|textebrut)]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade>
+			> [(#TITRE|supprimer_numero)]
+			</span> 			
+		<!-- fin chemin hiérarchie -->
+			<br />
+			<br />
+			
+		<B_auteur_article>
+			<span class="auteur">
+			<:par_auteur:>
+			<BOUCLE_auteur_article(AUTEURS){id_article}{", "}>
+			[<a href="#URL_AUTEUR" class="auteur" title="[(#BIO|couper{200})]">(#NOM)</a>]
+			</BOUCLE_auteur_article> 	|		[<a href="mois.php3?date=[(#DATE|annee)]/[(#DATE|mois)]" title="[(#DATE|nom_mois)][ (#DATE|annee)]" class="auteur">(#DATE|affdate)</a>]
+			
+			</span>
+		</B_auteur_article>
+			<br /><br />
+			[<span class="sstitre">(#SURTITRE)</span>
+			<br /><br />]
+
+			[<span class="titre">(#TITRE|supprimer_numero)</span>]
+			<br /><br />
+
+			[<span class="sstitre">(#SOUSTITRE)</span>
+			<br /><br />]
+			
+
+<!-- début de traductions de l'article -->
+              <B_traductions>
+			  <span class="sstitre">
+			  <:titre_langue_trad_article:>&nbsp;:<br /><br />
+			  <:info_multi_cet_article:> [(#LANG|traduire_nom_langue)]
+			  <br />
+			  <ul>
+              <BOUCLE_traductions(ARTICLES){traduction}{exclus}{"<br />"}>
+			  <li>
+              [<a href="#URL_ARTICLE" dir="#LANG_DIR" title="art. [(#ID_ARTICLE)]">(#LANG|traduire_nom_langue)</a>]
+			  &nbsp: [(#DESCRIPTIF|sinon{[(#CHAPO|sinon{#TEXTE}|couper{120})]})] 
+			  </li>
+              </BOUCLE_traductions>
+			  </ul>
+              </span>
+              </B_traductions>
+<!-- fin de traductions de l'article -->			
+
+			<table>
+				<tr>
+					[<td class="articlecentre">(#LOGO_ARTICLE|center|image_reduire{200})</td>]
+
+					<td>[<span class="chapo">
+					(#CHAPO|liens_ouvrants)
+					</span>]
+					<br />
+					</td>
+				</tr>
+			</table>
+			<span class="texte">
+			[(#TEXTE|liens_ouvrants)]
+			<br />
+			<br />
+			</span>
+			
+			[<span class="texte">
+			(#PS|liens_ouvrants)
+			</span>]
+			
+			[<span class="texte">
+			 <:sur_web:> : <a href="#URL_SITE" target="blank">(#NOM_SITE|liens_ouvrants)</a>
+			</span>]
+
+			[<span class="texte">
+			 NOTES <br />
+			 (#NOTES|liens_ouvrants)
+			 </span>]
+			 
+<!-- début des forums -->
+
+[<div class="forum-repondre"><a  href="forum.php3?(#PARAMETRES_FORUM)"><:repondre_article:></a></div>]
+<br />
+
+<B_forums>
+<h1 class="structure"><:Forum:></h1>
+
+<ul class="forum-total">
+
+<BOUCLE_forums(FORUMS){id_article}{par date}{inverse}>
+
+<li>
+<div class="forum-fil">
+
+<div class="forum">
+<div class="forum-chapo">
+<div class="forum-titre"><a name="forum#ID_FORUM"></a>[(#TITRE|supprimer_numero)]</div>
+[(#DATE|affdate)][, <:par_auteur:> <a href="mailto:[(#EMAIL|entites_html)]">(#NOM)</a>]
+</div>
+<div class="forum-item">
+#TEXTE
+[<div class="forum-titre"><a href="(#URL_SITE)" class="spip_out">#NOM_SITE</a></div>]
+[<div class="forum-repondre-message"><a href="forum.php3?(#PARAMETRES_FORUM)"><:repondre_message:></a></div>]
+</div>
+</div>
+
+<B_forums_fils>
+	<ul>
+	<BOUCLE_forums_fils(FORUMS){id_parent}{par date}>
+
+	<li>
+	<div class="forum">
+	<div class="forum-chapo">
+	<div class="forum-titre"><a name="forum#ID_FORUM"></a>#TITRE</div>
+	[(#DATE|affdate)][, <:par_auteur:> <a href="mailto:#EMAIL">(#NOM)</a>]
+	</div>
+	<div class="forum-item">
+	#TEXTE
+	[<div class="forum-titre"><a href="(#URL_SITE)" class="spip_out">#NOM_SITE</a></div>]
+	[<div class="forum-repondre-message"><a href="forum.php3?(#PARAMETRES_FORUM)"><:repondre_message:></a></div>]
+	</div>
+
+	</div>
+
+	<BOUCLE_Forums_Boucle(boucle_forums_fils)></BOUCLE_Forums_Boucle>
+	</li>
+
+	</BOUCLE_forums_fils>
+	</ul>
+</B_forums_fils>
+
+</div>
+</li>
+</BOUCLE_forums>
+
+</ul>
+</B_forums>
+
+<!-- fin des forums -->
+
+				<br />
+				<br />
+				
+			<INCLURE{fond=inc_enhaut}>
+
+			</div> <!-- articlecentre -->
+			</div> <!-- categoriec -->
+</BOUCLE_principale>			

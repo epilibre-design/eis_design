@@ -1,0 +1,71 @@
+[(#ENV{exec}|=={message}|oui)
+
+#SET{opened,''}
+<BOUCLE_destinataires(MESSAGES){id_message}>
+   #SET{destinataires,#DESTINATAIRES|explode{','}|array_diff{#LISTE{#SESSION{id_auteur}}}|push{#ID_AUTEUR}}
+</BOUCLE_destinataires>
+	[(#GET{opened}|sinon{#BOITE_OUVRIR{'','info'}}) #SET{opened,' '}]
+	[(#URL_ECRIRE{message_edit,[id_message_origine=(#ENV{id_message})&]new=oui&to=[(#GET{destinataires}|implode{'%2C'})]}|parametre_url{redirect,#SELF}|icone_horizontale{<:lien_repondre_message:>,message-24.png,new})]
+</B_destinataires>
+
+<BOUCLE_env(MESSAGES){id_message}{id_auteur=#SESSION{id_auteur}}>
+[
+		(#AUTORISER{supprimer,message,#ID_MESSAGE}|oui)
+	[(#GET{opened}|sinon{#BOITE_OUVRIR{'','info'}}) #SET{opened,' '}]
+	[(#URL_ACTION_AUTEUR{supprimer_message,#ID_MESSAGE,#URL_ECRIRE{messages}}|icone_horizontale{<:organiseur:icone_supprimer_message:>,[(#TYPE|organiseur_icone_message)],del})]
+]
+</BOUCLE_env>
+		<BOUCLE_recu(MESSAGES){id_message}{destinataire #SESSION{id_auteur}}>
+		[
+				(#AUTORISER{effacer,messagerecu,#ID_MESSAGE}|oui)
+				[(#GET{opened}|sinon{#BOITE_OUVRIR{'','info'}}) #SET{opened,' '}]
+				[(#URL_ACTION_AUTEUR{effacer_messagerecu,[(#SESSION{id_auteur})-#ID_MESSAGE],#URL_ECRIRE{messages}}|icone_horizontale{<:organiseur:icone_effacer_message:>,[(#TYPE|organiseur_icone_message)],del})]
+		]
+		</BOUCLE_recu>
+<//B_env>
+
+[(#GET{opened})[(#BOITE_FERMER)]]
+
+<BOUCLE_isrv(MESSAGES){id_message}{statut?}{rv=oui}>
+<div class="calendrier-wrapper" style="position: relative">
+	<div id="calendrier-loading" style="position:absolute;top:0;left:0;right:0;bottom:0;padding:5em 10px;text-align:center;display:none;background:rgba(250,250,250,0.85);backdrop-filter: blur(5px);  z-index:100;"><:organiseur:loading:></div>
+	<div id="calendrier" style="height: 550px"></div>
+</div>
+<link rel='stylesheet' type='text/css' href='[(#CHEMIN{lib/fullcalendar/main.min.css}|timestamp)]' />
+<script type='text/javascript' src='[(#CHEMIN{lib/fullcalendar/main.min.js}|timestamp)]'></script>
+<script type='text/javascript' src='[(#CHEMIN{lib/fullcalendar/locales-all.js}|timestamp)]'></script>
+<script type="text/javascript">
+jQuery(function($) {
+
+	// page is now ready, initialize the calendar...
+	var calendarEl = document.getElementById('calendrier');
+	var is_ltr = [(#LANG_DIR|=={ltr}|?{true,false})];
+
+	calendar = new FullCalendar.Calendar(calendarEl, {
+		locale: '[(#LANG|strtolower)]',
+		editable: false,
+		navLinks: true,
+		initialView: 'timeGridDay',
+		events: "[(#URL_ACTION_AUTEUR{quete_calendrier_prive,calendrier}|replace{'&amp;','&'})]",
+		headerToolbar: {
+			left: (is_ltr ? 'prev,next' : 'today'),
+			center: false,
+			right: (is_ltr ? 'today' : 'next,prev')
+		},
+		height: 550,
+		dayHeaderFormat: { weekday: 'short', month: 'numeric', day: 'numeric', omitCommas: true },
+		fixedWeekCount: false,
+		loading: function(bool) {
+			if (bool) $('#calendrier-loading').show();
+			else $('#calendrier-loading').hide();
+		}
+	});
+	calendar.render();
+});
+</script>
+</BOUCLE_isrv>
+<INCLURE{fond=prive/squelettes/inclure/organiseur-rappels,id_auteur=#SESSION{id_auteur},last=#SESSION{quand}} />
+
+][(#ENV{exec}|=={message_edit}|oui)
+	<INCLURE{fond=prive/squelettes/navigation/message_edit,env}>
+]

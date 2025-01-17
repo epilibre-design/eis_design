@@ -1,0 +1,28 @@
+<!-- Primary Navigation
+============================================= -->
+<nav class="primary-menu">
+
+	<ul class="menu-container">
+		<li class="menu-item[ (#ENV{page}|=={sommaire}|oui)current]">
+			<a class="menu-link" href="#URL_SITE_SPIP"><div>Accueil</div></a>
+		</li>
+<BOUCLE_nav(RUBRIQUES){titre_mot=en_navbar}{par num titre,titre}>
+		<li class="menu-item[ (#EXPOSER|=={on}|oui)current]">
+			<B_sousRubs>
+			<a class="menu-link" href="#"><div>#TITRE</div></a>
+			<ul class="sub-menu-container">
+				<BOUCLE_sousRubs(RUBRIQUES){id_parent}{par num titre,titre}>
+					<li class="menu-item[ (#EXPOSER|=={on}|oui)current]">
+						<BOUCLE_sous_sousRubs(BOUCLE_sousRubs) />
+					</li>
+				</BOUCLE_sousRubs>
+			</ul>
+			</B_sousRubs>
+			<a class="menu-link" href="#URL_RUBRIQUE"><div>#TITRE</div></a>
+			<//B_sousRubs>
+		</li>
+</BOUCLE_nav>
+
+	</ul>
+
+</nav><!-- #primary-menu end -->

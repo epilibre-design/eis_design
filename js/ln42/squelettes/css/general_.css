@@ -1,0 +1,240 @@
+* { margin: 0; padding: 0; border: none; }
+
+body  {
+	background: #ffffff;
+	background-repeat: repeat;
+	background-position: top;
+	background-attachment: scroll;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	color: #000000;
+	margin: 0 0 0 0;
+	text-decoration: none;
+	text-align: left;
+}
+
+ol, ul, li {
+	list-style: none;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+table {
+	border: 0px;
+	margin: 0px;
+	}
+	
+a, a:visited  {
+	text-decoration: none;
+}
+	
+a:link {
+	text-decoration: none;
+	cursor: default;
+}
+
+a:hover 	 {
+	text-decoration: overline underline;
+	cursor: pointer;
+}
+
+.clear { 
+	clear: both;
+	}
+
+li { 
+	list-style-type: none; 
+	list-style-position: inside; 
+	margin: 0px; 
+	padding: 0px;
+	}
+	
+li a 	  {
+	color: #2e647c;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+img, a.img, a.img:link, a.img:hover {
+	border: 0px none;
+	border: none;
+	text-decoration: none;
+	border-bottom: none;
+/*	behavior: url("win_png.htc");*/
+}
+
+.deroul {
+	width: 170px;
+	padding-bottom: 0px;
+	padding-top: 0x;
+	border: 1px outset Black;
+}
+	
+.form_recherche {
+	width: 80px;
+	font-size: 0.6em;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border: 1px outset Black;
+	}
+
+.invisible	{
+	display: none;
+	visibility: hidden;
+}	
+
+.goog	{
+	border: 0px;
+	text-align: center;
+}
+	
+table.spip, table   { 
+	vertical-align: top; 
+	width: 100%;
+	}
+
+table.spip td {
+	text-align: left;
+	vertical-align: top;
+	}
+	
+table.spip tr {
+	text-align: left;
+	vertical-align: top;
+	}	
+
+hr {
+	color: Green;
+	background-color: Green;
+	height: 2px;
+}
+
+b {}
+
+p {}
+
+h1 {
+	color: Green;
+	font-weight: bold;
+	font-size: 1.5em;
+	line-height: 20px;
+	font-family: Verdana;
+	text-align: left;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: baseline;
+}
+	
+h2 {
+	color: Green;
+	font-weight: bold;
+	font-size: 1.2em;
+	line-height: 18px;
+	font-family: Verdana;
+	text-align: left;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: baseline;
+	}
+
+h3, .texte h3.spip {
+	color: Green;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 1.5em;
+	font-style: italic;
+	line-height: 0.8em;
+	text-align: center;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: baseline;
+}
+
+h4	{
+	font-size: 85%;
+}
+
+h5	{
+	font-size: 75%:
+}
+
+#nom img {
+	border:0;
+	border-bottom: none;
+	}
+
+#box {
+	margin-top: 0px;
+	padding-top: 0px;
+	}
+
+separation {
+	background-image: url(../images/separationg.gif);
+	background-repeat: repeat-y;
+	width: 10px;	
+}
+
+.categorieb  td {
+	text-align:center;
+	}
+.adroite {
+	float: right;
+	text-align: right;
+}
+
+.agauche {
+	float: left;
+	text-align: left;
+}
+
+.login {
+	text-align: center;
+	width: 400px;
+	margin: 0 auto;
+	padding: 3em 0;
+}
+
+/* info bulle de luxe pur CSS */
+a.info	{
+	position:relative; 
+   z-index:24;
+/*	background-color:#ccc;
+   color:#000;
+*/   
+	text-decoration:none
+}
+
+a.info:hover	{
+	z-index: 25;
+	background-color: Yellow;
+	color: Black;
+}
+
+a.info span	{
+	display: none;
+}
+
+a.info:hover span	{
+	/*le contenu de la balise span ne 
+sera visible que pour l'état a:hover */
+	display: block;
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	width: auto;
+	border: 2px solid Yellow;
+	background-color: #FFFACD;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: Black;
+	text-align: justify;
+	font-size: x-small;
+	font-weight: lighter;
+	text-decoration: none;
+	font-weight: ;
+	padding: 1px;
+	vertical-align: text-top;
+	z-index: 25;
+}

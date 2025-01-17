@@ -1,0 +1,10 @@
+[(#REM) Fil d'Ariane ]
+<section>
+	[(#ENV{cartouche,1}|oui)<INCLURE{fond=cartouche/#ENV{type-page},env} />]
+	<div class="main">
+		[<div class="chapo">(#ENV{erreur})</div>]
+	</div>
+	<aside>
+	#FORMULAIRE_LOGIN{#ENV{cible},'',0}
+	</aside>
+</section>

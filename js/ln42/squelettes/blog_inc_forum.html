@@ -1,0 +1,88 @@
+<!-- Forums -->
+<BOUCLE_principale(FORUMS){id_breve}{0,1}>
+<B_forums>
+<a name="DebutForums"></a>
+<h4>Forum du blog</h4>
+
+<!-- debut nombre de messages dans ce blog -->
+<BOUCLE_NbreMsg(FORUMS){id_breve}{plat}>
+</BOUCLE_NbreMsg>
+[<div class="forum-lien">Il y a (#TOTAL_BOUCLE) [(#TOTAL_BOUCLE|>{1}|?{'contributions','contribution'})] &agrave; ce blog.</div>]
+</B_NbreMsg>
+<!-- fin nombre de messages dans ce blog -->
+
+<ul class="forum-total">
+<BOUCLE_forums(FORUMS){id_breve}{par date}{inverse}>
+<li>
+
+<div class="forum-fil">
+<div class="forum">
+<div class="forum-chapo">
+<a name="forum#ID_FORUM"></a>
+
+	<span title="[(#INTRODUCTION*|textebrut|couper{250})]">
+	 #BLOC_TITRE
+	[(#TITRE)]
+		   #BLOC_DEBUT
+		   [(#TEXTE|lignes_longues{50})]
+		   [<div class='forum-titre'><a href="(#URL_SITE)" class="spip_out">#NOM_SITE</a></div>]
+          <hr width=20% align=left noshade>
+		   #BLOC_FIN
+	</span>  <!-- info -->
+
+	[(#DATE|nom_jour|ucfirst)] [(#DATE|affdate)] &#xe0; [(#DATE|heures)]h[(#DATE|minutes)]mn[(#DATE|secondes)]s[, par (#NOM)]
+	<div class="forum-lien">lien direct&nbsp;: #URL_SITE_SPIP/?breve#ID_BREVE#forum#ID_FORUM</div>
+
+	[<div class='forum-repondre-message'>
+	<a href="#URL_SITE_SPIP/?page=blog_forum&(#PARAMETRES_FORUM)">
+	<img src=[(#CHEMIN{images/repondre.png})] align="absmiddle" name="repondre">
+	</a>
+	</div>]
+	
+	</div> <!-- forum-chapo -->
+	</div> <!-- forum -->
+
+
+<B_forums_fils>
+	<ul class="forum-total">
+	<BOUCLE_forums_fils(FORUMS){id_parent}{par date}>
+	<li>
+	
+	<div class="forum">
+	<div class="forum-chapo">
+	<a name="forum#ID_FORUM"></a>
+
+	<span class="info" title="[(#INTRODUCTION*|textebrut|couper{250})]">
+	#BLOC_TITRE
+	[(#TITRE)]
+
+		#BLOC_DEBUT
+		[(#TEXTE|lignes_longues{50})]
+		[<div class='forum-titre'><a href="(#URL_SITE)" class="spip_out">#NOM_SITE</a></div>]
+        <hr width=20% align=left noshade>
+		#BLOC_FIN
+	</span>  <!-- info -->
+	 
+	[(#DATE|nom_jour|ucfirst)] [(#DATE|affdate)] &#xe0; [(#DATE|heures)]h[(#DATE|minutes)]mn[(#DATE|secondes)]s[, par (#NOM)]
+	<div class="forum-lien">lien direct&nbsp;: #URL_SITE_SPIP/?breve#ID_BREVE#forum#ID_FORUM</div>
+	
+	[<div class='forum-repondre-message'><a href="#URL_SITE_SPIP/?page=blog_forum&(#PARAMETRES_FORUM)">
+	<img src=[(#CHEMIN{images/repondre.png})] align="absmiddle" name="repondre">
+	</a></div>]
+	
+	</div> <!-- forum-chapo -->
+	</div> <!-- forum -->
+
+	<BOUCLE_Forums_Boucle(boucle_forums_fils)></BOUCLE_Forums_Boucle>
+	</li>
+
+	</BOUCLE_forums_fils>
+	</ul>
+</B_forums_fils>
+</div> <!-- forum-fil -->
+</li>
+</BOUCLE_forums>
+</ul>
+</B_forums>
+</BOUCLE_principale>
+<!-- fin des forums -->

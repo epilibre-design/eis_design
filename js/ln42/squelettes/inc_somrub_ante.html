@@ -1,0 +1,221 @@
+<BOUCLE_principale (RUBRIQUES) {id_rubrique}>
+		<div class="categoriec">
+				<div class="articlecentre">
+				<a name="haut"></a>
+				
+<!-- d&#xe9;but chemin hi&#xe9;rarchie -->
+			<div class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			<B_cascade>
+			&nbsp;>
+			<BOUCLE_cascade(HIERARCHIE) {id_rubrique} {">"}>
+			<a href="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|textebrut|PtoBR|couper{150})]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade>
+			[ &gt; (#TITRE|supprimer_numero)]
+			</div>  
+<!-- fin chemin hi&#xe9;rarchie -->
+			<br />
+			[<span class="titrerubsom1">(#TITRE|supprimer_numero)</span>]
+			<table>
+				<tr>
+					[<td class="articlecentre">
+					(#LOGO_RUBRIQUE|center|
+					|image_reduire{200}
+					|inserer_attribut{title,[(#TITRE|supprimer_numero)]}
+					|inserer_attribut{alt,[(#TITRE|supprimer_numero)]}
+					)
+					</td>]
+					<td>
+					[<span class="chapo">
+					(#TEXTE|liens_ouvrants|PtoBR)
+					</span>]
+					<br />
+					<B_mots>
+					<span class="chapo">
+					MOTS-CL&Eacute;S&nbsp;:
+					<BOUCLE_mots(MOTS){id_rubrique}{id_groupe!=1}{", "}>
+					<a href="#URL_MOT" title="">[(#TITRE|supprimer_numero)]</a>
+					</BOUCLE_mots>
+					</span>
+					</B_mots>
+					</td>
+				</tr>
+			</table>
+
+			
+			<B_documents_joints>
+			<div class="texte">
+			<BOUCLE_documents_joints(DOCUMENTS) {mode=document} {id_rubrique}{doublons}>
+			<br />
+			[(#LOGO_DOCUMENT|#URL_DOCUMENT|inserer_attribut{title,[T&eacute;l&eacute;charger&nbsp;: (#TITRE|supprimer_numero)]}|inserer_attribut{alt,[(#TITRE|supprimer_numero)]})]
+			[&nbsp;:&nbsp;(#TITRE)]
+			([(#TYPE_DOCUMENT), ][(#TAILLE) octets])
+			[<br /><span class="chaposom"> (#DESCRIPTIF)</span>]
+			</BOUCLE_documents_joints>
+			</div>
+			<hr />
+			</B_documents_joints>
+
+
+
+<!-- d&#xe9;but des articles trouves -->
+
+		<B_5>
+		<p>
+		<div class="titrerubsom4"><:articles:></div>
+		
+<!-- d&#xe9;but du menu d&#xe9;roulant annees articles et debats  (id_groupe=5) --> 
+	    <form class="adroite" name="articles chrono">
+		<select name="mots" size="1" class="deroul" onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+		  <option selected value="">Choisir l'ann&#xe9;e</option>
+		  <OPTION value=""></OPTION>
+
+		<B_mots2>
+		  <BOUCLE_mots2(MOTS){id_groupe=5}{par titre}{inverse}>
+		  <option value="#URL_MOT">&nbsp;[(#TITRE|supprimer_numero)]</option>
+		  </BOUCLE_mots2>
+		</B_mots2>
+
+		</select>
+	      </form>
+<!-- fin du menu d&#xe9;roulant annees articles et debats  -->	
+
+		#ANCRE_PAGINATION
+		<BOUCLE_5(ARTICLES) {id_rubrique}{par date}{inverse} {pagination 20}>
+		  [(#LOGO_ARTICLE|right|#URL_ARTICLE|image_reduire{100,100})] 
+
+		 <!-- d&#xe9;but chemin hi&#xe9;rarchie -->
+			<span class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			<B_cascade2>
+			&nbsp;>
+			<BOUCLE_cascade2(HIERARCHIE) {id_article} {">"}>
+			<A HREF="#URL_RUBRIQUE" title="[(#DESCRIPTIF*)]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade2>
+			> [(#TITRE|supprimer_numero)]
+			</span> 			
+		<!-- fin chemin hi&#xe9;rarchie -->
+
+		<br />
+		
+		<div class="articlecmot">
+				
+		<B_auteur_article>
+			<span class="date">
+			<:par_auteur:>
+			<BOUCLE_auteur_article(AUTEURS){id_article}{", "}>
+			[<a href="#URL_AUTEUR" class="date" title="<:articles_auteur:>">(#NOM)</a>]
+			</BOUCLE_auteur_article> 
+			| 
+			</span>
+		</B_auteur_article>
+				
+				
+				  
+	[<span class="date"><a href="#URL_SITE_SPIP/?page=mois&date=[(#DATE|annee)]/[(#DATE|mois)]"  class="date" title="[(#DATE|nom_mois)][ ((#DATE|annee))]">(#DATE|affdate)</a></span>]
+	<br />
+
+
+		[<span class="sstitre">(#SURTITRE)</span><br />]
+		<span class="langue">#LANG</span>
+		[<a href="#URL_ARTICLE" class="titrerecherche" title="[(#INTRODUCTION|couper{200})]">(#TITRE|supprimer_numero)</a>]
+		
+		[<span class="sstitre">(#SOUSTITRE)</span>]
+				
+		<br />
+		<span class="texte">
+		[(#INTRODUCTION*|textebrut|PtoBR)]
+		</span>
+
+		</div>
+		
+		<img src="[(#CHEMIN{/images/reglearcenciel.gif})]" width="100%" align="absmiddle" height="2">
+		<br />
+
+		</BOUCLE_5>
+		Cette s&eacute;lection contient #GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'articles','article'})][, affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].
+		</B_5>
+
+		  
+<!-- fin des articles trouves -->
+
+<!-- debut des sous-rubriques -->
+	<B_compte_sous_rubriques>
+	<a name="ss_rub"></a>
+	<p>
+	<div class="titrerubsom3">sous-<:rubriques:></div>
+
+
+						<table>
+						
+						<BOUCLE_compte_sous_rubriques(RUBRIQUES){id_parent} {par titre}>
+
+						<tr>
+						<td class="colgauche#COMPTEUR_BOUCLE">
+						
+							<BOUCLE_ss_rub_gche(RUBRIQUES) {id_parent=#ID_PARENT} {par titre}{0,1} {doublons ss_rub}>
+							<span class="titrerubsommairegauche#COMPTEUR_BOUCLE">
+							[(#LOGO_RUBRIQUE_NORMAL|right|#URL_RUBRIQUE|image_reduire{150,0}|inserer_attribut{'alt',[(#TITRE|supprimer_numero)]}|inserer_attribut{'title',[(#TITRE|supprimer_numero)]})]
+							<a href="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|PtoBR)]">
+							[(#TITRE|supprimer_numero)]
+							</a>
+							[<br /><span class="texte">(#INTRODUCTION|couper{300}|PtoBR)</span>]
+							</span>
+					
+						
+							<ul>
+							<BOUCLE_derniers_articles_gche(ARTICLES){branche}{0,5}{!par date}{doublons col_milieu}>
+							<li>
+							<span class="langue">#LANG</span>
+							<span class="titremot">
+							<a href="#URL_ARTICLE" title="[(#DATE|affdate)]">
+							[(#TITRE|supprimer_numero)]
+							</a>
+							</span>
+							</li>
+							
+							</BOUCLE_derniers_articles_gche>
+							</ul>
+							
+							</BOUCLE_ss_rub_gche>
+							
+						</td> <!-- colgauche -->
+						
+						<td class="coldroite#COMPTEUR_BOUCLE">
+
+							<BOUCLE_ss_rub_dte(RUBRIQUES) {id_parent=#ID_PARENT} {par titre}{0,1} {doublons ss_rub}>
+							<span class="titrerubsommairedroite#COMPTEUR_BOUCLE">
+							[(#LOGO_RUBRIQUE_NORMAL|right|#URL_RUBRIQUE|image_reduire{150,0}|inserer_attribut{'alt',[(#TITRE|supprimer_numero)]}|inserer_attribut{'title',[(#TITRE|supprimer_numero)]})]
+							<a href="#URL_RUBRIQUE" title="[(#INTRODUCTION*|couper{300}|PtoBR)]">
+							[(#TITRE|supprimer_numero)]
+							</a>
+							[<br /><span class="texte">(#INTRODUCTION|couper{300}|PtoBR)</span>]
+							</span>
+					
+						
+							<ul>
+							<BOUCLE_derniers_articles_dte(ARTICLES){branche}{0,5}{!par date}{doublons col_milieu}>
+							<li>
+							<span class="langue">#LANG</span>
+							<span class="titremot">
+							<a href="#URL_ARTICLE" title="[(#DATE|affdate)]">
+							[(#TITRE|supprimer_numero)]
+							</a>
+							</span>
+							</li>
+							</BOUCLE_derniers_articles_dte>
+							</ul>
+							
+							</BOUCLE_ss_rub_dte>
+						</td> <!-- coldroite -->
+						
+					</tr>
+					</BOUCLE_compte_sous_rubriques>
+					</table>
+	</B_compte_sous_rubriques>
+
+<!-- fin des des sous-rubriques -->
+    <INCLURE{fond=inc_enhaut}>
+  </div>   <!-- articlecentre -->
+	</div> <!-- categoriec -->
+</BOUCLE_principale>

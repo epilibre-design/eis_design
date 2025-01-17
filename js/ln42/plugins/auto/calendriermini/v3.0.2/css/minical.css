@@ -1,0 +1,90 @@
+/* CSS Document */
+.calendriermini { margin-bottom: 1em; }
+.calendriermini .calendar-container { height: 17em; position: relative;}
+.calendriermini .calendar-container .image_loading { position: absolute; top: 50%; left: 50%; margin-top:-16px;margin-left: -16px;}
+
+:root {
+	--minical-border-color: #ccc;
+	--minical-active-bg: #f3d17a;
+	--minical-active-color: #333;
+	--minical-active-border-color: transparent;
+	--minical-active-bg-hover: #deba5d;
+
+	--minical-border-dark-color: #999;
+	--minical-day-disabled-color: #999;
+
+	--minical-calendrier-couleur6-bg:#DBB8DC;
+	--minical-calendrier-couleur6-bg-hover: #cd9fce;
+	--minical-calendrier-couleur6-color:#636;
+}
+
+.js .calendriermini .calendar-container .alt { display: none; }
+
+.calendriermini table { width: 100%; font-size: 0.8em; text-align: center; margin: 0 auto; border-collapse: collapse;}
+.calendriermini table caption { margin: 0 auto; padding: 0; }
+.calendriermini table th { padding: 0; }
+.calendriermini table th,td { width: 14%; line-height: 1.75em; padding: 0; background: #fff ;}
+
+.calendriermini table .day.active {font-weight: bold;}
+
+.calendriermini .datepicker .day.calendrier-couleur1 {
+  background-color: var(--minical-calendrier-couleur1-bg, var(--minical-active-bg));
+  border-color: var(--minical-calendrier-couleur1-border-color, var(--minical-active-border-color));
+  color: var(--minical-calendrier-couleur1-color, var(--minical-active-color));
+}
+.calendriermini .datepicker .day.calendrier-couleur1:hover,
+.calendriermini .datepicker .day.calendrier-couleur1:active {
+  background-color: var(--minical-calendrier-couleur1-bg-hover, var(--minical-active-bg-hover));
+}
+
+.calendriermini .datepicker .day.calendrier-couleur2 {
+  background-color: var(--minical-calendrier-couleur2-bg, var(--minical-active-bg));
+  border-color: var(--minical-calendrier-couleur2-border-color, var(--minical-active-border-color));
+  color: var(--minical-calendrier-couleur2-color, var(--minical-active-color));
+}
+.calendriermini .datepicker .day.calendrier-couleur2:hover,
+.calendriermini .datepicker .day.calendrier-couleur2:active {
+  background-color: var(--minical-calendrier-couleur2-bg-hover, var(--minical-active-bg-hover));
+}
+
+.calendriermini .datepicker .day.calendrier-couleur3 {
+  background-color: var(--minical-calendrier-couleur3-bg, var(--minical-active-bg));
+  border-color: var(--minical-calendrier-couleur3-border-color, var(--minical-active-border-color));
+  color: var(--minical-calendrier-couleur3-color, var(--minical-active-color));
+}
+.calendriermini .datepicker .day.calendrier-couleur3:hover,
+.calendriermini .datepicker .day.calendrier-couleur3:active {
+  background-color: var(--minical-calendrier-couleur3-bg-hover, var(--minical-active-bg-hover));
+}
+
+.calendriermini .datepicker .day.calendrier-couleur4 {
+  background-color: var(--minical-calendrier-couleur4-bg, var(--minical-active-bg));
+  border-color: var(--minical-calendrier-couleur4-border-color, var(--minical-active-border-color));
+  color: var(--minical-calendrier-couleur4-color, var(--minical-active-color));
+}
+.calendriermini .datepicker .day.calendrier-couleur4:hover,
+.calendriermini .datepicker .day.calendrier-couleur4:active {
+  background-color: var(--minical-calendrier-couleur4-bg-hover, var(--minical-active-bg-hover));
+}
+
+
+.calendriermini .datepicker .day.calendrier-couleur5 {
+  background-color: var(--minical-calendrier-couleur5-bg, var(--minical-active-bg));
+  border-color: var(--minical-calendrier-couleur5-border-color, var(--minical-active-border-color));
+  color: var(--minical-calendrier-couleur5-color, var(--minical-active-color));
+}
+.calendriermini .datepicker .day.calendrier-couleur5:hover,
+.calendriermini .datepicker .day.calendrier-couleur5:active {
+  background-color: var(--minical-calendrier-couleur5-bg-hover, var(--minical-active-bg-hover));
+}
+
+
+.calendriermini .datepicker .day.calendrier-couleur6 {
+  background-color: var(--minical-calendrier-couleur6-bg, var(--minical-active-bg));
+  border-color: var(--minical-calendrier-couleur6-border-color, var(--minical-active-border-color));
+  color: var(--minical-calendrier-couleur6-color, var(--minical-active-color));
+}
+.calendriermini .datepicker .day.calendrier-couleur6:hover,
+.calendriermini .datepicker .day.calendrier-couleur6:active {
+  background-color: var(--minical-calendrier-couleur6-bg-hover, var(--minical-active-bg-hover));
+}

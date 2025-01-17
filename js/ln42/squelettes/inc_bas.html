@@ -1,0 +1,83 @@
+<!-- d&#xe9;but bas de page -->
+
+<div id="footer">
+
+   <div id="nav">
+	<ul>
+
+<li>			
+<a href="[(#URL_SITE_SPIP)]" title="<:accueil_site:> #NOM_SITE_SPIP" class="cheminacces"><:accueil_site:></a>
+	<span>|</span>
+</li>
+
+<li>
+	<a href="#URL_SITE_SPIP/?page=plan" title="<:plan_site:>" class="cheminacces">
+	<img src="[(#CHEMIN{images/plan.png})]" class="bas" alt="Espace r&eacute;serv&eacute; aux administrateurs du site" />
+	</a>
+	<span>|</span>
+</li>
+
+<li>	
+<BOUCLE_legal(ARTICLES){id_article=147}>
+<a href="[(#URL_ARTICLE)]" title="l&eacute;gal" class="cheminacces">l&eacute;gal</a>
+</BOUCLE_legal>
+	<span>|</span>
+</li>
+<li>
+<BOUCLE_contact(RUBRIQUES){id_rubrique=44}>
+<a href="#URL_RUBRIQUE" title="contacts" class="cheminacces">contacts et nouvelles</a>
+</BOUCLE_contact>
+	<span>|</span>
+</li>
+<li>
+<a href="ecrire/"  title="<:espace_prive:>" class="cheminacces" >
+<img src="[(#CHEMIN{images/prive.png})]" class="bas" alt="Espace r&eacute;serv&eacute; aux administrateurs du site" /></a>
+	<span>|</span>
+</li>
+<li>
+<a href="#URL_SITE_SPIP/?page=listes"  title="Newsletter" class="cheminacces">Newsletter</a>
+	<span>|</span>
+	<span>|</span>
+	<span>|</span>
+</li>
+
+<li>
+<a href="http://validator.w3.org/check/referer" title="" class="cheminacces">
+<img src="[(#CHEMIN{images/W3C-HTML401.png})]" class="bas" alt="HTML 4.0" />
+</a>
+	<span>|</span>
+</li>
+
+<li>
+&copy;
+<a href="http://perline.org/"  title="Perline" class="cheminacces" target="_blank"><INCLURE{fond=Perline}></a>
+	&copy;1998-[(#DATE|annee)]
+<span>|</span>
+</li>
+
+<li>
+<a href="http://www.spip.net/fr/" title="Spip" class="cheminacces" target="_blank">
+<img src="[(#CHEMIN{images/spip.png})]" class="bas" alt="<:site_realise_avec_spip:>" />
+</a>
+<span>|</span>
+</li>
+
+<li>
+h&eacute;berg&eacute; chez
+<a href="http://koumbit.org/" target="_blank" title="Koumbit">
+<img src="[(#CHEMIN{images/Koumbit.png})]"  class="bas" alt="Koumbit.org"></a>
+<span>|</span>
+</li>
+
+<li>Reproduction encourag&eacute;e sous licence
+<a href="http://artlibre.org/licence/lal/"  title="Licence Art libre" class="cheminacces" target="_blank">
+<img src="[(#CHEMIN{images/copyleft.png})]" class="bas" alt="Licence Art libre" />
+</a>
+</li>
+
+</ul>
+
+</div>  <!-- nav -->
+</div>  <!-- footer -->
+
+<!-- fin bas de page -->

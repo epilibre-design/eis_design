@@ -1,0 +1,42 @@
+		<!-- Header
+		============================================= -->
+		<header id="header" class="full-header">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="#URL_SITE_SPIP">
+								<img class="logo-default" srcset="#CHEMIN{images/logo.png}, #CHEMIN{images/logo@2x.png} 2x" src="#CHEMN{images/logo@2x.png}" alt="Canvas Logo">
+							</a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+							<!-- Top Search
+							============================================= -->
+							<div id="top-search" class="header-misc-icon">
+								<a href="#" id="top-search-trigger"><i class="fa-solid fa-magnifying-glass"></i><i class="fa-solid fa-xmark"></i></a>
+							</div><!-- #top-search end -->
+
+						</div>
+
+						<div class="primary-menu-trigger">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<INCLURE{fond=inclure/nav,env} />
+
+						<form class="top-search-form" action="search.html" method="get" style="background-color: white;">
+							<input type="text" name="q" class="form-control" value="" placeholder="Saisir et utiliser la touche 'Entrée' pour lancer la recherche.." autocomplete="off">
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->

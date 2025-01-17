@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="64" height="64">
+	<path fill="#fff" stroke="#666" stroke-width="48" d="M40 40h432v432H40z"/>
+	<g fill="#666">
+		<g transform="translate(0 32)">
+			<circle cx="128" cy="128" r="22"/>
+			<path d="M384 106.7H213.3a21.3 21.3 0 000 42.6H384a21.3 21.3 0 000-42.6z"/>
+		</g>
+		<circle cx="128" cy="256" r="22"/>
+		<path d="M384 234.7H213.3a21.3 21.3 0 000 42.6H384a21.3 21.3 0 000-42.6z"/>
+		<g transform="translate(0 -32)">
+			<circle cx="128" cy="384" r="22"/>
+			<path d="M384 362.7H213.3a21.3 21.3 0 100 42.6H384a21.3 21.3 0 100-42.6z"/>
+		</g>
+	</g>
+	<path d="M190 384h266" fill="none" stroke="#fff" stroke-width="126" stroke-linecap="round"/>
+	<path
+		d="M403.7 294a17.5 17.5 0 00-17.7 18v144a17.5 17.5 0 0029.5 13.2l77-72.5a17.5 17.5 0 000-25.4l-77-72.5a17.5 17.5 0 00-11.8-4.8z"
+		fill="#fff" stroke="#fff" stroke-width="70" fill-rule="evenodd"/>
+	<path d="M190 384h266" fill="none" stroke="#119914" stroke-width="56" stroke-linecap="round"/>
+	<path
+		d="M403.7 294a17.5 17.5 0 00-17.7 18v144a17.5 17.5 0 0029.5 13.2l77-72.5a17.5 17.5 0 000-25.4l-77-72.5a17.5 17.5 0 00-11.8-4.8z"
+		fill="#119914" fill-rule="evenodd"/>
+</svg>

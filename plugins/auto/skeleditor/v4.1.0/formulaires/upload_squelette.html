@@ -1,0 +1,34 @@
+<div class='formulaire_spip formulaire_editer formulaire_squelette h-100 formulaire_#FORM'>
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	<div class="actions">
+		<div class="add">
+		[(#AUTORISER{creerdans,squelette,#ENV{_path_base}}|oui)
+			[(#BOUTON_ACTION{#CHEMIN_IMAGE{se-file-add-16.svg}|balise_img{new,picto,16x16}|concat{' ',<:skeleditor:action_nouveau:>},#URL_ECRIRE{skeleditor},btn btn_secondaire})]
+		]
+		[(#AUTORISER{upload,squelette,#ENV{_path_base}}|oui)
+			[(#BOUTON_ACTION{#CHEMIN_IMAGE{se-upload-16.svg}|balise_svg{upload,picto,16x16}|concat{' ',<:skeleditor:action_upload:>},#URL_ECRIRE{skeleditor,upload=oui},btn btn_secondaire})]
+		]
+		</div>
+	</div>
+
+	[ (#ENV{editable}|oui)
+	<form method='post' action='#ENV{action}' enctype='multipart/form-data' class="main-form h-100"><div class="d-flex-col h-100">
+		[(#REM) declarer les hidden qui declencheront le service du formulaire 
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#ENV{action}}
+	  <div class="editer-groupe h-100">
+	    <div class="editer editer_fichier_upload h-100 pleine_largeur[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]">
+				<label for="fichier_upload"><:skeleditor:label_file:></label>[
+				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier_upload})</span>]
+	      <INCLURE{fond=saisies/bigup,nom=fichier_upload,multiple=1,env} />
+	    </div>
+	  </div>
+	  [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+	  <!--extra-->
+	  <p class="boutons">
+		  <button type='submit' class='submit' value='X'><:bouton_ajouter:></button>
+	  </p>
+	</div></form>
+	]
+</div>

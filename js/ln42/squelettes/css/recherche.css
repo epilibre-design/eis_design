@@ -1,0 +1,76 @@
+.titrerecherche        {
+	color: Green;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 20px;
+	font-family: Verdana;
+	text-align: left;
+	text-transform: none;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: text-top;
+	border-bottom: medium none #600;
+}
+.texte          { 
+	color: #454441; 
+	font-size: 11px; 
+	line-height: 18px; 
+	font-family: Verdana; 
+	text-align: left; 
+	text-indent: 0px; 
+	word-spacing: 0px; 
+	letter-spacing: 0px; 
+	vertical-align: text-top }
+.auteur { 
+	color: #454441; 
+	font-size: 11px; 
+	line-height: 18px; 
+	font-family: Verdana; 
+	text-align: left; 
+	text-indent: 0px; 
+	word-spacing: 0px; 
+	letter-spacing: 0px; 
+	vertical-align: text-top }
+.articlecentre, categoriec.articlecentre        { 
+	background-color: #f1f1ee; 
+	padding-right: 15px; 
+	padding-bottom: 20px; 
+	padding-left: 15px }
+.categoriec {
+	background-color: #f1f1ee;
+	vertical-align: vertitop;
+	padding-top: 0;
+}
+.resultat         {
+	color: Teal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 20px;
+	font-family: Verdana;
+	text-align: left;
+	text-transform: uppercase;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: text-top;
+	border-bottom: medium none #600;
+}
+.libelleresultat  { 
+	color: #84837c; 
+	font-size: 15px; 
+	line-height: 20px; 
+	font-family: Verdana; 
+	text-align: left; 
+	text-transform: none; 
+	text-indent: 0px; 
+	word-spacing: 0px; 
+	letter-spacing: 0px; 
+	vertical-align: text-top; 
+	border-bottom: medium none #600 }
+.articlecentre .articlecmot, categoriec.articlecentre .articlecmot   { 
+	background-color: #f1f1ee; 
+	margin-left: 20px; 
+	padding-right: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 0px }

@@ -1,0 +1,56 @@
+<!-- debut des derniers blogs -->
+     <span class="snap_nopreview">
+     <a href="#URL_SITE_SPIP/?page=blog_plan" title="Tous les blogs d'Alain Lipietz">
+    <img width="170px" align="top" src="#CHEMIN{images/blog/blog_appel.gif}" alt="Le blog"> 
+    </a> 
+	<B_derniers_blog>
+	
+	<ul>
+	<BOUCLE_derniers_blog(BREVES){tout}{titre_mot=blog}{par date}{inverse}{doublons}{0,5}>  [(#REM)age<30]
+		<li>
+		<span class="date">
+		[[(#DATE|affdate)]]
+		</span>
+		<a href="#URL_SITE_SPIP/?page=blog&id_breve=#ID_BREVE" class="titreauto" title="[(#TEXTE*|PtoBR|couper{200})]">
+		[<br />(#TITRE*)<br />]
+		</a>
+		[(#LOGO_BREVE|right|#URL_BREVE|image_reduire{50})]
+		<p class="textelien">
+		[(#TEXTE|couper{150})]
+		</p>
+		<hr class="ligne#COMPTEUR_BOUCLE" />
+		</li>
+	</BOUCLE_derniers_blog>
+	</ul>
+	
+<!-- debut bouton tous les blogs -->
+	<span class="adroite">
+	<a href="#URL_SITE_SPIP/?page=blog_plan" class="bouton2" title="Les <BOUCLE_compte_blogs(BREVES){titre_mot=blog}></BOUCLE_compte_blogs>#TOTAL_BOUCLE<//B_compte_blogs> blogs" >Tous les blogs</a>
+	</span>
+<!-- fin bouton tous les blogs -->
+	</B_derniers_blog>
+
+<!-- fin des derniers blogs -->	
+
+<!-- début des derniers forums -->	
+	<B_derniers_forums>
+	<br /><br />
+	<img height="50px" width="170px" border=0 align="top" src="[(#CHEMIN{images/m_forums.gif})]"  title="Derniers forums du blog" alt="Derniers forums du blog">
+	<ul> 
+
+	<BOUCLE_derniers_forums(FORUMS){tout}{!par date}{0,5}>
+	<li>
+	<span class="date">
+	[[(#DATE|affdate)]]
+	<br />
+	[(#TITRE|couper{80})]
+	</span>
+	<br />
+	<a href="#URL_FORUM" class="texteliencomfor" title='[(#NOM)]'>[(#TEXTE*|textebrut|PtoBR|couper{80})]</a>
+	</li>
+	</BOUCLE_derniers_forums>
+	</ul>
+	</B_derniers_forums>
+	</span>
+<!-- fin des derniers forums -->	
+

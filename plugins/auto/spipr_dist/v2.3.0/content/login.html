@@ -1,0 +1,10 @@
+
+<section>
+	[(#ENV{cartouche,1}|oui)<INCLURE{fond=cartouche/#ENV{type-page},env} />]
+
+	<div class="main">
+		#MENU_LANG_ECRIRE
+
+		[(#FORMULAIRE_LOGIN{#ENV{url}|sinon{#URL_ECRIRE{accueil}}})]
+	</div>
+</section>

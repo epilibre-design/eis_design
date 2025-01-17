@@ -1,0 +1,8 @@
+{
+  "intertitres": {
+    "match": "/({{{)((?:\\*|#){0,5})(.*?)(}}})(?:{(.*?)})?/s",
+    "is_callback": "y",
+    "replace": "intertitres",
+    "priority": -50
+  }
+}

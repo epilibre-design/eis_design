@@ -1,0 +1,47 @@
+        <div class="form-result"></div>
+        [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+        [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+        <form class="mb-0" id="template-ticketform" name="template-ticketform" action="#ENV{action}" method="post">
+          #ACTION_FORMULAIRE
+          <input type='hidden' name='id_ticket' value='#ID_TICKET' />
+          <div class="form-process">
+            <div class="css3-spinner">
+              <div class="css3-spinner-scaler"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label class="text-transform-none ls-0 fw-medium" for="nom_auteur">Nom <small>*</small>
+              </label>
+              <input type="text" id="template-ticketform-nom_auteur" name="nom_auteur" value="" class="form-control required" placeholder="Votre nom">
+            </div>
+            <div class="col-md-6 form-group">
+              <label class="text-transform-none ls-0 fw-medium" for="email_auteur">Email <small>*</small>
+              </label>
+              <input type="email" id="template-ticketform-email_auteur" name="email_auteur" value="" class="required email form-control" placeholder="Saisissez un email valide">
+            </div>
+            <div class="col-md-12 form-group">
+              <label class="text-transform-none ls-0 fw-medium" for="template-ticketform-titre">Titre du ticket <small>*</small>
+              </label>
+              <input type="titre" id="template-ticketform-titre" name="titre" value="" class="required titre form-control" placeholder="Un titre pour résumer votre message">
+            </div>
+            <div class="col-md-12 form-group">
+              <label class="text-transform-none ls-0 fw-medium" for="exemple">URL d'exemple
+              </label>
+              <input type="titre" id="template-ticketform-exemple" name="exemple" value="[(#SELF|url_absolue)]" class="required titre form-control" placeholder="Indiquez le lien sur lequel le problème se produit">
+            </div>
+            <div class="w-100"></div>
+            <div class="col-12 form-group">
+              <label class="text-transform-none ls-0 fw-medium" for="texte">Message <small>*</small>
+              </label>
+              <textarea class="required form-control" id="template-ticketform-texte" name="texte" rows="5" cols="30">#ENV{texte}</textarea>
+            </div>
+            <div class="col-12 form-group d-none">
+              <input type="text" id="template-ticketform-botcheck" name="template-ticketform-botcheck" value class="form-control">
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+              <button class="button ls-0 text-transform-none px-5 py-3 rounded-pill bg-primary ms-2" type="submit" id="template-ticketform-submit" name="template-ticketform-submit" value="submit">Envoyer le ticket au support technique</button>
+            </div>
+          </div>
+          <input type="hidden" name="prefix" value="template-ticketform-">
+        </form>

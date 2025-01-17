@@ -1,0 +1,66 @@
+<BOUCLE_principale(RUBRIQUES){id_rubrique}>
+
+		<div class="categoriec">
+			<div class="articlecentre">
+			<a name="haut"></a>
+
+<!-- début chemin hiérarchie -->
+			<div class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			<B_cascade>
+			&nbsp;>
+			<BOUCLE_cascade(HIERARCHIE) {id_rubrique} {">"}>
+			<a href="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|textebrut|PtoBR|couper{150})]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade>
+			[ &gt; (#TITRE|supprimer_numero)]
+			</div>
+<!-- fin chemin hiérarchie -->
+			<span class="texte">
+			Nous vous recommandons le <b><a href="#URL_SITE_SPIP/?page=agenda&type=mois&var_mode=recalcul" title="calendrier mensuel">calendrier mois par mois</a></b>, 
+			plus lisible
+			</span>
+
+
+<!-- debut des débats par ordre antechrono -->
+	 <B_debats>
+
+		#ANCRE_PAGINATION
+		 <ul>
+		 <BOUCLE_debats(ARTICLES){branche}{par date} {inverse}{pagination 40}>
+		 <li>
+		 <span class="date">
+		 -&nbsp;
+		 
+		 <BOUCLE_date_ev(EVENEMENTS){id_article}{statut=publie}{par date_debut}{0,1}>
+		 [(#DATE_DEBUT|affdate)] <!--[-(#DATE_FIN|affdate)]-->
+		 </BOUCLE_date_ev>
+		 [(#DATE_REDAC|affdate)]
+		 <//B_date_ev>
+		 
+		 [-(#SURTITRE)][-(#SOUSTITRE)]
+		 <br />
+		 <a href="#URL_ARTICLE" class="" title="[(#INTRODUCTION*|couper{150})]">
+		 [(#TITRE*|supprimer_numero)]
+		 </a>
+		 [(#DESCRIPTIF|textebrut)]
+		 </span >
+		  </li>
+  		</BOUCLE_debats>
+		</ul>
+		
+		<p>
+		<div class="texte">
+		L'agenda contient #GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'&eacute;v&eacute;nements','&eacute;v&eacute;nement'})][, affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].
+		</div>
+
+		
+	</B_debats>
+<!-- fin des débats par ordre antechrono -->
+
+		<br />
+		<INCLURE{fond=inc_enhaut}>
+	
+  			</div>   <!-- articlecentre -->
+		</div> <!-- categoriec -->
+
+</BOUCLE_principale>

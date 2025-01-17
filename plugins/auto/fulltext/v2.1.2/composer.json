@@ -1,0 +1,33 @@
+{
+    "name": "spip-contrib/fulltext",
+    "description": "Indexation FULLTEXT pour accélérer les recherches",
+    "type": "spip-plugin",
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://contrib.spip.net/Fulltext",
+    "authors": [
+        {
+            "name": "Fil",
+            "email": "fil@rezo.net"
+        },
+        {
+            "name": "Gaël Chareyre",
+            "homepage": "https://kokmoka.com/"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpcompatibility/php-compatibility": "10.x-dev",
+        "spip/coding-standards": "^1.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.x-dev"
+        }
+    }
+}

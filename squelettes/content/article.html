@@ -1,0 +1,56 @@
+<BOUCLE_content(ARTICLES){id_article}>
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row gx-5 col-mb-80">
+						<!-- Post Content
+						============================================= -->
+						<main class="postcontent col-lg-9">
+
+							<!-- Posts
+							============================================= -->
+							<div id="posts" class="row gutter-30">
+
+
+	<INCLURE{fond=cartouche/#ENV{type-page},env} />
+
+	[<div class="chapo surlignable entry-content bg-contrast-100">
+		<div class="col-padding">
+		(#CHAPO|adaptive_images)
+		</div>
+	</div>]
+
+	[<div class="#EDIT{texte} texte surlignable entry-content">
+		(#TEXTE|adaptive_images)
+	</div>]
+
+    [(#REM) Gestion du portfolio et des documents ]
+    [(#INCLURE{fond=inclure/documents,id_article,id_rubrique='',env})]
+
+	[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+
+
+							</div><!-- #posts end -->
+
+
+							<!-- Pager
+							============================================= -->
+							<div class="d-flex justify-content-between mt-5">
+<BOUCLE_avant(ARTICLES){id_secteur}{id_article<#ID_ARTICLE}{par maj}{inverse}{0,1}><a href="#URL_ARTICLE" class="btn btn-outline-secondary">&larr; #TITRE</a>
+</BOUCLE_avant>
+<BOUCLE_apres(ARTICLES){id_secteur}{id_article>#ID_ARTICLE}{par maj}{0,1}><a href="#URL_ARTICLE" class="btn btn-outline-dark">#TITRE &rarr;</a></BOUCLE_apres>
+							</div>
+							<!-- .pager end -->
+
+						</main><!-- .postcontent end -->
+
+						<!-- Sidebar
+						============================================= -->
+						<INCLURE{fond=inclure/sidebar/rubrique,id_rubrique=#ID_RUBRIQUE,env}/>
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+</BOUCLE_content>

@@ -1,0 +1,44 @@
+#SET{composition, #ENV{objet}|compositions_decrire{#ENV{composition}}}
+<h1 class="grostitre">
+	[(#GET{composition/icon}|sinon{#CHEMIN_IMAGE{composition-32.png}}|image_reduire{32,32}|inserer_attribut{class,logo})]
+	[(#GET{composition/nom})]
+	[<small><tt>(#GET{composition/basename})</tt></small>]
+</h1>
+
+[<div class='descriptif'>(#GET{composition/description}|propre)</div>]
+
+<B_heritages>
+[(#BOITE_OUVRIR{<:compositions:label_heritages:>, raccourcis})]
+	<:compositions:heritages:>
+	<ul class="spip">
+		<BOUCLE_heritages(DATA){source tableau, #GET{composition/branche}}>
+			<li>#CLE (#VALEUR)</li>
+		</BOUCLE_heritages>
+	</ul>
+#BOITE_FERMER
+</B_heritages>
+
+[(#GET{composition/image_exemple}|oui)
+[(#BOITE_OUVRIR{<:compositions:voir_image_exemple:>, raccourcis})]
+<a href="[(#GET{composition/image_exemple}|balise_img|extraire_attribut{src})]" class='mediabox exemple' title="<:compositions:voir_image_exemple|attribut_html:>">
+	[(#GET{composition/image_exemple}|image_reduire{250})]
+</a>
+#BOITE_FERMER
+]
+
+#SET{utilisations, #ENV{objet}|compositions_lister_utilisations{#ENV{composition}}}
+#SET{nb_utilisations, #GET{utilisations}|count}
+[(#BOITE_OUVRIR{[(#ENV{objet}|objet_info{texte_objets}|_T|concat{' (',#GET{nb_utilisations},')'})], simple, section})]
+<div class='liste'>
+	<ul class='liste-items'>
+	<BOUCLE_util(DATA){source tableau, #GET{utilisations}}>
+		<li class='item'>
+			<a href="[(#VALEUR{id}|generer_url_entite{#ENV{objet}})]">[(#TITRE|supprimer_numero)][ | (#ID)]</a>
+		</li>
+	</BOUCLE_util>
+	</ul>
+</div>
+#BOITE_FERMER
+
+
+

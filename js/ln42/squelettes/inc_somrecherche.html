@@ -1,0 +1,147 @@
+#CACHE{0*3600}
+		<div class="categoriec">
+				<div class="articlecentre">
+
+	<div class="cheminacces"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:info_rechercher:>[ &gt; (#RECHERCHE)]</div>
+
+	
+		[(#REM) Contenu principal : Resultats de la recherche ]
+
+
+			[<div class="resultat">
+				<:resultats_recherche:>
+				&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;
+			</div>]
+
+
+<!-- d&#xe9;but des articles trouves -->
+		<B_art>
+		#ANCRE_PAGINATION
+		<p>
+		<div class="titrerubsom4"><:articles:></div>
+
+		<BOUCLE_art(ARTICLES) {recherche}  {par points}{inverse}  {pagination}>
+		 <!-- d&#xe9;but chemin hi&#xe9;rarchie -->
+			<span class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			<B_cascade2>
+			&nbsp;>
+			<BOUCLE_cascade2(HIERARCHIE) {id_article} {">"}>
+			<A HREF="#URL_RUBRIQUE" title="[(#DESCRIPTIF|textebrut)]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade2>
+			> [(#TITRE|supprimer_numero)]
+			</span> 			
+		<!-- fin chemin hi&#xe9;rarchie -->
+		<br />
+		<div class="articlecmot">
+		<B_auteur_article>
+			<span class="date">
+			<:par_auteur:>
+			<BOUCLE_auteur_article(AUTEURS){id_article}{", "}>
+			[<a href="#URL_AUTEUR" class="date" title="<:articles_auteur:>">(#NOM)</a>]
+			</BOUCLE_auteur_article> 
+			| 
+			</span>
+		</B_auteur_article>
+	[<span class="date"><a href="#URL_SITE_SPIP/?page=mois&date=[(#DATE|annee)]/[(#DATE|mois)]"  class="date" title="[(#DATE|nom_mois)][ ((#DATE|annee))]">(#DATE|affdate)</a></span>]
+	<br />
+		[(#LOGO_ARTICLE|right|#URL_ARTICLE|image_reduire{100,100})]
+		[<span class="sstitre">(#SURTITRE)</span><br />]
+		<span class="langue">#LANG</span>
+		[<a href="#URL_ARTICLE" class="titrerecherche" title="[(#INTRODUCTION|couper{200})]">(#TITRE|supprimer_numero)</a>]
+		[<span class="sstitre">(#SOUSTITRE)</span>]
+		<br />
+		<span class="texte">
+		[(#INTRODUCTION*|textebrut|PtoBR)]
+		</span>
+		</div>
+    	<img src=[(#CHEMIN{images/reglearcenciel.gif})] width="100%" align="absmiddle" height="2">
+		<br /> 
+		</BOUCLE_art>
+		Il y a #GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'articles','article'})][, affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].		 
+		</B_art>
+		<//B_art>
+<!-- fin des articles trouves -->
+				[(#REM) Rubriques trouvees ]
+<!-- début des rubriques -->
+	    <B_rub>
+		#ANCRE_PAGINATION
+		<p>
+		<div class="titrerubsom4"><:rubriques:></div>
+
+		<div class="articlecmot">
+
+			<BOUCLE_rub(RUBRIQUES) {recherche} {par points}{inverse} {pagination 5}>
+			<span class="langue">#LANG</span>
+			[<a href="?article#ID_RUBRIQUE" class="titrerecherche" title="[(#DESCRIPTIF|textebrut)]">(#TITRE|supprimer_numero)</a>]
+			[<br /><span class="texte">(#INTRODUCTION*|textebrut|PtoBR)</span>]
+			</div>
+			<img src=[(#CHEMIN{images/reglearcenciel.gif})] width="100%" align="absmiddle" height="2">
+			<br /> 
+			</BOUCLE_rub>
+		Il y a #GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'rubriques','rubrique'})][, affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].		 
+	    </B_rub>
+	    <//B_rub>
+
+<!-- fin  des rubriques  -->
+
+<!-- debut des mots  -->
+				<B_mots>
+					<h2><:mots_clefs:></h2>
+					#ANCRE_PAGINATION
+					[<p class="texte">(#PAGINATION{precedent_suivant})</p>]
+					<ul>
+						<BOUCLE_mots(MOTS) {recherche}{id_groupe!=1} {par points}{inverse} {pagination 15}>
+						<li class="auteur"><a href="?mot#ID_MOT"  class="texte" title="[(#TEXTE*|textebrut|couper{150})]">(#TITRE|supprimer_numero)</a></li>
+						<hr align=left>
+						</BOUCLE_mots>
+					</ul>
+				</B_mots>
+				<//B_mots>
+<!-- fin des mots  -->
+<!-- debut des blogs  -->
+
+				<B_blogs>
+					#ANCRE_PAGINATION
+					<h2>Blogs</h2>
+					[<p class="texte">(#PAGINATION{precedent_suivant})</p>]
+					<ul>
+						<BOUCLE_blogs(BREVES) {titre_mot=blog} {recherche} {par points}{inverse} {pagination 15}>
+						<li class="auteur">[[(#DATE|affdate)]] : <a href="#URL_SITE_SPIP/?page=blog&id_breve=#ID_BREVE" class="texte" title="[(#INTRODUCTION*|textebrut|couper{150})]">#TITRE</a></li>
+						</BOUCLE_blogs>
+					</ul>
+				</B_blogs>
+				<//B_blogs>
+<!-- fin des blogs  -->
+
+<!-- debut des messages  -->
+				<B_messages>
+					#ANCRE_PAGINATION
+					<h2><:messages_forum:></h2>
+					[<p class="texte">(#PAGINATION{precedent_suivant})</p>]
+					<ul>
+						<BOUCLE_messages(FORUMS) {recherche} {par points}{inverse} {pagination 15}>
+						<li class="auteur">[[(#DATE|affdate)]] : <a href="#URL_SITE_SPIP/?page=forum&id_forum=#ID_FORUM" class="texte" title="[(#TEXTE*|textebrut|couper{150})]">#TITRE</a></li>
+						</BOUCLE_messages>
+					</ul>
+				</B_messages>
+				<//B_messages>
+<!-- fin des messages  -->
+<!-- debut des sites  -->
+				<B_sites>
+					#ANCRE_PAGINATION
+					<h2><:sites_web:></h2>
+					[<p class="texte">(#PAGINATION{precedent_suivant})</p>]
+					<ul>
+						<BOUCLE_sites(SITES) {recherche} {par points}{inverse} {pagination 5}>
+						<li class="auteur"><a href="#URL_SITE_SPIP/?page=sites&id_syndic=#ID_SYNDIC" class="texte" title="[(#DESCRIPTIF*|textebrut|couper{150})]">#NOM_SITE</a></li>
+						</BOUCLE_sites>
+					</ul>
+				</B_sites>
+				<//B_sites>
+<!-- debut des sites  -->
+
+	
+
+			</div> <!-- articlecentre -->
+				</div> <!-- categoriec -->

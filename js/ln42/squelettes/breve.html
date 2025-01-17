@@ -1,0 +1,15 @@
+#CACHE{0*0}
+<!-- debut de test si breve de blog -->
+<BOUCLE_principale(BREVES){id_breve}>
+	<B_test_blog>
+	<INCLURE{fond=blog}{id_breve}>
+	<BOUCLE_test_blog(MOTS){id_breve}{id_mot=129}>
+	</BOUCLE_test_blog>
+	</B_test_blog>
+<!-- fin de test si breve de blog -->
+<!-- sinon breve-normal -->
+	<INCLURE{fond=breve_normal}{id_breve}>
+	<//B_test_blog>
+</BOUCLE_principale>
+<INCLURE{fond=erreur}>
+<//B_principale>

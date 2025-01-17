@@ -1,0 +1,35 @@
+.nomorga    { 
+	color: white; 
+	font-weight: bold; 
+	font-size: 32pt; 
+	line-height: 34pt; 
+	font-family: verdana; 
+	text-decoration: none; 
+	text-indent: 25px
+	}
+	
+.articleentete    {
+	background-color: transparent;
+	background-image: url(../images/header1.gif);
+	background-repeat: no-repeat;
+}
+.articleentete td.colgauche      {
+	background-color: transparent;
+	text-align: center;
+	width: 500px;
+	height: auto;
+}
+.articleentete td.coldroite    {
+	background-color: transparent;
+	text-align: right;
+	vertical-align: top;
+	margin-left: 0px;
+	padding-left: 0px;
+	width: auto;
+	height: 45px;
+}
+
+.articleentete td.logos_ext    {
+	text-align: right;
+	vertical-align: top;
+}

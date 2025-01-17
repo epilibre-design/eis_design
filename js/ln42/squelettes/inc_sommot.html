@@ -1,0 +1,217 @@
+<BOUCLE_principale(MOTS){id_mot}{id_groupe!=1}>
+		<div class="categoriec">
+		<div class="motcentre">
+		<a name="haut"></a>
+		[<div class="titremotcle">(#TITRE|supprimer_numero|majuscules)
+		</div>]
+		[(#LOGO_MOT|right|image_reduire{150}
+		|inserer_attribut{title,[(#TEXTE*|couper{150})]}
+		|inserer_attribut{alt,[(#TEXTE*|couper{150})]}
+		)]
+		<br />
+		<div class="texte">[(#TEXTE)]
+		[(#REM)d&#xe9;roulants des mots cl&#xe9;s du m&#xea;me groupe]
+		<span class="adroite">
+		Groupe de mots-cl&eacute;s
+		<INCLURE{fond=inc_mots_cles}{id_groupe=#ID_GROUPE}{env}>
+		</span>
+		</div><br />
+		<ul class="sommairemots">
+		<li>
+		<BOUCLE_sites_som(SITES){id_mot}>
+		</BOUCLE_sites_som>
+		[-<a href="[(#SELF)]#sites" title="Voir les sites web">
+		(#TOTAL_BOUCLE)] [(#TOTAL_BOUCLE|>{1}|?{'sites','site'})</a>]
+		</B_sites_som>
+		</li>
+		<li>
+		<BOUCLE_blogs_som(BREVES){id_mot}{titre_mot=blog}{doublons blog}>
+		</BOUCLE_blogs_som>
+		[-<a href="[(#SELF)]#blogs" title="Voir les blogs">
+		(#TOTAL_BOUCLE)] [(#TOTAL_BOUCLE|>{1}|?{'blogs','blog'})</a>]
+		</B_blogs_som>
+		</li>
+		<li>
+		<BOUCLE_rub_som(RUBRIQUES){id_mot}>
+		</BOUCLE_rub_som>
+		[-<a href="[(#SELF)]#rubriques" title="Voir les rubriques">
+		(#TOTAL_BOUCLE)] [(#TOTAL_BOUCLE|>{1}|?{'rubriques','rubrique'})</a>]
+		</B_rub_som>
+		</li>
+		<li>
+		<BOUCLE_breves_som(BREVES){id_mot}{doublons blog}>
+		</BOUCLE_breves_som>
+		[-<a href="[(#SELF)]#breves" title="Voir les br&egrave;ves">
+		(#TOTAL_BOUCLE)] [(#TOTAL_BOUCLE|>{1}|?{'br&egrave;ves','br&egrave;ve'})</a>]
+		</B_breves_som>
+		</li>
+		<li>
+		<BOUCLE_art_som(ARTICLES){id_mot}>
+		</BOUCLE_art_som>
+		[-<a href="[(#SELF)]#articles" title="Voir les articles">
+		(#TOTAL_BOUCLE)] [(#TOTAL_BOUCLE|>{1}|?{'articles','article'})</a>]
+		</B_art_som>
+		</li>
+		</ul>
+		
+		<!-- debut des sites ayant ce mot-cle -->
+		<B_sites>
+		<a name="sites"></a>
+		#ANCRE_PAGINATION
+		<br />
+		<p class=titre><:sites_web:></p>
+
+		<BOUCLE_sites(SITES){id_mot} {pagination 20}>
+		<span class="titremotsom#COMPTEUR_BOUCLE">
+		[<br />(#NOM_SITE|supprimer_numero)][-(#DATE|jour)][ (#DATE|nom_mois)][ (#DATE|annee)]
+		</span>
+		[<br /><a href="#URL_SITE" class="sstitre" title="[(#DESCRIPTIF|textebrut)]">(#URL_SITE|couper{50})</a>]
+		[<br /><span class="texte">(#DESCRIPTIF|couper{300})</span>]
+
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+    <!-- fin de la ligne de separation -->
+		</BOUCLE_sites>
+		[<span class="">Naviguer&nbsp;: <nav class='pagination' role='navigation'>(#PAGINATION{naturel})</nav></span>]
+		</B_sites>
+		<//B_sites>
+
+<!-- fin  des sites ayant ce mot-cle -->
+
+<!-- debut des blogs ayant ce mot-cle -->
+		<B_blogs>
+		<a name="blogs"></a>
+		#ANCRE_PAGINATION
+		<br />
+		<p class=titre>Blogs</p>
+		
+		<BOUCLE_blogs(BREVES){id_mot}{titre_mot=blog}{!par date}{doublons blog2}{pagination 20}>
+		<br/>
+		[<a href="#URL_BREVE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#INTRODUCTION*|textebrut|couper{150})]">(#TITRE|supprimer_numero)</a>]
+		[<br /><span class="auteur">(#DATE|affdate)</span>]
+		[<br /><span class="texte">(#TEXTE|couper{300})</span>] 
+		<!-- debut de ligne de separation -->
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+		<!-- fin de la ligne de separation -->
+		</BOUCLE_blogs>
+		[<span class="">Naviguer&nbsp;: <nav class='pagination' role='navigation'>(#PAGINATION{naturel})</nav></span>]
+		</B_blogs>
+		<//B_blogs>
+
+<!-- fin  des blogs ayant ce mot-cle -->
+
+<!-- debut des breves ayant ce mot-cle  -->
+		<B_breves>
+		<a name="breves"></a>
+		<br />
+		<p class=titre><:breves:></p>
+		#ANCRE_PAGINATION
+		<BOUCLE_breves(BREVES){id_mot}{titre_mot!=blog}{!par date}{doublons blog2}{pagination 20}>
+		<span class="langue">#LANG</span>
+		[<a href="#URL_BREVE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#INTRODUCTION*|textebrut|couper{100})]">(#TITRE|supprimer_numero)</a>]
+		[<br /><span class="auteur">(#DATE|affdate)</span>]
+		[<br /><span class="texte">(#TEXTE|couper{300})</span>] 
+
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+
+		</BOUCLE_breves>
+		[<span class="">Naviguer&nbsp;: <nav class='pagination' role='navigation'>(#PAGINATION{naturel})</nav></span>]
+		</B_breves>
+		<//B_breves>
+
+
+<!-- fin  des breves ayant ce mot-cle -->
+
+<!-- debut des rubriques ayant ce mot-cle -->
+		<B_rub>
+		<a name="rubriques"></a>
+		#ANCRE_PAGINATION
+		<br />
+		<p class=titre><:rubriques:></p>
+		<BOUCLE_rub(RUBRIQUES){id_mot}{par titre} {pagination}>
+		<span class="langue">#LANG</span>
+		[<a href="#URL_RUBRIQUE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#DESCRIPTIF*|textebrut|couper{100})]">(#TITRE|majuscules|supprimer_numero)</a>]
+		[<br /><span class="texte">(#DESCRIPTIF|sinon{#TEXTE|couper{300}})</span>]
+		<!-- debut de ligne de separation -->
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+		<br /><br />
+		<!-- fin de la ligne de separation -->
+		</BOUCLE_rub>
+		[<span class="">Naviguer&nbsp;: <nav class='pagination' role='navigation'>(#PAGINATION{naturel})</nav></span>]
+		</B_rub>
+		<//B_rub>
+
+<!-- fin  des rubriques ayant ce mot-cle -->
+		<p>
+
+<!-- debut des articles ayant ce mot-cle -->
+		<B_5>
+		<a name="articles"></a>
+		#ANCRE_PAGINATION
+		<br />
+		<p class=titre><:articles:></p>
+		<ul>
+		<BOUCLE_5(ARTICLES){id_mot} {par date} {inverse} {pagination 20}>
+
+<!--  pour trier au choix du visiteur {par #ENV{tri}}{inverse} } 
+<a href="#SELF&senstri=1">Tri chronologique</a>
+<a href="#SELF&senstri=0">Tri antechronologique</a>
+-->
+		
+		 <!-- debut chemin hierarchie -->
+		 <br />
+		<li>
+		<span class="cheminacces">
+		<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>&nbsp;>
+		<BOUCLE_cascade(HIERARCHIE) {id_article} {">"}>
+		<A HREF="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|textebrut|couper{100})]">[(#TITRE|supprimer_numero)]</a>
+		</BOUCLE_cascade>
+		> [<a href="#URL_ARTICLE" title="[(#INTRODUCTION|couper{200})]">(#TITRE|supprimer_numero)</a>]
+		</span>
+		<!-- fin chemin hierarchie -->
+		<br />
+		
+		<div class="articlecmot">
+		<B_auteur_article>
+			<span class="auteur">
+			<:par_auteur:>
+			<BOUCLE_auteur_article(AUTEURS){id_article}{", "}>
+			[<a href="#URL_AUTEUR" class="" title="<:articles_auteur:>">(#NOM)</a>]
+			</BOUCLE_auteur_article>
+			</span>
+			|
+		</B_auteur_article>
+		[<span class="auteur">
+		<a href="spip.php?page=mois&date=[(#DATE|annee)]/[(#DATE|mois)]" title="[(#DATE|nom_mois)][ (#DATE|annee)]">(#DATE|affdate)</a></span>]
+		<br />
+
+		[<span class="sstitre">(#SURTITRE)</span><br />]
+		<span class="langue">#LANG</span>
+		[<a href="#URL_ARTICLE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#INTRODUCTION*|textebrut|couper{200})]">(#TITRE|supprimer_numero)</a>]<br />
+		[<span class="sstitre">(#SOUSTITRE)</span><br />]
+				
+		
+		<span class="texte">
+		[(#INTRODUCTION*|textebrut)]
+		</span>
+		<br />
+	<!-- debut de ligne de separation -->
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+	<!-- fin de la ligne de separation -->
+		</div> <!-- articlecmot -->
+		<li>
+		<p>
+		</BOUCLE_5>
+		</ul>
+		[<span class="">Naviguer&nbsp;: <nav class='pagination' role='navigation'>(#PAGINATION{naturel})</nav></span>]
+		</B_5>
+		<//B_5>
+
+<!-- fin des articles ayant ce mot-cle -->
+		<br />
+		<INCLURE{fond=inc_enhaut}>
+		</div> <!-- motcentre -->
+		</div> <!-- categoriec -->
+</BOUCLE_principale>
+<!-- menu deroulant de tous les mots-cles -->
+<INCLURE{fond=inc_mots_cles}>
+<//B_principale>

@@ -1,0 +1,21 @@
+<paquet
+	prefix="article_pdf"
+	categorie="edition"
+	version="1.0.17"
+	etat="stable"
+	compatibilite="[3.1.0;4.2.*]"
+	logo="prive/themes/spip/images/article_pdf-64.png"
+	documentation="https://contrib.spip.net/2226"
+>
+
+	<nom>Article PDF</nom>
+	<!-- Convertir l'article affiché au format pdf -->
+
+	<auteur lien="https://contrib.spip.net/_chag_">chag</auteur>
+	<auteur lien="https://contrib.spip.net/_Paul-Sanches_">Paul Sanches</auteur>
+	<auteur lien="https://contrib.spip.net/_Aquinatus_">Aquinatus</auteur>
+	<auteur lien="http://www.notre-ville.net">Cédric Morin</auteur>
+
+	<pipeline nom="build_pdf" inclure="article_pdf_pipelines.php" />
+
+</paquet>

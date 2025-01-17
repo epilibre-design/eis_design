@@ -1,0 +1,119 @@
+.galmenu	{
+	text-align: left;
+	margin-left: 0.9em;
+}	
+
+ul#menu  { 
+	font-size: 11px; 
+	font-family: verdana;
+	 }
+	
+ul#menu li{
+ position:relative;
+   margin:0px;
+  padding:0px;
+  _display:inline;
+}
+
+ul#menu ul{
+  position:absolute;
+  top:-5px;
+  left:13em;
+}
+
+ul#menu li ul{
+  display:none; 
+}
+
+ul#menu li:hover>ul{
+	display: block;
+}
+
+
+ul#menu, ul#menu ul    {
+	color: #2e647c;
+	background-color: #eeeeee;
+	list-style-type: none;
+	margin: 0px;
+	border-style: dashed dashed dashed solid;
+	border-width: 1px 1px 1px 3px;
+	border-color: Teal;
+	width: 13em;
+	_width: 13em;
+}
+	 
+
+
+ul#menu a{
+	display: block;
+	width: 13em;
+	text-decoration: none;
+	text-indent: 1em;
+	padding: 5px 0;
+}
+
+ul#menu li a:hover   {
+	background-color: White;
+	color: #0000A9;
+	cursor: pointer;
+}
+
+ul#menu li.smenu  {
+	margin-left: 0px;
+	padding-left: 0px;
+	background-image: url(../images/arrow.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	z-index: 10;
+}
+
+ul#menu li.smenu a:hover   {
+	background-color: White;
+	background-image: url(../images/arrowb.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	color: #0000A9;
+	cursor: pointer;
+}
+
+.articlegauche   {
+	color: black;
+	text-decoration: none;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+	font-weight: bolder;
+}
+
+.articlegauche ul#rss  { 
+	font-size: 11px; 
+	 }
+	 
+.articlegauche ul#rss li{
+  margin:0px;
+  padding:0px;
+  _display:inline;
+}
+.articlegauche ul#rss li .img{
+	text-align: right;
+}
+.categorieg {
+	background-color: transparent;
+	vertical-align: top;
+	padding-top: 0;
+	width: 178px;
+	height: 100%;
+}
+
+.categorieg table   { 
+	vertical-align: top; 
+	width: 100% }
+	
+.categorieg td   { 
+	vertical-align: top; 
+	width: 100% }
+	
+.categorieg tr  { 
+	vertical-align: top; 
+	width: 100% }	

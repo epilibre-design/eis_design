@@ -1,0 +1,153 @@
+#CACHE{7200}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML dir="#LANG_DIR" lang="#LANG>
+
+<HEAD>
+
+<TITLE><:icone_agenda:> #NOM_SITE_SPIP</TITLE>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="[(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)]" />
+	<meta name="generator" content="SPIP" />
+	
+	<meta name = "Keywords" content= "agenda">
+	<meta name = "auteur" content= "Alain Lipietz">
+	<meta name = "email" content="#EMAIL_WEBMASTER">
+	<meta name = "language" content="#LANG">
+	<meta name = "Robots" content="index,follow,all">
+	<meta name = "Classification" content="politique, 袯logie, environnement">
+	<meta name = "rating" content="General">
+	<meta name = "revisit-after" content="10 days">
+	<meta name = "Copyleft" content="">
+
+
+	<!-- Lien vers l'icone calendrier de l'url -->
+	<link rel="shortcut icon" href="#CHEMIN{images/agenda.ico}" />
+	
+	<!-- Lien vers le Flux RSS pour navigateurs eclaires -->
+	<link rel="alternate" type="application/rss+xml" title="<:syndiquer_site:>" href="#URL_PAGE{backend}" />
+
+	<!-- Ceci est la feuille de style de base -->
+	<link rel="stylesheet" href="[(#CHEMIN{css/lipietz.css})]" type="text/css" />
+
+
+	<link rel="stylesheet" href='#CHEMIN{lib/fullcalendar/main.css}' type="text/css" />
+
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
+
+	<script src='#CHEMIN{lib/fullcalendar/main.js}'></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/locale/fr.js"></script>
+	
+	<!-- Script pour IE qui ne comprend pas les CSS -->
+	<script type="text/javascript" src="[(#CHEMIN{scripts/menu.js})]" name="menu"></script>
+
+	</HEAD> 
+
+<BODY  class="page_agenda" onload="setHover('menu')">
+	<TABLE>
+		<tr>
+			<td colspan="4">
+			<INCLURE{fond=inc_entete}>
+			</td>
+		</tr>
+		<tr class="centre_tr">
+			<td class="categorieg">
+			<INCLURE{fond=inc_menug}>
+			</td>
+			<td class="separation">
+			</td>
+			<td class="categoriec" width="100%">
+
+<div style="margin:10px">
+
+<div id="calendar"></div>
+
+<div id="calendar-loading"></div>
+
+</div>
+
+<div style='clear:both'></div>
+
+<script>
+
+	$(document).ready(function() {
+
+
+
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+
+		$('#calendar').fullCalendar({
+			editable: false,
+			events: "[(#URL_PAGE{agenda.json})]",
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+
+			},
+			firstDay: 1,
+			monthNames:['<:date_mois_1|texte_script:>','<:date_mois_2|texte_script:>','<:date_mois_3|texte_script:>','<:date_mois_4|texte_script:>','<:date_mois_5|texte_script:>','<:date_mois_6|texte_script:>','<:date_mois_7|texte_script:>','<:date_mois_8|texte_script:>','<:date_mois_9|texte_script:>','<:date_mois_10|texte_script:>','<:date_mois_11|texte_script:>','<:date_mois_12|texte_script:>'],
+			monthNamesShort:['<:date_mois_1_abbr|texte_script:>','<:date_mois_2_abbr|texte_script:>','<:date_mois_3_abbr|texte_script:>','<:date_mois_4_abbr|texte_script:>','<:date_mois_5_abbr|texte_script:>','<:date_mois_6_abbr|texte_script:>','<:date_mois_7_abbr|texte_script:>','<:date_mois_8_abbr|texte_script:>','<:date_mois_9_abbr|texte_script:>','<:date_mois_10_abbr|texte_script:>','<:date_mois_11_abbr|texte_script:>','<:date_mois_12_abbr|texte_script:>'],
+			dayNames:['<:date_jour_1|texte_script:>','<:date_jour_2|texte_script:>','<:date_jour_3|texte_script:>','<:date_jour_4|texte_script:>','<:date_jour_5|texte_script:>','<:date_jour_6|texte_script:>','<:date_jour_7|texte_script:>'],
+			dayNamesShort:['<:date_jour_1_abbr|texte_script:>','<:date_jour_2_abbr|texte_script:>','<:date_jour_3_abbr|texte_script:>','<:date_jour_4_abbr|texte_script:>','<:date_jour_5_abbr|texte_script:>','<:date_jour_6_abbr|texte_script:>','<:date_jour_7_abbr|texte_script:>'],
+			buttonText: {
+				today: '<:date_aujourdhui|texte_script:>',
+				month: '<:organiseur:cal_par_mois|texte_script:>',
+				day: '<:organiseur:cal_par_jour|texte_script:>',
+				week: '<:organiseur:cal_par_semaine|texte_script:>'
+			},
+			weekMode : 'liquid',
+			loading: function(bool) {
+				if (bool) $('#calendrier-loading').show();
+				else $('#calendrier-loading').hide();
+			},
+			timeFormat: {
+				agenda: "H'h'mm{ - H'h'mm}", 
+				'': "H'h'(mm)" 
+			},
+			axisFormat: "H'h'(mm)",
+			allDayText:'<:organiseur:cal_jour_entier|texte_script:>',
+			/*columnFormat: {
+				month: 'ddd',    
+				week: 'ddd d/M', 
+				day: 'dddd d/M'  
+			},*/
+			loading: function(bool) {
+				if (bool) $('#calendar-loading').show();
+				else $('#calendar-loading').hide();
+			},
+			dayClick: function(date, allDay, jsEvent, view) {
+				if(view.name=='month'){
+					$('.fc-button-agendaWeek').click();
+					$('#calendrier').fullCalendar( 'gotoDate', date );
+				}
+				else
+					if(view.name=='agendaWeek'){
+						$('.fc-button-agendaDay').click();
+						$('#calendar').fullCalendar( 'gotoDate', date );
+					}
+			},
+		});
+
+
+	});
+
+</script>
+
+			</td> <!-- categoriec -->
+			<td class="categorie">
+			<INCLURE{fond=inc_menudrsom}>
+			</td> <!-- categorie -->
+		</tr>
+		<tr>
+			<td colspan=4 class="categorieb">
+			<INCLURE{fond=inc_bas}>
+			</td>
+		</tr>
+
+   </TABLE>
+</BODY>
+</HTML>

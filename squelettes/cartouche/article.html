@@ -1,0 +1,12 @@
+<BOUCLE_cartouche(ARTICLES){id_article}>
+<header class="cartouche">
+	[<div class="entry-image">(#LOGO_ARTICLE|image_reduire{200,200})</div>]
+	<div class="entry-title"><h1><span class="#EDIT{titre}">#TITRE</h1></div>
+	<div class="entry-meta">
+	<ul>
+	<li><i class="uil uil-schedule"></i> Publié le <abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|affdate)]</abbr>
+			[(#MAJ|affdate|!=={#DATE|affdate}|oui) &mdash; Dernière modification le <abbr class="published" title="[(#MAJ|date_iso)]">[(#MAJ|affdate)]</abbr>]</li>
+	</ul>
+	</div>
+</header>
+</BOUCLE_cartouche>

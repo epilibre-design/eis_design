@@ -1,0 +1,112 @@
+		<div class="categoriec">
+		<div class="articlecentre">
+
+		<a name="haut"></a>
+		<B_articles>
+		<p class=titre>Articles de [(#DATE|nom_mois) ][(#DATE|annee)]</p>
+
+		<BOUCLE_elim_agenda(RUBRIQUES){id_rubrique=40}>
+		<BOUCLE_elim_art_agenda(ARTICLES){branche}{doublons}></BOUCLE_elim_art_agenda>
+		</BOUCLE_elim_agenda>
+		
+		#ANCRE_PAGINATION
+		<ul>
+		<BOUCLE_articles (ARTICLES){mois_relatif=0} {par date}{pagination 20}{doublons}>
+		
+		 <!-- d&#xe9;but chemin hi&#xe9;rarchie -->
+		<br />
+			<li>
+			<span class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>&nbsp;>
+			
+			<BOUCLE_cascade2(HIERARCHIE) {id_article} {">"}>
+			<A HREF="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|textebrut|PtoBR)]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade2>
+			> [(#TITRE|supprimer_numero)]
+			</span>
+		<!-- fin chemin hi&#xe9;rarchie -->
+
+		
+		<div class="articlecmot">
+		<B_auteur_article>
+			<span class="auteur">
+			<:par_auteur:>
+			<BOUCLE_auteur_article(AUTEURS){id_article}{", "}>
+			[<a href="#URL_AUTEUR" class="" title="<:articles_auteur:>">(#NOM)</a>]
+			</BOUCLE_auteur_article>
+			</span>
+		</B_auteur_article>
+	<span class="auteur">[[(#DATE|affdate)]]</span>
+	<br />
+	
+
+		[<span class="sstitre">(#SURTITRE)</span><br />]
+		<span class="langue">#LANG</span>
+		[<a href="#URL_ARTICLE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#INTRODUCTION*|textebrut|PtoBR|couper{200})]">(#TITRE|supprimer_numero)</a>]<br />
+		[<span class="sstitre">(#SOUSTITRE)</span><br />]
+				
+		
+		<span class="texte">
+		[(#INTRODUCTION*|textebrut)]
+		</span>   
+		<!-- d&#xe9;but de ligne de s&#xe9;paration -->
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+		<!-- fin de la ligne de s&#xe9;paration -->
+
+		</div> <!-- articlecmot -->
+		</li>
+		</BOUCLE_articles>
+		</ul>
+		<br />
+		[<span class="langue adroite">(#PAGINATION{precedent_suivant})</span>]
+		</B_articles>
+		<//B_articles>
+		</div> <!-- de texte -->
+
+<!-- d&#xe9;but des blogs de ce mois -->
+		<B_blogs>
+		<a name="blogs"></a>
+		#ANCRE_PAGINATION
+		<br />
+		<p class=titre>Blogs de [(#DATE|nom_mois) ][(#DATE|annee)]</p>
+		<BOUCLE_blogs (BREVES) {titre_mot=blog} {mois_relatif=0}{par date} {pagination 20}>
+		<br/>
+		[<a href="#URL_BREVE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#INTRODUCTION*|textebrut|couper{150})]">(#TITRE|supprimer_numero)</a>]
+		[<br /><span class="auteur">(#DATE|affdate)</span>]
+		[<br /><span class="texte">(#TEXTE|couper{300})</span>] 
+	<!-- d&#xe9;but de ligne de s&#xe9;paration -->
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+	<!-- fin de la ligne de s&#xe9;paration -->
+		</BOUCLE_blogs>
+		[<span class="langue adroite">(#PAGINATION{precedent_suivant})</span>]
+		</B_blogs>
+		<//B_blogs>
+
+<!-- fin des blogs de ce mois -->
+<!-- d&#xe9;but des &#xe9;v&#xe9;nements de l'agenda -->
+		<B_agenda>
+		<br />
+		<p class=titre>Apparitions publiques de [(#DATE|nom_mois) ][(#DATE|annee)]</p>
+		<BOUCLE_agenda (EVENEMENTS) {mois_relatif=0}{par date}>
+		<span class="auteur">[[(#DATE|affdate)]]</span>
+		<br />
+
+		[<span class="sstitre">(#SURTITRE)</span><br />]
+		[<a href="#URL_ARTICLE" class="titremotsom#COMPTEUR_BOUCLE" title="[(#INTRODUCTION*|textebrut|PtoBR|couper{200})]">(#TITRE|supprimer_numero)</a>]
+		<br />
+		
+		<span class="texte">[(#INTRODUCTION*|textebrut)]</span>   
+	<!-- d&#xe9;but de ligne de s&#xe9;paration -->
+		<br /><hr class="ligne#COMPTEUR_BOUCLE" />
+	 <!-- fin de la ligne de s&#xe9;paration -->
+
+		<br />
+		</BOUCLE_agenda>
+		</B_agenda>
+		</div> <!-- de texte -->
+
+<!-- fin des &#xe9;v&#xe9;nements de l'agenda -->
+		<br />
+		<INCLURE{fond=inc_enhaut}>
+		</div> <!-- articlecentre -->
+		</div> <!-- categoriec -->

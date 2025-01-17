@@ -1,0 +1,85 @@
+/* Feuille de style des références bibliographiques de chercheur (1) : http://lipietz.net/biblio-off */
+
+/* Le titre dans la base de données est le titre de l'article dans la revue */
+
+/* Le surtitre dans la base de données est le nom de la revue virgule le numéro de la revue */
+
+/* Le sous-titre dans la base de données est l'autre source de la revue s'il y en a */
+
+/* La date dans la base de données est la date de publication de la revue */
+ 
+/* Le numéro de l'article dans la base de données est entre parenthèses et précédé de art. */
+
+a. { text-decoration: none; }
+a:link { text-decoration: none; }
+a:hover { text-decoration: underline; color: #006600 ;  }
+a:active { text-decoration: underline; color: #006600 ; }
+
+table {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+tr {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+td {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+a:visited { text-decoration: none; }
+
+
+.bib_titre_rub { font-family: Times New Roman; font-size: 14px; color: #000000; font-style: normal; line-height: normal; font-weight: normal; vertical-align: middle; text-transform: uppercase; text-decoration: none; }
+
+.a.bib_titre_rub { text-decoration: none; }
+.a.bib_titre_rub:link { text-decoration: none; }
+.a.bib_titre_rub:hover { text-decoration: underline; color: #006600 ;  }
+.a.bib_titre_rub:active { text-decoration: underline; color: #006600 ;  }
+.a.bib_titre_rub:visited { text-decoration: none; }
+
+
+.bib_descriptif_art { font-family: Times New Roman; font-size: 14px; color: #000000; font-style: normal; line-height: normal; font-weight: normal; vertical-align: middle; text-decoration: none; }
+
+.a.bib_descriptif_art { text-decoration: none; }
+.a.bib_descriptif_art:link { text-decoration: none; }
+.a.bib_descriptif_art:hover { text-decoration: underline; color: blue; }
+.a.bib_descriptif_art:active { text-decoration: underline; color: #006600; }
+.a.bib_descriptif_art:visited { text-decoration: none; }
+
+.bib_titre_page { font-family: arial,helvetica,sans-serif; font-size: 28px; color: #006600; font-style: normal; line-height: normal;  vertical-align: middle; text-decoration: none; }
+
+.a.bib_titre_page { font-family: Times New Roman; font-size: 28px; color: #006600;  text-decoration: none; }
+.a.bib_titre_page:link { font-family: Times New Roman; font-size: 28px; color: #006600;   text-decoration: none; }
+.a.bib_titre_page:hover { font-family: Times New Roman; font-size: 28px; color: #006600;   text-decoration: underline; color: #006600 ;  }
+.a.bib_titre_page:active { font-family: Times New Roman; font-size: 28px; color: #006600;  text-decoration: underline; color: #006600 ;  }
+.a.bib_titre_page:visited { font-family: Times New Roman; font-size: 28px; color: #006600;   text-decoration: none; }
+
+
+
+
+h1 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: xx-large;
+	text-align: center;
+}
+
+h2 {
+	font-size: x-large;
+	text-align: center;
+}
+
+body {
+	background-color: White;
+	color: Black;
+	padding: 0;
+	margin: 0;
+	font-size: small;
+}
+
+

@@ -1,0 +1,92 @@
+<div class='formulaire_spip formulaire_editer formulaire_squelette clearfix formulaire_#FORM'>
+	[<p class="reponse_formulaire reponse_formulaire_ok" onclick="jQuery(this).hide('fast');">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+	<div class="actions">
+		<div class="context">
+		[(#ENV{editable}|non|et{#ENV{fichier}})
+			[(#BOUTON_ACTION{#CHEMIN_IMAGE{se-file-copy-16.svg}|balise_img{copy,picto,16x16}|liens_absolus|concat{' ',<:skeleditor:action_personaliser:>},#URL_ACTION_AUTEUR{skeleditor_new_from,#ENV{fichier},#SELF|parametre_url{f,''}},btn btn_secondaire})]
+		]
+		[(#AUTORISER{download,squelette,#ENV{fichier}}|oui)
+			[(#BOUTON_ACTION{#CHEMIN_IMAGE{se-download-16.svg}|balise_svg{download,picto,16x16}|liens_absolus|concat{' ',<:skeleditor:action_download:>},#URL_ACTION_AUTEUR{skeleditor_dl,#ENV{fichier}},btn})]
+		]
+		[(#AUTORISER{supprimer,squelette,#ENV{fichier}}|oui)
+			[(#BOUTON_ACTION{#CHEMIN_IMAGE{se-file-delete-16.svg}|balise_img{delete,picto,16x16}|liens_absolus|concat{' ',<:skeleditor:action_supprimer:>},#URL_ACTION_AUTEUR{skeleditor_delete,#ENV{fichier},#SELF|parametre_url{f,''}},'btn btn_danger',<:skeleditor:effacer_confirme:>})]
+		]
+		</div>
+	</div>
+
+	#SET{masque,#ENV{editable}|et{#ENV{fichier}}|et{#ENV**{erreurs}|table_valeur{filename}|non}}
+	[(#GET{masque}|oui)
+		<div class="titrem rename">
+			[<tt class="filepath">(#ENV{fichier}|substr{#EVAL{_DIR_RACINE}|strlen})</tt>]
+			<button class="btn btn_mini btn_secondaire" id="btn-rename" onclick="jQuery(this).hide('fast').parent().siblings('form').find('.renommer').show('fast');return false;"><:skeleditor:label_renommer_fichier:></button>
+			[<div class="explication">(#ENV*{_info_copie})</div>]
+		</div>
+	]
+
+	[(#ENV{type}|=={img}|non)
+		[ (#ENV{editable}|oui)
+			[(#ENV{type}|=={txt}|et{#ENV{fichier}}|oui)
+			<div class="search-replace-toolbar">
+				<button type="button" onclick="skeleditor.search(jQuery('#query').val())" class="btn btn_secondaire btn_mini"><:skeleditor:rechercher:></button>
+				<input type="text" style="width: 5em" id="query" value=""> <:skeleditor:rechercher_ou_remplacer:>
+				<button type="button" onclick="skeleditor.replace(jQuery('#query').val(),jQuery('#replace').val())" class="btn btn_secondaire btn_mini"><:skeleditor:remplacer:></button> <:skeleditor:remplacer_par:>
+				<input type="text" style="width: 5em" id="replace" />
+			</div>
+			]
+		<form method='post' action='#ENV{action}' enctype='multipart/form-data' class="main-form h-100"><div class="d-flex-col h-100">
+			[(#REM) declarer les hidden qui declencheront le service du formulaire
+			parametre : url d'action ]
+			#ACTION_FORMULAIRE{#ENV{action}}
+			<div class="renommer[(#GET{masque}|non) d-flex-col h-100]"[ (#GET{masque}|oui)style='display:none;']>
+				<div class="editer-groupe">
+					<div class="editer editer_filename[ (#ENV**{erreurs}|table_valeur{filename}|oui)erreur]">
+						<label for="filename">[(#ENV{fichier}|?{<:skeleditor:label_renommer_fichier:>,<:skeleditor:label_nouveau_fichier:>})]</label>[
+						<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{filename})</span>]
+						<input type="text" name='filename' class='text' id='filename' value="#ENV{filename}" />
+						<p class="explication"><:skeleditor:explications_filename_fichier_chemin:></p>
+					</div>
+				</div>
+				<div class="boutons"[(#GET{masque}|non) style="margin-top: auto" ]>
+					[(#GET{masque}|oui)<button class="btn btn_secondaire btn_close" onclick="jQuery(this).closest('.renommer').hide('fast');jQuery('#btn-rename').show('fast');return false;" type="button"><:bouton_fermer:></button>]
+					<button type='submit' class='btn' value='X' ><:bouton_enregistrer:></button>
+				</div>
+			</div>
+		]
+			[(#ENV{type}|=={txt}|et{#ENV{fichier}}|oui)
+		  <div class="editer-groupe h-100">
+		    <div class="editer editer_texte editer_code d-flex-col h-100[ (#ENV**{erreurs}|table_valeur{code}|oui)erreur]">
+					<label for="code">
+						<:skeleditor:label_code:><em class="infos">[(#ENV{date}|affdate)[ (#ENV{date}|heures)h][(#ENV{date}|minutes)][- (#ENV{size}|taille_en_octets) ]]</em>
+					</label>[
+					<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{code})</span>]
+					<div class="codewrap[ (#ENV{editable}|non)readonly] h-100">
+						<textarea[ (#ENV{editable}|non)readonly='readonly'] name='code' class='no_barre[ (#ENV{editable}|non)readonly] h-100' id='code' cols='80' rows='25'>[(#ENV**{code})]</textarea>
+						<button type="button" onclick="skeleditor.toggleFullScreen(); return false;" class="btn btn_secondaire btn_fullscreen">FS</button>
+					</div>
+		    </div>
+		  </div>
+			]
+		[ (#ENV{editable}|oui)
+		  [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+		  <!--extra-->
+			[(#ENV{type}|=={txt}|et{#ENV{fichier}}|oui)
+			<p class="boutons"><button type='submit' class='btn' value='X' ><:bouton_enregistrer:></button></p>
+			]
+		</div></form>
+		]
+	]
+	[(#ENV{type}|=={img}|oui)
+		<div class="image-viewer clearfix d-flex-col h-100">
+			<em class="infos">
+				[(#ENV{date}|affdate) ]
+				[- (#ENV{size}|taille_en_octets) ]
+				[- (#VAL{info_largeur_vignette}|_T{[(#ARRAY{largeur_vignette,[(#ENV{fichier}|largeur)],hauteur_vignette,[(#ENV{fichier}|hauteur)]})]})]
+			</em>
+			<div class="grid">
+				[(#ENV{fichier}|balise_img)]
+			</div>
+		</div>
+	]
+</div>

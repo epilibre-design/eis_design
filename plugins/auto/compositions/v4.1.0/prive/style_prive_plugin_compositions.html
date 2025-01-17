@@ -1,0 +1,50 @@
+[(#REM) <style>]
+
+.formulaire_editer_composition_objet .editer_composition .choix {min-height:24px; padding-top:4px;overflow: hidden }
+.formulaire_editer_composition_objet .editer_composition .choix input {display:block;float: #ENV{left};}
+.formulaire_editer_composition_objet .editer_composition .choix label {display:block;float: #ENV{left}; width: 80%; padding-#ENV{left}: 34px; margin-bottom: 0.5em;}
+.formulaire_editer_composition_objet .editer_composition .choix img.logo {float:#ENV{left};margin-#ENV{left}: -34px;margin-#ENV{right}:5px;}
+.formulaire_editer_composition_objet .editer_composition .choix .exemple img.logo { padding-bottom:2px; border-bottom:1px dotted #666; }
+.formulaire_editer_composition_objet .editer_composition .choix .exemple img.logo:hover { border-bottom:1px solid #666; }
+
+.formulaire_editer_composition_objet h4 {
+	padding-#ENV{left}: 30px;
+	background: url(#CHEMIN_IMAGE{composition-24.png}) no-repeat #ENV{left};
+	background-size: 24px;
+	min-height: 24px;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	margin-bottom: 0;
+}
+.formulaire_editer_composition_objet h4 .precision {font-size: 85%;}
+
+.formulaire_editer_composition_objet .detail {
+	padding-#ENV{left}: 30px;
+}
+
+.formulaire_editer_composition_objet h4 span.composition_actuelle {font-weight: normal;}
+
+.formulaire_editer_composition_objet span.descriptif {font-style: italic; font-size: 0.875em;}
+
+body.compositions #contenu .item__titre,
+body.composition #contenu .grostitre { }
+body.compositions #contenu .item__titre small,
+body.composition #contenu .grostitre small {font-size: 0.6em;color: #666;}
+body.compositions #contenu .item__titre .count,
+body.composition #contenu .grostitre .count {float: right;margin-top: 0.45em;}
+body.compositions #contenu .item__titre .logo,
+body.composition #contenu .grostitre .logo {margin-right:0.5rem; vertical-align: middle; margin-bottom: 0.15em;}
+body.composition #contenu .mediabox.exemple,
+body.compositions #contenu .mediabox.exemple {display: flex; flex-direction: column; justify-content: center; }
+body.compositions #contenu .item .descriptif,
+body.compositions #contenu .item .heritage {
+	margin-top: 0.25em;
+	margin-left: calc(32px + 0.85em);
+}
+body.compositions #contenu .compositions { border-top:none; margin-bottom:0; }
+body.compositions #contenu .compositions .item:last-child { border-bottom:none; }
+
+body.composition #navigation .item {line-height: 1.2; }
+body.composition #navigation .composition_titre {display: flex; justify-content: flex-start; align-items: center; min-height: 24px; }
+body.composition #navigation .composition_titre .logo {margin-right:1rem; margin-top: 2px;}
+

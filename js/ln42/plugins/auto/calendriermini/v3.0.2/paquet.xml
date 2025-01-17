@@ -1,0 +1,21 @@
+<paquet
+	prefix="calendriermini"
+	categorie="date"
+	version="3.0.2"
+	etat="dev"
+	compatibilite="[3.3.0-dev;4.1.*]"
+	logo="minical-xx.svg"
+	documentation="https://contrib.spip.net/Calendrier-Mini-2-0"
+>
+
+	<nom>Calendrier Mini</nom>
+	<!-- Permet l'utilisation d'une balise #CALENDRIER_MINI -->
+
+	<auteur mail="james@rezo.net">James</auteur>
+
+	<copyright>2006-2012</copyright>
+
+	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
+	
+	
+</paquet>

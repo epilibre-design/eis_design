@@ -1,0 +1,51 @@
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row gx-5 col-mb-80">
+
+
+						<!-- Sidebar
+						============================================= -->
+						<INCLURE{fond=inclure/sidebar/rubrique-glossaire,env}/>
+
+						<!-- Post Content
+						============================================= -->
+						<main class="postcontent col-lg-8">
+
+						[(#REM) Mots du glossaire ]
+						<B_mots>
+						<div class="liste mots">
+							<h2 class="h2">Mots associés à l'épilepsie</h2>
+
+
+							<div id="faqs" class="faqs">
+								<BOUCLE_mots(ARTICLES) {id_rubrique=46} {par titre}>
+								<div class="toggle faq pb-0 mb-3 faq-[(#TITRE|substr{0,1}|strtoupper)]">
+									<div class="toggle-header">
+										<div class="toggle-title fw-medium ps-1">
+											<a href="javascript:void(0)">#TITRE</a>
+										</div>
+										<div class="toggle-icon">
+										<i class="toggle-closed fa-solid fa-chevron-down"></i>
+										<i class="toggle-open fa-solid fa-chevron-up"></i>
+										</div>
+									</div>
+									<div class="toggle-content ps-4">
+										#DESCRIPTIF
+										#TEXTE
+									</div>
+								</div>
+								</BOUCLE_mots>
+							</div>
+						</div>
+						</B_mots>
+
+
+						</main><!-- .postcontent end -->
+
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->

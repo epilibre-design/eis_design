@@ -1,0 +1,18 @@
+[(#REM)
+
+	Lien de prévisualisation des métas+
+
+	Nb : hack pas joli pour ajouter la classe mediabox sur le lien.
+]
+
+[(#URL_ECRIRE{metasplus_previsu}
+	|parametre_url{page,#ENV{type-page}}
+	|parametre_url{objet,#ENV{objet}}
+	|parametre_url{id_objet,#ENV{id_objet}}
+	|parametre_url{var_zajax,contenu}
+	|icone_horizontale{
+		<:metasplus:icone_previsu:>,
+		'metasplus_previsu-24',
+	}
+	|inserer_attribut{title,<:metasplus:icone_previsu_title:>}
+	|replace{'<a','<a class="mediabox"'})]

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset>
+    <file>bootstrap2spip/prefixer_css.php</file>
+    <file>bootstrap2spip/formulaires/</file>
+    <file>spip-cli</file>
+    <file>bootstrap4_fonctions.php</file>
+    <file>bootstrap4_options.php</file>
+
+    <rule ref="SPIP40"/>
+    <rule ref="PSR1"/>
+
+    <config name="ignore_warnings_on_exit" value="1"/>
+    <arg name="cache" value=".php_cs.cache"/>
+    <arg name="report-full" value=".php_cs.txt"/>
+    <arg name="report-summary"/>
+    <arg value="s"/>
+</ruleset>

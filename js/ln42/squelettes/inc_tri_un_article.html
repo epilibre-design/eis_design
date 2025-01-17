@@ -1,0 +1,30 @@
+[(#REM) inclusion pour tri url rubrique extrait de la version SPIP-Contrib 2007
+si un seul article dans rubrique 
+et pas de sous-rubrique autre qu'archives
+alors url rubrique = url article
+sinon (tout autre cas, par exemple rubrique vide) alors url rubrique = url rubrique
+nota : cas des articles issus de la syndication non pris en compte car deja inclus en cartouche dans l'article
+INCLURE toujours places dans une boucle rubrique 
+]
+
+<BOUCLE_contexte_rubrique(RUBRIQUES){id_rubrique}>
+	[(#REM) test sur nombre d'articles]
+	<BOUCLE_articles_plusdun(ARTICLES){id_rubrique}{1,1}>
+	 	 [(#_contexte_rubrique:URL_RUBRIQUE)]
+	</BOUCLE_articles_plusdun></B_articles_plusdun>
+		<BOUCLE_articles_unseul(ARTICLES){id_rubrique}{0,1}>
+		
+			<BOUCLE_test_sousrubrique(RUBRIQUES){id_parent}>
+			</BOUCLE_test_sousrubrique>
+				[(#_contexte_rubrique:URL_RUBRIQUE)]
+			</B_test_sousrubrique>
+				[(#_articles_unseul:URL_ARTICLE)]
+			<//B_test_sousrubrique>
+
+		</BOUCLE_articles_unseul>
+		</B_articles_unseul>
+		  	[(#_contexte_rubrique:URL_RUBRIQUE)]
+		<//B_articles_unseul>
+		
+	<//B_articles_plusdun>
+</BOUCLE_contexte_rubrique>

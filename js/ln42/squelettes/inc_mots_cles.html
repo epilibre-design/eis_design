@@ -1,0 +1,21 @@
+	    <!-- d&#xe9;but des menus des groupes de mots-cl&#xe9;s -->
+		  <B_type_mots_cles>
+		  <BOUCLE_type_mots_cles (GROUPES_MOTS){id_groupe?} {id_groupe!=1} {par titre}>
+		  <form name="mots_cles">
+		    <select name="mots" size="1" class="deroul" onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+		      <option selected value="">[(#TITRE|supprimer_numero|majuscules)]</option> 
+		      <B_mots>
+		      <option value=""></option>
+		      <BOUCLE_mots(MOTS){id_groupe}{par titre}{unique}>
+		      <option value="#URL_MOT">&nbsp;[(#TITRE|supprimer_numero)]</option>
+		      </BOUCLE_mots>
+		    </select>
+		  </form>
+		  <br />
+		  </BOUCLE_type_mots_cles>
+		  </B_type_mots_cles>
+		  &nbsp; 
+		  <//B_type_mots_cles>
+
+		  <!-- fin des menus des groupes de mots-cl&#xe9;s -->
+

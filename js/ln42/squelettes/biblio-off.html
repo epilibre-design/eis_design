@@ -1,0 +1,95 @@
+#CACHE{365*24*3600}
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+<TITLE>Bibliographie-#NOM_SITE_SPIP</TITLE>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+	<meta name="description" content="[(#DESCRIPTIF_SITE_SPIP|couper{150})]" />
+	<meta name="generator" content="SPIP" />
+	<meta name = "Keywords" content= "<BOUCLE_keyword(MOTS){id_groupe!=1}{id_rubrique}{", "}>[(#TITRE|supprimer_numero)]</BOUCLE_keyword>">
+	<meta name = "auteur" content= "Alain Lipietz">
+	<meta name = "email" content="#EMAIL_WEBMASTER">
+	<meta name = "language" content="#LANG">
+	<meta name = "Robots" content="noindex,follow,all">
+	<meta name = "Classification" content="politique, &#xe9;cologie, environnement">
+	<meta name = "rating" content="General">
+	<meta name = "revisit-after" content="100 days">
+	<meta name = "Copyleft" content="">
+
+
+	<!-- Lien vers la si jolie icone de l'url -->
+	<link rel="shortcut icon" href="#CHEMIN{images/favicon.ico}" />
+	
+	<!-- Lien vers le Flux RSS pour navigateurs eclaires -->
+	<link rel="alternate" type="application/rss+xml" title="<:syndiquer_site:>" href="#URL_PAGE{backend}" />
+
+	<!-- Ceci est la feuille de style par defaut pour le code genere par SPIP -->
+	<link rel="stylesheet" href="[(#CHEMIN{spip_style.css}|direction_css)]" type="text/css" media="all" />
+
+	<!-- Feuille de styles CSS pour la blio officielle -->
+	<link rel="stylesheet" href="[(#CHEMIN{css/bib_off.css}|direction_css)]" type="text/css" media="all" />
+	
+
+
+
+</head>
+
+<BODY>
+<!-- d&#xe9;but du tableau principal-->
+<table>
+  <tr> 
+    <!--d&#xe9;but de la deuxi&#xe8;me colonne du tableau principal -->
+    <td> 
+      <!--d&#xe9;but des tableaux de listage des rubriques -->
+      <table>
+	<tr> 
+	  <td>
+	<h1>ALAIN LIPIETZ
+	<br />
+	(<a href="#URL_SITE_SPIP">http://lipietz.net</a>)
+	</h1>
+	<h2>Principales publications et interventions</h2>
+	    </td>
+	</tr>
+	<tr> 
+	  <td> 
+<!-d&#xe9;but de l'affichage de la biblio -->
+		<BOUCLE_affichage_articles(ARTICLES){id_secteur=1}{id_rubrique!=55}{id_groupe=4}{par descriptif}{inverse}>
+		
+		<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+		[<a href="#URL_RUBRIQUE" class="bib_titre_rub">(#TITRE|supprimer_numero)</a>]
+		</BOUCLE_rubrique>
+		<blockquote>
+		<span class="bib_descriptif_art">
+		
+		[<a href="#URL_ARTICLE" class="bib_descriptif_art">(#DESCRIPTIF)</a>]
+		
+		<B_autres_auteurs>
+		Avec
+		<BOUCLE_autres_auteurs(AUTEURS){id_article}{id_auteur!=3}{", "}>
+		[(#NOM)]
+		</BOUCLE_autres_auteurs>
+		</B_autres_auteurs>
+
+		<span class="bib_descriptif_art">
+		[(art.<a href="#URL_ARTICLE" class="bib_descriptif_art">
+		(#ID_ARTICLE))
+		</a>]
+		</span>
+		
+		
+		</span>
+		</blockquote>
+		
+		</BOUCLE_affichage_articles>
+<!- fin de l'affichage de la biblio -->
+	  </td>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--Fin tableau principal-->
+</Body>
+</html>

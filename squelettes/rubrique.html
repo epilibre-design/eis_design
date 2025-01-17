@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
+<B_plusdunarticle><?php 
+	/* Si plus d'un article sont affichés dans la rubrique, afin de respecter le SEO il faut reprendre le onctionnement de SPIP3 */
+$GLOBALS['debut_intertitre'] = '<h3>';
+$GLOBALS['fin_intertitre'] = '</h3>';
+?><BOUCLE_plusdunarticle(ARTICLES){id_rubrique}{1,2}> </BOUCLE_plusdunarticle>
+<html dir="#LANG_DIR" lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+<head>
+	<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+	<title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+<BOUCLE_description(ARTICLES){id_rubrique}{par num titre,titre}{0,1}> [<meta name="description" content="(#INTRODUCTION{150}|attribut_html)">]</BOUCLE_description></B_description>[<meta name="description" content="(#_principale:INTRODUCTION{150}|attribut_html)">]<//B_description>
+	[<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue{#URL_SITE_SPIP})">]
+	<INCLURE{fond=inclure/head} />
+</head>
+
+<body class="stretched">
+<div id="wrapper">
+
+	<INCLURE{fond=inclure/header,env} />
+
+	[(#ENV{cartouche,1}|oui)<INCLURE{fond=cartouche/#ENV{type-page},env} />]
+
+	<!-- Content
+	============================================= -->
+	[(#SET{squelette,content/rubrique[-(#COMPOSITION)]})]
+	#INCLURE{fond=#GET{squelette},env}
+
+		<INCLURE{fond=inclure/footer,env} />
+
+</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="fa-solid fa-chevron-up"></div>
+
+
+	[(#SET{footer_js,inclure/footer_js[-(#COMPOSITION)]})]
+	#INCLURE{fond=#GET{footer_js},env}
+
+</body>
+</html>
+</BOUCLE_principale>

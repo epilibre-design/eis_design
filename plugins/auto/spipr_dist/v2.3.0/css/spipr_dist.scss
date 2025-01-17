@@ -1,0 +1,60 @@
+@import "css/bootstrap-start";
+
+
+.header {position: relative;padding-top:$padding-y-lg;}
+.header .accueil a {color: inherit;}
+.header .spip_logo {float:left;margin: $padding-y-lg $padding-x-lg; margin-left: 0; margin-top:0;}
+.header .accueil {}
+#logo_site_spip {line-height: 1em;}
+#slogan_site_spip {display: block;}
+
+.header .formulaire_menu_lang {width: 100%;}
+.header .formulaire_menu_lang select {width: 100%;}
+
+.jumbotron {
+  padding: $jumbotron-padding / 2;
+  margin-bottom: $spacer;
+  @include media-breakpoint-up(sm) {
+    padding: $jumbotron-padding;
+  }
+  .postmeta {clear: both;}
+}
+
+.formulaire_recherche,.secondary .formulaire_recherche {padding-right: 42px+2*14px;} /* provisionner la largeur du bouton+padding sur le input.search */
+.formulaire_recherche form .input-append {width:100%;}
+.formulaire_recherche form input.search {width:100%;}
+
+.footer {
+  @include clearfix();
+  margin-top: 4 * $spacer;
+  padding-top: 2 * $spacer;
+  border-top:2px solid;
+  padding-bottom: 2 * $spacer;
+  margin-bottom:0;
+  text-align: left;
+  position:relative;
+  .colophon {padding-right: 100px}
+  .generator {
+    position: absolute;top:2 * $spacer;right:0;max-width: 100px;
+    a {color: #E8246F; transition: color .2s; }
+    a:hover, a:focus {
+      color: #662F89;
+      background-color: transparent;
+    }
+    svg { width:60px; }
+  }
+}
+
+.cartouche {margin-bottom: $em-line-height;}
+.content.primary {min-height: 320px;}
+.content {
+  .postmeta .tags .inline {display: inline;}
+}
+
+.page_sommaire .breadcrumb {display: none}
+#nav {
+  margin-bottom: $rem-vert-margin;
+  .navbar-inner {
+    width: 100%;
+  }
+}

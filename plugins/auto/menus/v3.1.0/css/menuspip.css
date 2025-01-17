@@ -1,0 +1,71 @@
+
+.formulaire_editer_menu_entrees{
+	position:relative;
+}
+.formulaire_editer_menu_entrees .image_loading{
+	position:absolute;
+	top:50%;
+	left:50%;
+}
+
+/* Édition : liste des entrées d'un menu */
+.formulaire_spip .editer-groupe.menus_entrees{
+	clear:both;
+}
+.formulaire_spip .editer-groupe.menus_entrees .editer-groupe.menus_entrees{
+	border-left:1px solid #ccc;
+	border-top:1px solid #ccc;
+}
+
+.formulaire_spip .editer-groupe.menus_entrees .entree{
+	clear:both;
+	padding: calc(var(--spip-spacing-y, 10px) / 2) 0;
+	padding-left : calc(24px + var(--spip-spacing-x, 5px)); /* icone + marge */
+	min-height: calc(24px + var(--spip-spacing-y, 10px)); /* icone + marge */
+	background-position: left 0 center !important;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid var(--spip-box-border-color, #ccc);
+}
+
+.formulaire_spip .editer-groupe.menus_entrees .ligne{
+	position:relative;
+}
+
+.formulaire_spip .editer-groupe.menus_entrees .actions{
+	position:absolute;
+	right: 0;
+	top: 0;
+	text-align:right;
+}
+
+.formulaire_spip .editer-groupe.menus_entrees .titre{
+	font-weight:bold;
+}
+.formulaire_spip .editer-groupe.menus_entrees .infos{
+	font-size:0.9em;
+}
+
+.formulaire_spip .editer-groupe.menus_entrees .actions button{
+	border-width:1px;
+	border-style: solid;
+	padding:0.25em;
+	margin:0;
+	cursor:pointer;
+	width:2em;
+	height:2em;
+}
+
+.formulaire_spip .editer-groupe.menus_entrees .boutons {
+	display: flex;
+	justify-content: flex-end;
+}
+.formulaire_spip .editer-groupe.menus_entrees .btn_secondaire + .btn {
+	margin-left: auto;
+}
+.formulaire_spip .editer-groupe.menus_entrees .btn_danger {
+	margin-right: auto;
+}
+
+.formulaire_spip .menus_entrees img{
+	vertical-align:middle;
+}

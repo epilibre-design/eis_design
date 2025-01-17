@@ -1,0 +1,121 @@
+.titresom          {
+	color: #2e647c;
+	font-weight: bolder;
+	font-size: 150%;
+	line-height: normal;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	text-align: left;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: text-top;
+	border: thin dotted;
+}
+.texte          { color: #454441; font-size: 11px; line-height: 18px; font-family: Verdana; text-align: left; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top }
+.chaposom   { color: #000; font-size: 12px; line-height: 16px; font-family: Verdana; text-align: left; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: baseline }
+.auteur { color: #454441; font-size: 11px; line-height: 18px; font-family: Verdana; text-align: left; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top }
+.articlecentre, categoriec.articlecentre        { background-color: #f1f1ee; padding-right: 15px; padding-bottom: 20px; padding-left: 15px }
+.cheminacces  {
+	color: #84837c; font-size: 9px; line-height: 12px; font-family: Verdana; text-decoration: none; text-align: left; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top
+	}
+.titrerubsom1        {
+	color: #2e647c;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 20px;
+	font-family: Verdana;
+	text-align: left;
+	text-transform: none;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: text-top;
+	border-bottom: medium none #600;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.titrerubsom2 { color: #48a349; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom3 { color: #36a8c4; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom4 { color: #71439a; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom5 { color: #eea350; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom6 { color: #d86dcf; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom7 { color: #53c65b; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom8 { color: #ed441b; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom9 { color: #963; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titrerubsom10 { color: #5d6fc5; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.articlecentre .articlec1 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #2e647c }
+.articlecentre .articlec2 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #48a349 }
+.articlecentre .articlec3 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #36a8c4 }
+.articlecentre .articlec4 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #71439a }
+.articlecentre .articlec5 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #eea350 }
+.articlecentre .articlec6 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #d86dcf }
+.articlecentre .articlec7 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #53c65b }
+.articlecentre .articlec8 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #ed441b }
+.articlecentre .articlec9 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #963 }
+.articlecentre .articlec10 { background-color: #f1f1ee; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 15px; border-left: 2px solid #5d6fc5 }
+.titremot { color: #84837c; font-size: 10px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.datemot { color: #36a8c4; font-size: 10px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titremotsom { color: #84837c; font-weight: bold; font-size: 18px; line-height: 20px; font-family: Verdana; text-align: left; text-transform: none; text-indent: 0px; word-spacing: 0px; letter-spacing: 0px; vertical-align: text-top; border-bottom: medium none #600 }
+.titre {
+	color: #2e647c;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 20px;
+	font-family: Verdana;
+	text-decoration: underline;
+	text-align: left;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: text-top;
+	border-bottom: medium none #600;
+}
+.articlecentre .articlecmot, categoriec.articlecentre .articlecmot   { 
+	background-color: #f1f1ee; 
+	margin-left: 20px; 
+	padding-right: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 0px }
+.articlecentre ul, categoriec. articlecentre ul	 { 
+	list-style-type: none; 
+	padding: 0; 
+	display: inline }
+	
+.articlecentre li, categoriec. articlecentre li	 { 
+	list-style-type: none; 
+	padding: 0; 
+	display: inline;
+	 }
+.articlecentre .texte li, categoriec .articlecentre .texte li          { 
+	color: #454441; 
+	font-size: 11px; 
+	line-height: 18px; 
+	font-family: Verdana; 
+	text-align: left; 
+	text-indent: 0px; 
+	word-spacing: 0px; 
+	letter-spacing: 0px; 
+	vertical-align: text-top }
+.titrerecherche        {
+	color: Green;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 20px;
+	font-family: Verdana;
+	text-align: left;
+	text-transform: none;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+	vertical-align: text-top;
+	border-bottom: medium none #600;
+}
+
+/* PAGINATION horizontale*/
+.pagination-items { margin: 10px 0 0 20px; }
+.pagination-item { width:25px; float:left; }
+.pagination-item-label.on { font-weight: bold ; font-size:1em ; }
+.pagination-item.prev, .pagination-item.next { width:200px; font-size:0.8em; }
+.pagination-item.prev.disabled, .pagination-item.next.disabled { font-size:0.6em; color:grey; }
+.pagination-item.prev a:hover, .pagination-item.next a:hover{ color:green; }

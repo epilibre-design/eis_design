@@ -1,0 +1,54 @@
+<!-- début des mots cles associes a la rubrique -->
+<BOUCLE_principale(MOTS){id_syndic}>
+	<B_mots>
+	<div class="articledroite">
+	
+<!-- debut des mots cles associes a la rubrique -->		
+	<span class="titreauto">
+		<img height="50px" width="170px" border=0 align="top" src="[(#CHEMIN{/images/m_motscles.gif})]"  alt="Mots-cl&eacute;s associ&eacute;s">
+	</span>
+	<br />
+	
+	<ul>
+	<BOUCLE_mots(MOTS) {id_syndic} {id_groupe!=1} {!par titre} {unique}>	
+	<li>
+	<a href="#URL_MOT" [title="(TEXTE*|textebrut|PtoBR|couper{150})]">
+	<span class="textelien">
+	[(#TITRE)]
+	</span>
+	</a>
+	</li>
+	
+		    <!-- début du menus des mots du même groupe -->
+	  
+		  <BOUCLE_groupe_mots (GROUPES_MOTS){id_groupe}{unique}>
+		  
+		  <B_mots_freres>
+		  <form name="mots_cles">
+		    <select name="mots" size="1" class="deroul" onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+		      <option selected value="">[(#TITRE|supprimer_numero|majuscules)]</option>
+			  
+			  
+		      <option value=""></option>
+		      <BOUCLE_mots_freres(MOTS){id_groupe}{par titre}>
+		      <option value="#URL_MOT">&nbsp;[(#TITRE|supprimer_numero)]</option>
+		      </BOUCLE_mots_freres>
+			  
+		    </select>
+		  </form>
+		  
+		  </B_mots_freres>
+		  &nbsp; 
+		  <//B_mots_freres>
+		  </BOUCLE_groupe_mots>
+
+		  <!-- fin  du menus des mots du même groupe -->
+
+	</BOUCLE_mots>
+	</ul>
+
+	
+	</div> <!-- articledroite -->
+	</B_mots>
+</BOUCLE_principale>
+<!-- fin des mots cles associes a la rubrique -->

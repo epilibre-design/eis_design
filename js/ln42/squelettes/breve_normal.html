@@ -1,0 +1,75 @@
+#CACHE{24*3600}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+
+<BOUCLE_principale(BREVES){id_breve}>
+<TITLE>[(#TITRE|supprimer_numero)- ]#NOM_SITE_SPIP</TITLE>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+	<meta name="description" content="[(#DESCRIPTIF_SITE_SPIP|couper{150})]" />
+	<meta name="generator" content="SPIP" />
+	<meta name = "Keywords" content= "<BOUCLE_keyword(MOTS){id_breve}{", "}>[(#TITRE|supprimer_numero)]</BOUCLE_keyword>">
+	<meta name = "auteur" content= "Perline">
+	<meta name = "email" content="#EMAIL_WEBMASTER">
+	<meta name = "language" content="#LANG">
+	<meta name = "Robots" content="index,follow,all">
+	<meta name = "Classification" content="politique, &#xe9;cologie, environnement">
+	<meta name = "rating" content="General">
+	<meta name = "revisit-after" content="10 days">
+	<meta name = "Copyleft" content="">
+
+
+	
+	<!-- Lien vers la si jolie icone de l'url -->
+	<link rel="shortcut icon" href="[(#CHEMIN{images/favicon.ico})]" />
+	
+	<!-- Lien vers le Flux RSS pour navigateurs eclaires -->
+	<link rel="alternate" type="application/rss+xml" title="<:syndiquer_site:>" href="#URL_PAGE{backend}" />
+
+	<!-- Ceci est la feuille de style de base -->
+	<link rel="stylesheet" href="[(#CHEMIN{css/lipietz.css})]" type="text/css" />
+
+	<!-- Script pour IE qui ne comprend pas les CSS -->
+	<script type="text/javascript" src="[(#CHEMIN{scripts/menu.js})]" name="menu"></script>
+
+	</HEAD> 
+
+<BODY onload="setHover('menu')">
+		<TABLE>
+		<tr>
+				<td colspan="4">
+				<INCLURE{fond=inc_entete}>
+				</td>
+		</tr>
+
+		<tr class="centre_tr">
+		
+		<td class="categorieg">
+		<INCLURE{fond=inc_menug}>
+		</td>
+		
+		<td class="separation">
+		</td>
+							
+		<td class="categoriec">
+		<INCLURE{fond=inc_sombreve}{id_breve}>
+		</td>
+		
+		<td class="categorie">
+		<INCLURE{fond=inc_menudrrub}{id_rubrique}>
+		</td>
+		</tr>			
+
+		<tr>
+		<td colspan=4 class="categorieb">
+		<INCLURE{fond=inc_bas}>
+		</td>
+		</tr>
+   </TABLE>
+	</BODY>
+</BOUCLE_principale>
+<INCLURE{fond=erreur}>
+<//B_principale>
+</HTML>

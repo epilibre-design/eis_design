@@ -1,0 +1,163 @@
+ /*
+* AGENDA
+*/
+
+.cabecera_agenda {
+	background-color: #cad4a8;
+	padding: 2px;
+	border-bottom: 1px solid #6B8E23;
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bolder;
+	text-align: center;
+}
+
+.agenda_ a{
+font-size: 10px;
+font-weight: bold;
+text-decoration: none;
+color: #fff;
+/*color: #000;
+border: 1px solid #999;
+background-color: #eee;
+padding: 2px 3px;*/
+}
+
+.agenda_ a:hover{
+text-decoration: none;
+/*color: #000;
+border: 1px solid #666;
+background-color: #ddd;*/
+}
+
+a.agenda_mini {
+	background-color: #cccccc;
+	display: block;
+	font-size: 10px;
+	font-weight: bold;
+	border: 1px solid #666;
+	text-decoration: none;
+	color: Black;
+}
+
+a.agenda_mini:hover{
+	display: block;
+	text-decoration: none;
+	background-color: #d1e4a8;
+}
+
+.calendar_head {
+	background-color: #d1e4a8;
+text-align: center;
+font-size: 11px;
+color: #630;
+font-family: Verdana, Arial, Helvatica, sans-serif;	
+}
+
+.calendar_this_day {
+	background-color: #6B8E23;
+	color:#fff;
+	font-weight:bold;
+}
+
+.calendar_this_month {
+	background-color: #eee;
+}
+
+.calendar_not_this_month {
+background: #ececec;
+color:#aaa;
+}
+
+.formbuscar_ag {
+font-family: Verdana, Arial, Helvetica, Verdana, sans-serif;
+width: 128px;
+font-size: 11px;
+border: 1px solid #eeeeee;
+color:#99CC33;
+padding: 0px;
+margin: 0px;
+}
+.botonbuscar_ag {
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, Verdana, sans-serif;
+	border: 1px solid #eeeeee;
+	background: #ffffff;
+	color: #A52A2A;
+	margin: 0px;
+	padding: 0px;
+}
+
+.formbuscar_cabecera {
+font-family: Verdana, Arial, Helvetica, Verdana, sans-serif;
+width: 128px;
+font-size: 9px;
+border: 1px solid #CCCCCC;
+color:#99CC33;
+padding: 0px;
+margin: 0px;
+font-weight:bold;
+}
+
+.botonbuscar_cabecera {
+	font-size: 9px;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	color: #A52A2A;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.small {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-color: #666666;
+}
+
+.small_plus {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-color: #666666;
+}
+
+.small_mini {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-color: #999999;
+	text-align: center;
+	font-style: normal;
+}
+
+.calendar_head_mini {
+background-color: #d1e4a8;
+text-align: center;
+font-size: 10px;
+color: #000;
+font-family: Verdana, Arial, Helvatica, sans-serif;	
+font-style:normal;
+}
+ 
+.boton_agenda A {
+	display: block;
+	margin: 0px;
+	padding: 2px;
+	background-color: #6B8E23;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 11px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+ 
+.boton_agenda A:hover {
+display: block;
+margin: 0px;
+padding: 2px;
+background-color:#CCCCCC;
+color:#000000;
+text-decoration: none; 
+font-size:11px; 
+font-weight:bold;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+}

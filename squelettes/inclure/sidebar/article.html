@@ -1,0 +1,114 @@
+<BOUCLE_a(ARTICLES){id_article}>
+<BOUCLE(RUBRIQUES){id_rubrique}>
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll('.sidebar .nav-link').forEach(function(element){
+    
+    element.addEventListener('click', function (e) {
+
+      let nextEl = element.nextElementSibling;
+      let parentEl  = element.parentElement;	
+
+        if(nextEl) {
+            e.preventDefault();	
+            let mycollapse = new bootstrap.Collapse(nextEl);
+            
+            if(nextEl.classList.contains('show')){
+              mycollapse.hide();
+            } else {
+                mycollapse.show();
+                // find other submenus with class=show
+                var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+                // if it exists, then close all of them
+                if(opened_submenu){
+                  new bootstrap.Collapse(opened_submenu);
+                }
+            }
+        }
+    }); // addEventListener
+  }) // forEach
+}); 
+// DOMContentLoaded  end
+
+</script>
+
+<style type="text/css">
+	.sidebar li .submenu{ 
+		list-style: none; 
+		margin: 0; 
+		padding: 0; 
+		padding-left: 1rem; 
+		padding-right: 1rem;
+	}
+	.sidebar li.current > a{ 
+	    background-color: var(--cnvs-primary-menu-submenu-hover-bg);
+	}
+</style>
+
+<aside class="sidebar col-lg-3">
+	<div class="sidebar-widgets-wrap">
+
+		<div class="widget">
+			<BOUCLE(RUBRIQUES){id_rubrique=#ID_PARENT}><h4><a href="#URL_RUBRIQUE">#TITRE</a></h4></BOUCLE>
+			<nav class="sidebar card py-2 mb-4">
+				<ul class="nav flex-column">
+				<BOUCLE_menu(RUBRIQUES){id_parent=#ID_PARENT}{par num titre, titre}>
+					<li class="nav-item[(#EXPOSE|=={on}|oui) current]">
+					<B_sousRubs>
+						<a class="nav-link" href="#"><div>#TITRE <i class="sub-menu-indicator fa-solid fa-caret-down"></i></div></a>
+						<ul class="submenu collapse[ (#EXPOSER|=={on}|oui)show]">
+							<BOUCLE_sousRubs(RUBRIQUES){id_parent}{par num titre,titre}>
+								<li class="nav-item[ (#EXPOSER|=={on}|oui)current]">
+								<BOUCLE_sous_sousRubs(BOUCLE_sousRubs) />
+								</li>
+							</BOUCLE_sousRubs>
+						</ul>
+							</B_sousRubs>
+								<a class="nav-link" href="#URL_RUBRIQUE"><div>#TITRE</div></a>
+							<//B_sousRubs>
+							</li>
+				</BOUCLE_menu>
+				</ul>
+			</nav>
+	</div> <!-- .widget -->
+
+
+[(#ID_RUBRIQUE|=={9}|oui)#INCLURE{fond=inclure/bloc/sidebar-liste-des-associations,env}]
+
+[(#REM) Calcul du nuage de mots clé pertinents avant affichage]
+#SET{motscle,#ARRAY{-1}}
+<BOUCLE(ARTICLES){id_rubrique}><BOUCLE_calcultags(MOTS){id_article}{id_groupe!=4}{doublons}>
+[(#SET{motscle,#GET{motscle}|push{#ID_MOT}})]</BOUCLE_calcultags></BOUCLE>
+
+		<B_tags>
+		<div class="widget">
+			<h4>Mots clés</h4>
+			<div class="tagcloud">
+		<BOUCLE_tags(MOTS){id_mot in #GET{motscle}}><a href="#URL_MOT">#TITRE</a>
+		</BOUCLE_tags>
+			</div>
+		</div>
+		</B_tags>
+
+		<div class="widget">
+			<h4>Téléchargez le Livre Blanc</h4>
+			<p>Epilepsie-France a édité un superbe document qui fait un point sur la situation de l'épilepsie en France.</p>
+			<p><a href="https://livre-blanc.epilepsie-france.com/" target="_blank"><img src="https://epilepsie-info-service.fr/IMG/png/couverture-livre-blance-2022-par-ef.png" alt="Couverture du Livre Blanc édité par Epilepsie-France en 2022"></a></p>
+			<p>Les questions abordées sont Que faire quand l'épilepsie est source de difficultés pour se déplacer ? Garder son emploi ou accéder à l'emploi ? Que faire lorsque mon enfant a des difficultés à l’école ? Comment faire face à la difficulté de l’accès aux soins ?</p>
+			<p>Téléchargez-le pour en profiter ! <br><a href="https://livre-blanc.epilepsie-france.com/" target="_blank">https://livre-blanc.epilepsie-france.com/</a></p>
+		</div>
+
+		<div class="widget">
+			<h4>Un problème ?</h4>
+			<p>Si vous détectez une erreur sur cette page ou bien si vous avez des améliorations à proposer pour le site, envoyez-nous un ticket via le bouton ci-dessus ! Merci !</p>
+			<div class="align-items-center">
+			<a href="#block-modal-request" data-lightbox="inline" class="button button-border button-rounded button-fill fill-from-right button-blue"><span>Nouveau ticket</span></a>
+			</div>
+		</div>
+
+	</div> <!-- .sidebar-widgets-wrap -->
+</aside><!-- .sidebar end -->
+
+
+</BOUCLE></BOUCLE_a>

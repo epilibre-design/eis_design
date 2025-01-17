@@ -1,0 +1,13 @@
+[(#REM) Articles trouves ]
+<B_articles>
+<div class="liste resultats articles">
+	#ANCRE_PAGINATION
+	<h2 class="h2">[(#ENV{titre}|sinon{<:articles:>}) ](#GRAND_TOTAL)</h2>
+	<ul class="liste-items">
+		<BOUCLE_articles(ARTICLES) {recherche}{id_secteur?}{id_rubrique?}{par points}{inverse} {pagination #ENV{pagination,20}}>
+		<li class="item"><a href="#URL_ARTICLE">#TITRE</a></li>
+		</BOUCLE_articles>
+	</ul>
+	[<div class="pagination">(#PAGINATION)</div>]
+</div>
+</B_articles>

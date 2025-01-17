@@ -1,0 +1,333 @@
+# Changelog
+
+## 5.5.0 - 2024-04-24
+
+### Added
+
+- #417 Fonction `saisies_dont_avec_option($saisie, $option)`
+
+### Fixed
+
+- #417 Faire fonctionner les `afficher_si` pour les formulaires multiétape utilisant AJAX et n'ayant pas d'`afficher_si` sur la première étape
+
+## 5.4.1 - 2024-02-11
+
+### Fixed
+
+- #408 Préserver la valeur numérique des clé pour les saisies `radio`/`checkbox`/`selection` lorsque l'option `choix_alternatif` est activée
+- #407 Saisies `radio` / `checkbox` / `selection` : Si choix alternatif + clé numérique, ne pas mettre la valeur par défaut comme valeur par défaut du choix alternatif
+- #408 Saisies `radio` et `select` : prendre la valeur du choix alternatif, si utilisé, pour calculer les `afficher_si` dépendant de la saisie
+- #409 Indiquer la possibilité de choix alternatif dans l'aide-mémoire
+
+## 5.4.0 - 2024-02-28
+### Added
+
+- #24 Les saisies `radio` et `selection` disposent de l'option `choix_alternatif`
+- Fonctions `saisies_name_suffixer()` et `saisies_name_supprimer_suffixe()`
+- #174 Pouvoir depublier une saisie dans un constructeur de formulaire
+	- La saisie n'est plus accessible pour les nouveaux formulaires
+	- Mais elle reste accessible pour modifier les anciens enregistrements
+	- La valeur reste stockée en base et visible
+- #278 `saisies_normaliser_liste_choix()` (ancien `saisies_normaliser_disable_choix()`)
+- #278 pour les saisies `selection`, `radio`, `checkbox`, possibilité de dépublier certaines choix, pour ne plus les proposer à l'avenir tout en gardant les valeurs et les correspondances en base
+
+### Fixed
+
+- #400 Lorsqu'on rend inactif par `afficher_si` le tout dernier onglet visible d'une série d'onglets conditionnés par `afficher_si`, masquer non seulement le lien de l'onglet, mais aussi son contenu
+- Si on vérifie les valeurs acceptables pour une saisie `selection` avec l'option `multiple`, ne pas renvoyer `false` à tord
+
+### Deprecated
+
+- #278 `saisies_normaliser_disable_choix()` devient `saisies_normaliser_liste_choix()`
+## 5.3.0 - 2024-01-27
+### Added
+
+- #381 Option `sans_vide` pour la fonction `saisies_lister_champs_par_section()`
+
+
+### Changed
+
+- formidable/#211 La saisie `champ` ne renvoie rien si aucun champ ne répond aux conditions, sauf si la saisie est obligatoire
+
+### Fixed
+
+- Faire systématiquement fonctionner l'affichage conditionnel des étapes côtés public
+- #391 Accolade fermante en trop dans les boutons d'étape (si titrage)
+- #389 Passer `_T_ou_typo()` sur le libellé du dernier bouton de validation en multiétapes
+- #376 Permettre d'avoir des onglets horizontaux au sein d'un onglet vertical
+- #379 Pas de `fieldset` pour une saisie `case` sans `label_case` ou sans `label`
+- #381 Pour la saisie `champ`, ne pas afficher les sections vides
+- #384 Appliquer les trigger `afficher_si_visible_pre` ; `afficher_si_visible_post` ; `afficher_si_masque_pre` ; `afficher_si_masque_post` lorsqu'on masque/démasque un onglet
+- #385 Avant de passer d'un onglet à l'autre, vérifier, le cas échéant, que les champs de l'onglet ont bien une valeur valide (attribut `required` etc)
+- #385 Lorsqu'une saisie a été masquée par `afficher_si`, remettre si besoin l'attribut `required` lors du réaffichage
+- #385 Se rendre automatiquement sur le premier onglet avec un champ non validé lors de la validation HTML du formulaire
+- #385 Pour les saisies masquées par `afficher_si`, désactiver temporairement les attributs entrainant des contraintes de validation (https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+pick 374614d fix: saisies `radio` et `select` : prendre la valeur du choix alternatif, si utilisé, pour calculer les `afficher_si` dépendant de la saisie
+## 5.2.0 - 2023-12-30
+
+### Added
+
+- #373 Saisies `conteneur_inline` : 2 variantes des modes en ligne, pour prendre le plus de place (utilisé par défaut pour le constructeur)
+
+### Fixed
+- formidable/#192 Vue d'une saisie `conteneur_inline`: afficher les sous-saisies plutôt que rien
+
+## 5.1.0 - 2023-12-26
+
+### Added
+
+- #371 Pipeline `saisies_aide_memoire_inserer_debut`
+### Changed
+
+
+- `afficher_si` : mettre le contenu de l'écouteur JS dans un fonctions à part `afficher_si_onchange()`
+- `modeles/formulaire_aide_memoire` : renommage de l'option `pre_saisies` en `inserer_avant`, cette option prend désormais un texte arbitraire
+### Fixed
+
+- #366 Faire fonctionner correctement les tests `MATCH` et `!MATCH` des `afficher_si`
+- dans l'aide-mémoire, une seule liste `<dl>` pour toutes les saisies
+## 5.0.2 - 2023-11-21
+
+### Fixed
+
+- La saisie `champ` doit renvoyer un nom de saisie
+- Les clés dans la fonction `saisies_lister_champs_par_section()` doivent être les noms de saisies, pas des clés numériques
+## 5.0.1 - 2023-11-21
+
+### Fixed
+
+- #362 Retour des fieldsets pliables
+## 5.0.0 - 2023-11-21
+
+
+### Added
+
+- #98 Une saisie `conteneur_inline` permettant de justapoxer horizontalement plusieurs saisies
+- formidable/#179 Une saisie `champ` pour choisir un champ dans un formulaire (importée et debuguée depuis `formidable`)
+- formidable/#179 Fonction `saisies_saisie_est_avec_sous_saisies()` qui dit si la saisie peut contenir des sous-saisies.
+- formidable/#179 Fonction `saisies_saisie_est_labelisable()` qui dit si la saisie peut recevoir un label
+- formidable/#179 Fonction `saisies_saisie_est_champ()` qui dit si la saisie correspond à un champ au sens HTML
+- formidable/#179 Fonction `saisies_saisie_get_label()` pour trouver le label d'une saisie, ou équivalent
+- formidable/#179 Fonction `saisie_lister_champs_par_section()` pour lister les saisies de type `champ` en les regroupant selon la structure logique du formulaire. Plusieurs options possibles. Utilisée par la saisie `champ`.
+### Changed
+
+- #300 filtre `picker_selected_par_objet` renommé en `saisies_picker_selected_par_objet`
+- #300 fonction `afficher_si_parser_valeur_MATCH()` renommée `saisies_afficher_si_parser_valeur_MATCH()`
+
+### Deprecated
+
+- #300 balise `#DIV`, utiliser `<div>` directement
+- #300 filtre `|saisie_balise_structure_formulaire`, utiliser `<div>` directement
+- Fonction `saisie_verifier_gel_saisie()` depréciée, utiliser à la place `saisies_saisie_est_gelee()`
+
+### Removed
+
+- #172 Markup HTML: dans la saisie `fieldset`, suppression du `div.fieldset` autour du `fieldset` qui devient `fieldset.fieldset`
+- #300 balise `#GLOBAL`
+- #336 classes `.editer_odd` et `.editer_even` sur les conteneur des saisies, utiliser le sélecteur CSS `nt:child()` à la place
+- #342 option `tagfield` pour la saisie `fieldset`, la légende est désormais systématiquement mise dans `<legend>`
+- #341 pour la saisie `fieldset` options `icone` et `taille_icone`, insérer directement les icones dans l'option `label`
+
+## Unreleased
+
+### Fixed
+
+- #358 corriger la vue/la modification d'une saisie `choix_grille` lorsque l'option `multiple` a été activé _a posteriori_
+- #350 Pas d'attribut `size` par défaut pour les saisies `input` et `email`
+
+## 4.11.0 - 2023-10-22
+
+### Added
+
+- #239 Pouvoir préremplir un champ avec une valeur stockée en session
+- formidable/#176 Ajouter une classe `formulaire_multietapes` sur les formulaires multiétapes pour pouvoir les cibler en css
+#### Fixed
+
+- #343: Dans la vue d'un fieldset, encapsuler les champs pour retrouver une structure identique à la saisie dans un formulaire
+- #331 Multiétapes : ajuster dynamiquement le libellé des boutons précédents/suivants en fonction des `afficher_si`
+- #334 JS : calculer correctement le nombre d'étapes lorsqu'il n'y a pas d'`afficher_si` dans l'étape courante
+- #324 `afficher_si` sur saisie `hidden` : ne pas rendre visible le conteneur
+- #247 Constructeur : dans le menu déroulant pour déplacer une saisie, les saisies `explication` sont désormais décrites par leur titre ou à défaut le début de leur texte
+- #246 Lorsqu'on duplique une saisie, ne pas insérer un label contenant juste ' (copie)' si la saisie initiale n'a pas de label (cas de la saisie `explication` notamment)
+- #242 Constructeur de formulaire : lors du déplacement d'une saisie via le menu déroulant, se rendre ensuite au nouveau emplacement de la saisie.
+
+### Changed
+
+- #331 `saisies_determiner_deplacement_rapide()` peut recevoir les saisies déjà triées par étapes
+- #331 typage des fonctions `saisies_determiner_deplacement_rapide()`, `saisies_determiner_recul_rapide()` et `saisies_determiner_deplacement_rapide()`
+
+## 4.10.0 - 2023-09-30
+
+### Added
+
+- #170 : Pouvoir transformer les saisies explication en boite d'alerte (espace privé uniquement)
+
+### Fixed
+
+- #318 Saisie `case`: afficher la mention d'obligation à la fin du `label_case` si pas de `label`
+- `saisies_aplatir_chaine()` : tenir compte de la syntaxe `/*`
+- `saisies_lister_par_identifiant()` et `saisies_lister_par_nom()`: tenir compte de l'option `$avec_conteneur` pour les sous-saisies
+- `saisies_lister_disponibles_par_categories_usort()`: toujours travailler sur des titres translittérés
+- `saisies_normaliser_disable_choix()`: tenir compte du contenu vide entre virgules
+- `saisies_lister_disponibles_par_categories()` : faire fonctionner l'option `inclure_obsoletes`
+
+## 4.9.1 - 2023-08-14
+
+### Fixed
+
+- Ne pas provoquer de warning PHP sur `#SAISIE` lorsque pas d'erreur en jeu
+
+## 4.9.0 - 2023-08-13
+
+### Security
+
+- #261 Appliquer `interdire_scripts()` sur les message d'erreur
+
+### Added
+
+- #252 Fonction d'API `saisies_encapsuler_noms()`
+- #288 Fonction d'API `saisies_supprimer_sans_reponses()`
+- formidable/#156 Pouvoir faire facilement des vérifications de formulaire APRÈS la vérification des saisies individuelles
+### Fixed
+
+- #284 Mise à jour de la saisie `selecteur_lang` en uniformisant avec les autres sélections (option `intro_vide` notamment)
+- #262 Prendre en compte tout les statuts possible pour la saisie `statuts_auteur`
+- #245 Constructeur de formulaire fonctionnel sur petit écran
+- #45 Compatibilité des afficher_si avec `_SPAM_ENCRYPT_NAME` du plugin nospam
+
+## 4.8.0 - 2023-05-29
+
+### Added
+
+- Option `minlength` pour la saisie `input`
+
+### Fixed
+
+- #279 faire fonctionner correctement les tests d'inégalité en afficher_si lorsque les deux nombres n'ont pas le même nombre de caractère.
+- #274 Correction de cohérence JS/PHP pour un afficher_si court (`@champ@`) lorsque `@champ@` vaut `'0'` (string)
+
+## 4.7.1 - 2023-03-24
+
+### Fixed
+
+- yaml/#7 compatibilité avec le plugin `YAML` v3.0.3
+- #254 #259 #264 refaire fonctionner `_T_ou_typo()` en SPIP 4.2 et >
+- #258 permettre d'envoyer une valeur `0` ou `'0'` (mais pas `empty`) dans une saisie multivaluée (type `checkbox`)
+
+## 4.7.0 - 2023-01-07
+
+### Added
+
+- #123 Option `onglet_vertical` pour les `fieldsets` en `onglet` ; si un seul onglet est désigné comme vertical, tous les onglets le sont
+
+### Changed
+
+- #123 Dans un constructeur de formulaire, les onglets sont désormais verticaux
+- Dans un constructeur de formulaire, les options globales du formulaire sont en `pleine_largeur`
+
+### Fixed
+
+- auth_email/#1 Lorsqu'on a une erreur dans un ou plusieurs onglets, se rendre au premier onglet avec erreurs
+- #240 : Compatibilité entre les fieldset en onglets et `select2`
+
+## 4.6.1 - 2022-12-01
+
+
+### Added
+
+- #236 Ajout de la saisie `type_mime` (utilisé pour constructeur de formulaire) depuis CVT-Upload
+
+### Fixed
+
+- #236 Correction d'un bug sur constructeur de formulaire lorsque CVT-Upload n'est pas disponible
+- #236 Ne pas proposer la vérification `fichiers` pour des saisies non `fichiers`
+- #237 `saisie_transformer_option()` ajoute l'option si jamais elle est inexistante (bug introduit en v4.5.0)
+- #237 Constructeur de formulaire : toutes les saisies sont en pleine largeur (comportement qui avait été cassé en v4.5.0)
+- #237 `saisie_mapper_option()` ajoute l'option si jamais elle est inexistante
+- #238 Saisie `destinataires` : ne pas afficher de label si jamais tout est caché
+
+## 4.6.0 - 2022-11-21
+
+### Changed
+
+- Dans le constructeur de formulaires, on ne gère plus directement les exceptions de vérification pour la saisie `fichiers` du plugin CVT-Upload. On n'utilise à la place un pipeline `saisies_verifier_lister_disponibles`.
+### Fixed
+
+- #233 Lorsqu'un constructeur de formulaire ajoute ses propres fieldsets racine à la configuration d'une saisie, les afficher en onglet à côté des autres fieldset, pas en dessous
+- inserer_modeles/#12 Faire fonctionner la saisie `selecteur_documents` appelée au sein d'une modalbox
+- #226 Debug des `afficher_si` au chargement des pages qui chargent également du contenu/javascript en Ajax
+- cvt-upload/#12 Constructeur de formulaire : afficher les options de vérification pour la saisie fichier
+
+### Removed
+
+- La saisie `selecteur_documents` n'a plus besoin de `_modalbox_retour`
+
+## 4.5.2 - 2022-09-23
+
+### Fixed
+
+- #225 : un input avec une valeur 0 (ou '0') affichait une chaine vide : saisies_utf8_restaurer_planes() ne retourne plus une chaine vide
+
+## 4.5.1 - 2022-09-14
+
+### Fixed
+
+- Refait fonctionner la vérification de (certains) formulaires
+
+
+## 4.5.0 - 2022-09-11
+
+### Fixed
+
+- formidable/#120: Pour la saisie explication, seul le bouton d'affichage/masquage affiche/masque, pas les boutons du constructeur de formulaire.
+- #208 Générer une exception dans `saisies_lister_disponibles()` et `saisies_charger_infos()` si le plugin `YAML` n'est pas actif.
+- formidable_participation/#9 + #207 Dans l'espace privé, éviter les problèmes de marge supérieur lorsqu'un fieldset suit un élèment masqué par `afficher_si`.
+- #216 Eviter une rupture de compat brutal en v4 concernant l'emplacement de `nouveau_type_saisie` dans l'argument `$modifs` dans `saisie_modifier()`.
+
+### Added
+
+- #208 Tenir compte des options pour dev lorsqu'on nettoie l'environnement de `#GENERER_SAISIES`
+- #222 Nouvelle fonction `saisie_mapper_option()` pour appliquer une fonction de rappel sur une (ou plusieurs) options données d'un ensemble de saisies
+- #222 `saisie_transformer_option()` peut recevoir une liste d'options à modifier, plutôt qu'une option unique
+## 4.4.1 - 2022-06-06
+
+
+### Fixed
+
+- #206 Pour la saisie radio, si les clés sont des entiers, ne pas considérer que l'absence de valeur par défaut vaut valeur par défaut == 0
+- Correction de `selecteur_document.yaml` mal formaté
+
+## 4.4.0 - 2022-05-31
+
+### Added
+
+- #200 Ajout de `saisies_verifier_coherence_afficher_si()` (utilisable par les constructeurs de formulaire)
+- #171 Option de saisie `explication_apres`, pour insérer une explication après le champ, en plus ou à la place de l'explication avant
+- #171 Dans l'aide de saisies, les messages d'attention accolés aux options sont affichés
+- #185 Les emoji apparaissent sous la forme normale, et non pas la forme entité HTML, dans les saisies `textarea`  et `input`
+- #198 Ajout de quatre `trigger` Javascript sur les `afficher_si` :
+	* `afficher_si_visible_pre` (avant de rendre visible un champ);
+	* `afficher_si_visible_post` (après avoir rendu visible);
+	* `afficher_si_masque_pre` (avant de masquer un champ);
+	* `afficher_si_masque_post` (après avoir masqué un champ);
+
+### Changed
+
+- formidable/#70 Vue des `fieldset` : utiliser aussi un markup `fieldset`/`legend`, pour affichage correct dans les emails
+- #198 `afficher_si` : ne faire les actions de masquage/demasquage que si la saisie n'est pas déjà masquée/démasquée
+- #199 Constructeur de saisie : tout ce qui est `afficher_si` dans un
+onglet  `condition` à part
+- #188 Constructeur de formulaire : positionner l'écran sur la saisie en cours d'édition
+
+### Fixed
+
+- #196 Debug du constructeur de formulaire, qui ne doit pas proposer les saisies obsolètes, même aprés une première vérification de saisies
+- #198 Lors de l'édition d'un formulaire, les fieldsets ne sont pas mis en mode onglet
+- #198 Les fieldset en onglets restent à leur emplacement ; il est possible de mettre du contenu hors onglet entre deux fieldset
+- #194 La saisie `fieldset` n'hérite plus de l'`id` du formulaire
+- #193 Afficher correctement les erreurs des champs dont le nom est déclarée selon la syntaxe SPIP `cle/souscle/nom`
+- Le `describedby` d'un champ lorsque l'on a une erreur sur une saisie avec un `name` contenant des crochets est corrigé
+- #198 Les `afficher_si` fonctionnent désormais sur les onglets
+- #198 Attribut `aria-labelledby` correct sur les onglets
+- #180 Sous firefox : pouvoir sélectionner la barre de scroll pour les onglets horizontaux + ne pas la superposer avec la bordure des onglets
+- #166 Constructeur de formulaire : rendre visible les boutons d'action lorsqu'une saisie non `fieldset` suit un `fieldset`

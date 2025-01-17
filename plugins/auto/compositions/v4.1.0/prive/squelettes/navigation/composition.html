@@ -1,0 +1,25 @@
+[(#REM)
+  Message expliquant comment ajouter des compositions, réservé aux admins
+]
+[(#AUTORISER{configurer,compositions}|oui)
+[(#BOITE_OUVRIR{<:compositions:ajouter_compositions:>,info})]
+<:compositions:message_info_ajouter_compositions{url_doc=#PLUGIN{compositions,documentation}}|propre:>
+[(#BOITE_FERMER)]
+]
+
+#SET{compositions,#REM|compositions_lister_disponibles}
+<BOUCLE_compositions(DATA){source tableau, #GET{compositions}}{si #AUTORISER{configurer,compositions}}>
+[(#BOITE_OUVRIR{[(#CLE|objet_info{texte_objets}|_T)], simple, section})]
+<ul class="liste-items">
+	<BOUCLE_pour(DATA){source tableau, #VALEUR}{par nom}>
+	#SET{utilisations, #_compositions:CLE|compositions_lister_utilisations{#CLE}|count}
+	<li class="item[(#_compositions:CLE|=={#ENV{objet}}|et{ #CLE|=={#ENV{composition}} }) on]">
+		[(#GET{utilisations}|?{<a class="composition_titre" href="[(#VAL{composition}|generer_url_ecrire{objet=#_compositions:CLE&composition=#CLE})]">,<div class="composition_titre">})]
+		[(#ICON|sinon{#CHEMIN_IMAGE{composition-24.png}}|image_reduire{24,24}|inserer_attribut{class,logo})]
+		[(#NOM|supprimer_numero)]
+		[(#GET{utilisations}|?{ [((#GET{utilisations}))]</a>,</div>})]
+	</li>
+	</BOUCLE_pour>
+</ul>
+#BOITE_FERMER
+</BOUCLE_compositions>

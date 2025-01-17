@@ -1,0 +1,180 @@
+<BOUCLE_principale(ARTICLES) {id_article}{doublons 1} {doublons 2}>
+	<div class="categoriec">
+		<div class="articlecentre">
+		<a name="haut"></a>
+<!-- debut chemin hierarchie -->
+			<div class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			<B_cascade>
+			&nbsp;>
+			<BOUCLE_cascade(HIERARCHIE) {id_article} {">"}>
+			<a href="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|textebrut|PtoBr|couper{150})]">[(#TITRE|supprimer_numero|couper{80})]</a>
+			</BOUCLE_cascade>
+			[ &gt; (#TITRE|supprimer_numero|couper{80})]&nbsp;([(#URL_SITE_SPIP)]/?article#ID_ARTICLE)
+			</div>  
+<!-- fin chemin hierarchie -->
+
+			<span class="adroite">
+			[(#PLUGIN{outils_article}|oui)
+			[(#INCLURE{fond=inc-barre-outils}{id_article})]
+			]
+			</span>
+			<!--
+			<a href="#URL_SITE_SPIP/?page=impr_art&id_article=#ID_ARTICLE" title="Format d'impression">
+			<img src="[(#CHEMIN{images/imprimer.png})]" class="adroite" alt="Format d'impression">
+			</a>
+			-->
+			<br />
+			<B_auteur_article>
+			<span class="auteur"> <:par_auteur:></span> 
+			<BOUCLE_auteur_article(AUTEURS){id_article}{", "}>
+			[<a href="#URL_AUTEUR" class="auteur" title="[(#BIO|couper{200})]">(#NOM)</a>] 
+			</BOUCLE_auteur_article>
+			|
+			</B_auteur_article>
+			[<a href="#URL_SITE_SPIP/?page=mois&date=[(#DATE|annee)]/[(#DATE|mois)]" title="[(#DATE|nom_mois)][ (#DATE|annee)]" class="auteur">
+			(#DATE|affdate)</a>] 
+			<br /><br />
+			[<span class="sstitre">(#SURTITRE)</span>
+			<br />]
+			[<span class="titre">(#TITRE|supprimer_numero)</span>]
+			<br />
+			[<span class="sstitre">(#SOUSTITRE)</span>
+			<br />]
+<!-- debut de traductions de l'article -->
+			<B_traductions>
+			<span class="sstitre">
+			<:titre_langue_trad_article:>&nbsp;:
+
+<!-- debut de la combo box de traductions de l'article -->
+			<B_traductions_box>
+			<select size="1" class="deroul"  onchange="location.href='?page=article&id_article='+this.options[this.selectedIndex].value">
+			<option><:Langue:></option>
+			<BOUCLE_traductions_box(ARTICLES){traduction}>
+			[<option value="#ID_ARTICLE" dir="#LANG_DIR">(#LANG|traduire_nom_langue)</option>]
+			</BOUCLE_traductions_box>
+			</select>
+			</B_traductions_box>
+<!-- fin de la combo box de traductions de l'article -->
+
+			<br />
+			<:info_multi_cet_article:> [(#LANG|traduire_nom_langue)]
+			<ul>
+				<BOUCLE_traductions(ARTICLES){traduction}{exclus}>
+				<li>
+				[<a href="#URL_ARTICLE" dir="#LANG_DIR" title="art. [(#ID_ARTICLE)]">(#LANG|traduire_nom_langue)</a>]
+				&nbsp: [(#DESCRIPTIF|sinon{[(#CHAPO|sinon{#TEXTE}|couper{120})]})] 
+				</li>
+				</BOUCLE_traductions>
+			</ul>
+			</span>
+				<!-- vider la balise notes liees aux traductions --> 
+				
+				</B_traductions>
+<!-- fin de traductions de l'article -->
+			<table>
+				<tr>
+					[<td class="articlecentre">(#LOGO_ARTICLE|center|inserer_attribut{title,[(#TITRE|supprimer_numero)]})</td>]
+					<td>
+					[<span class="chapo">
+					(#CHAPO|liens_ouvrants|PtoBR)
+					</span>]
+					</td>
+				</tr>
+			</table>
+			<br />
+			<div class="texte">
+			#CS_SOMMAIRE
+			[(#TEXTE|liens_ouvrants|image_reduire{400,0})]
+			<br />
+			<br />
+			</div> <!-- texte -->
+			[<span class="texte">
+			&Agrave; noter :
+			<br /><br />
+			(#PS|liens_ouvrants|PtoBR)
+			</span>]
+			[<span class="texte">
+			<br />
+			 <:sur_web:> : <a href="#URL_SITE" target="blank">(#NOM_SITE|liens_ouvrants)</a>
+			</span>]
+			[<div class="texte">
+			<br />
+			NOTES <br /><br />
+			(#NOTES|liens_ouvrants|PtoBR)
+			 </div>]
+			 	[(#REM) debut des evenements lies a l'article ]
+			<B_lesevenements>
+			<h3 class="spip">&Eacute;v&eacute;nements associ&eacute;s</h3>
+			<ul class="spip">
+			<BOUCLE_lesevenements(EVENEMENTS) {par date} {id_article}>
+			<li	class="spip"><strong>[(#TITRE|supprimer_numero)]&nbsp;:</strong>
+			 [(#DATE_DEBUT|jour|=={[(#DATE_FIN|jour)]}|?{
+			 le [(#DATE_DEBUT|nom_jour)] [(#DATE_DEBUT|affdate)]
+			[(#HORAIRE|=={oui}|?{
+			  [(#REM) memes heures ?]
+			    [(#DATE_DEBUT|=={#DATE_FIN}|?{&agrave
+			[(#DATE_DEBUT|heures)]h[(#DATE_DEBUT|minutes)],''})]
+			  [(#REM) pas memes heures ?]
+		    [(#DATE_DEBUT|!={#DATE_FIN}|?{de
+		[(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)] &agrave;
+		[(#DATE_FIN|heures)]:[(#DATE_FIN|minutes)],''})]
+		,''})]
+		,
+		 du [(#DATE_DEBUT|nom_jour)] [(#DATE_DEBUT|affdate)]
+		[(#HORAIRE|=={oui}|?{&agrave; partir de
+		 [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})] au
+		[(#DATE_FIN|nom_jour)]
+		 [(#DATE_FIN|affdate)] [(#HORAIRE|=={oui}|?{jusqu'&agrave;
+		 [(#DATE_FIN|heures)]H[(#DATE_FIN|minutes)],''})]  })]
+		[<br />lieu&nbsp;: (#LIEU)]
+		[<br />(#DESCRIPTIF)]
+		</li>
+		 </BOUCLE_lesevenements>
+		</ul>
+		</B_lesevenements>
+		[(#REM) fin des evenements lies a l'article ]
+
+
+			[(#REM) Portfolio : album d'images ]
+			<B_documents_portfolio>
+			<div id="documents_portfolio">
+				<span class="texte"><:info_portfolio:></span>
+				<BOUCLE_documents_portfolio(DOCUMENTS) {id_article} {mode=document} {extension IN png,jpg,gif} {par num titre, date} {doublons 1}>
+				[<a href="#URL_DOCUMENT" type="#MIME_TYPE" onclick="location.href='[(#URL_ARTICLE|parametre_url{id_document,#ID_DOCUMENT})]#documents_portfolio';return false;"[ title="(#TITRE|couper{80}|texte_backend)"]>(#LOGO_DOCUMENT|image_reduire{0,60}|inserer_attribut{alt,[(#TITRE|supprimer_numero|couper{80}|texte_backend)]})</a>]
+				</BOUCLE_documents_portfolio>
+			</div>
+			</B_documents_portfolio>
+			<BOUCLE_afficher_document(DOCUMENTS) {id_document} {id_article} {mode=document}{extension IN png,jpg,gif}>
+			<div class="spip_documents spip_documents_center" id="document_actif">
+				#EMBED_DOCUMENT
+				[<div class="spip_doc_titre">(#TITRE|supprimer_numero)</div>]
+				[<div class="spip_doc_descriptif">(#DESCRIPTIF)</div>]
+			</div>
+			</BOUCLE_afficher_document>
+
+
+			[(#REM) Autres documents joints a l'article ]
+			<B_documents_joints>
+			<div id="documents_joints">
+				<span class="texte"><:titre_documents_joints:></span>
+				<ul>
+					<BOUCLE_documents_joints(DOCUMENTS) {id_article} {mode=document} {par num titre, date} {doublons 1}>
+					<li>
+						<div class="spip_doc_titre">
+						<a href="#URL_DOCUMENT" title="<:bouton_telecharger:> [(#TITRE|sinon{<:info_document:>})]" type="#MIME_TYPE">#LOGO_DOCUMENT [(#TITRE|sinon{<:info_document:>})]</a>
+						<small>(#TYPE_DOCUMENT[ - (#TAILLE|taille_en_octets)])</small>
+						</div>
+						[<div class="spip_doc_descriptif">(#DESCRIPTIF)</div>]
+					</li>
+					</BOUCLE_documents_joints>
+				</ul>
+			</div>
+			 
+				
+			<br />
+			<INCLURE{fond=inc_enhaut}>
+
+			</div> <!-- articlecentre -->
+			</div> <!-- categoriec -->
+</BOUCLE_principale>

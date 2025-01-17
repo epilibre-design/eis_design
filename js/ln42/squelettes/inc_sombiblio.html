@@ -1,0 +1,123 @@
+#CACHE{24*3600}
+<BOUCLE_principale(MOTS){id_mot}{id_groupe!=1}>
+		<div class="categoriec">
+				<div class="articlecentre">
+				<a name="haut"></a>
+				<table>
+				<tr colspan="3">
+				<td>
+				[<span class="titremotsom">Biliographie de chercheur (#TITRE|supprimer_numero|majuscules)</span>]
+				</td>
+				<td>
+				<a href="#URL_SITE_SPIP/?page=biblio-off" class="texte" title="Pr&eacute;sentation dans les normes les plus strictes">
+				[Pr&eacute;sentation int&eacute;grale et acad&eacute;mique]
+				</a>
+<!-- début du menu déroulant mots-clés  articles chrono (id_groupe=4) -->
+				<form name="articles chrono">
+				<select name="mots" size="1" class="deroul" onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+				<option selected value="">Choisir la période</option>
+				<OPTION value=""></OPTION>
+
+				<B_mots_chrono>
+				<BOUCLE_mots_chrono(MOTS){id_groupe=4}{par titre}>
+				<option value="#URL_SITE_SPIP/?page=biblio&id_mot=#ID_MOT">&nbsp;[(#TITRE)]</option>
+				</BOUCLE_mots_chrono>
+				</B_mots_chrono>
+				</select>
+				</form>
+<!-- fin du menu déroulant mots-clés articles chrono -->
+				</td>
+
+				<td>
+				[(#LOGO_MOT|right|image_reduire{200}
+				|inserer_attribut{title,[(#TEXTE|supprimer_numero)]}
+				|inserer_attribut{alt,[(#TEXTE|supprimer_numero)]}
+				)]
+
+				<br />
+				[<span class="texte">(#TEXTE)</span>]
+				</td>
+				</tr>
+				</table>
+				
+<!- début de l'affichage des articles -->
+
+	   
+	    <div class="articlecmot">
+
+		<ul>
+		<BOUCLE_affichage_articles(ARTICLES){id_secteur=1}{id_rubrique!=55}{id_mot}{par descriptif}{inverse} {pagination 1000}>
+	    <li>
+		<span class="langue">[[(#LANG)]]</span>
+		[<a href="#URL_ARTICLE" class="texte">(#DESCRIPTIF|textebrut|PtoBR)</a>] 
+		
+		<B_traductions>
+		<br />
+		<span class="date">
+		Autres langues&nbsp;:
+		<BOUCLE_traductions(ARTICLES){traduction}{exclus}{", "}>
+		[<a href="#URL_ARTICLE" class="date" dir="#LANG_DIR">(#LANG|traduire_nom_langue)</a>]
+		</BOUCLE_traductions>
+		</span>
+		</B_traductions>
+		</li>
+		<br />
+
+	    </BOUCLE_affichage_articles>
+		</ul>
+
+		</B_affichage_articles>
+
+		<//B_affichage_articles>
+
+	    </div ><!-- articlecmot -->
+<!- fin de l'affichage des articles -->
+
+				<table>
+				<tr colspan="3">
+				<td>
+				[<span class="titremotsom">Biliographie de chercheur (#TITRE|supprimer_numero|majuscules)</span>]
+				</td>
+				<td>
+<!-- début du menu déroulant mots-clés  articles chrono (id_groupe=4) -->
+				<form name="articles chrono2">
+				<select name="mots2" size="1" class="deroul" onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+				<option selected value="">Choisir la période</option>
+				<OPTION value=""></OPTION>
+
+				<B_mots_chrono2>
+				<BOUCLE_mots_chrono2(MOTS){id_groupe=4}{par titre}>
+				<option value="#URL_SITE_SPIP/?page=biblio&id_mot=#ID_MOT">&nbsp;[(#TITRE)]</option>
+				</BOUCLE_mots_chrono2>
+				</B_mots_chrono2>
+				</select>
+				</form>
+<!-- fin du menu déroulant mots-clés articles chrono -->
+				<a href="#URL_SITE_SPIP/?page=biblio-off" class="texte" title="Pr&eacute;sentation dans les normes les plus strictes">
+				[Pr&eacute;sentation int&eacute;grale et acad&eacute;mique]
+				</a>
+				</td>
+
+				<td>
+				[(#LOGO_MOT|right|image_reduire{200}
+				|inserer_attribut{title,[(#TEXTE|supprimer_numero)]}
+				|inserer_attribut{alt,[(#TEXTE|supprimer_numero)]}
+				)]
+
+				<br />
+				[<span class="texte">(#TEXTE)</span>]
+				</td>
+				</tr>
+				</table>
+				
+	   
+		  
+
+			<br />
+			<INCLURE{fond=inc_enhaut}>
+			
+			</div> <!-- articlecentre -->
+				</div> <!-- categoriec -->
+</BOUCLE_principale>
+<!-- menu déroulant de tous les mots-clés -->
+<//B_principale>

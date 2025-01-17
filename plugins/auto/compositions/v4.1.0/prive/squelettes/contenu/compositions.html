@@ -1,0 +1,52 @@
+#SET{compositions,#REM|compositions_lister_disponibles}
+
+<h1 class="grostitre"><:compositions:compositions:></h1>
+
+<BOUCLE_compositions(DATA){source tableau, #GET{compositions}}>
+
+	<B_pour>
+
+	[(#BOITE_OUVRIR{[(#CLE|objet_info{texte_objets}|_T)][ - (#GRAND_TOTAL|singulier_ou_pluriel{compositions:info_1_composition,compositions:info_nb_compositions})], simple, section})]
+
+	<div class='liste'>
+		<ul class="liste-items compositions">
+			<BOUCLE_pour(DATA){source tableau, #VALEUR}{par nom}>
+			#SET{utilisations, #_compositions:CLE|compositions_lister_utilisations{#CLE}}
+			<li class="item">
+				<div class="item__titre">
+					[ [<a href="(#IMAGE_EXEMPLE|balise_img|extraire_attribut{src})" class='mediabox exemple' title="<:compositions:voir_image_exemple|attribut_html:>">]
+						(#ICON|sinon{#CHEMIN_IMAGE{composition-32.png}}|image_reduire{32,32}|inserer_attribut{class,logo})
+						[(#IMAGE_EXEMPLE|oui)</a>]
+					]
+					<strong>
+						[(#GET{utilisations}|oui)
+						<a href="[(#VAL{composition}|generer_url_ecrire{objet=#_compositions:CLE&composition=#CLE})]">
+							[(#NOM|supprimer_numero)]
+							[<span class="count">(#GET{utilisations}|count|singulier_ou_pluriel{compositions:une_utilisation,compositions:des_utilisations})</span>]
+						</a>]
+						[(#GET{utilisations}|non) [(#NOM|supprimer_numero)] ]
+					</strong>
+				</div>
+				
+				[<div class='descriptif'>(#DESCRIPTION|PtoBR)</div>]
+
+				<B_heritages>
+				<div class='heritage'>
+					<:compositions:heritages:>
+					<BOUCLE_heritages(DATA){source tableau, #BRANCHE}>
+					<br>- #CLE (#VALEUR)
+					</BOUCLE_heritages>
+				</div>
+				</B_heritages>
+
+			</li>
+			</BOUCLE_pour>
+		</ul>
+	</div>
+
+	#BOITE_FERMER
+	</B_pour>
+</BOUCLE_compositions>
+
+<h2><:compositions:info_aucune_composition:></h2>
+<//B_compositions>

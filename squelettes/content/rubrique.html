@@ -1,0 +1,154 @@
+<BOUCLE(RUBRIQUES){id_rubrique}>
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row gx-5 col-mb-80">
+						<!-- Post Content
+						============================================= -->
+						<main class="postcontent col-lg-9">
+
+							[<div class="row gutter-30">
+								(#TEXTE|adaptive_images)
+							</div>]
+
+							<!-- Posts
+							============================================= -->
+							<div id="posts" class="row gutter-30" data-spy="scroll" data-target="#navbar-articles" data-offset="0">
+
+	<BOUCLE_article_accueil(ARTICLES){id_article=#ID_ARTICLE_ACCUEIL}{doublons}>
+		<div id="art#ID_ARTICLE" style="margin-top:-50px;padding-top:50px"></div>
+								<div class="entry col-12">
+									<div class="grid-inner">
+
+										<header class="cartouche">
+											[<div class="entry-image">(#LOGO_ARTICLE|adaptive_images)</div>]
+										</header>
+
+										[<div class="chapo surlignable entry-content bg-contrast-100">
+											<div class="col-padding">
+											(#CHAPO|adaptive_images)
+											</div>
+										</div>]
+
+										[<div class="#EDIT{texte} texte surlignable entry-content">
+											(#TEXTE|adaptive_images)
+										</div>]
+
+									</div>
+								</div>
+	</BOUCLE_article_accueil>
+	<BOUCLE_articles(ARTICLES){id_rubrique}{par num titre, titre}{doublons}>
+		<div id="art#ID_ARTICLE" style="margin-top:-50px;padding-top:50px"></div>
+								<div class="entry col-12">
+									<div class="grid-inner">
+
+										<header class="cartouche">
+											[<div class="entry-image">(#LOGO_ARTICLE|adaptive_images)</div>]
+											<div class="entry-title"><h2><span class="#EDIT{titre}">#TITRE</h2></div>
+										</header>
+
+										[<div class="chapo surlignable entry-content bg-contrast-100">
+											<div class="col-padding">
+											(#CHAPO|adaptive_images)
+											</div>
+										</div>]
+
+
+										[<div class="#EDIT{texte} texte surlignable entry-content">
+											(#TEXTE|adaptive_images)
+										</div>]
+
+									</div>
+								</div>
+	</BOUCLE_articles>
+
+		[(#REM) Si aucun article, affiche un plan de la rubrique ]
+		<B_sous_rubriques>
+		<div class="menu rubriques">
+			<h2 class="h2"><:sous_rubriques:></h2>
+			<ul class="menu-items menu-liste">
+				<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{id_mot!=71}{par num titre, titre}>
+				<li class="item menu-entree">
+					<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+
+					[(#REM) Une boucle recursive pour le mini plan]
+					<B_miniplan>
+					<ul class="menu-items menu-liste">
+						<BOUCLE_miniplan(RUBRIQUES){id_parent}{id_mot!=71}{par num titre, titre}>
+						<li class="item menu-entree">
+							<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+							<BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
+						</li>
+						</BOUCLE_miniplan>
+					</ul>
+					</B_miniplan>
+
+				</li>
+				</BOUCLE_sous_rubriques>
+			</ul>
+			</div>
+		</B_sous_rubriques>
+	<//B_articles>
+
+	<aside>
+		[(#REM) Gestion du portfolio et des documents ]
+		[(#INCLURE{fond=inclure/documents,id_rubrique})]
+
+
+		[(#REM) Sites de la rubrique ]
+		<B_sites>
+		<div class="liste sites">
+			<h2 class="h2">Pour en savoir plus :</h2>
+			<div id="faqs" class="faqs">
+				<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
+				<div class="toggle faq pb-0 mb-3">
+					<div class="toggle-header">
+						<div class="toggle-title fw-medium ps-1">
+							<a href="#URL_SITE" target="_blank">#NOM_SITE</a>
+						</div>
+						[(#DESCRIPTIF|oui)
+						<div class="toggle-icon">
+						<i class="toggle-closed fa-solid fa-chevron-down"></i>
+						<i class="toggle-open fa-solid fa-chevron-up"></i>
+						</div>]
+					</div>
+					<div class="toggle-content ps-4">
+						#DESCRIPTIF
+					</div>
+				</div>
+				</BOUCLE_sites>
+			</div>
+		</div>
+		</B_sites>
+
+		
+
+	</aside>
+
+	<footer>
+		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+	</footer>
+
+							</div><!-- #posts end -->
+
+							<!-- Pager
+							============================================= -->
+							<div class="d-flex justify-content-between mt-5">
+<BOUCLE_avant(RUBRIQUES){id_parent=#ID_PARENT}{id_rubrique<#ID_RUBRIQUE}{par id_rubrique}{inverse}{0,1}><a href="#URL_RUBRIQUE" class="btn btn-outline-secondary">&larr; #TITRE</a>
+</BOUCLE_avant>
+<BOUCLE_apres(RUBRIQUES){id_parent=#ID_PARENT}{id_rubrique>#ID_RUBRIQUE}{par id_rubrique}{0,1}><a href="#URL_RUBRIQUE" class="btn btn-outline-dark">#TITRE &rarr;</a></BOUCLE_apres>
+							</div>
+							<!-- .pager end -->
+
+						</main><!-- .postcontent end -->
+
+						<!-- Sidebar
+						============================================= -->
+						<INCLURE{fond=inclure/sidebar/rubrique,env}/>
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+</BOUCLE>

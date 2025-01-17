@@ -1,0 +1,7 @@
+<BOUCLE_resume_mot(MOTS) {id_mot} {statut?}>
+<section class="entry mot">
+	<h3><a href="#URL_MOT" rel="bookmark">[(#LOGO_MOT|image_reduire{#ENV{largeur_logo,-1},#ENV{hauteur_logo,-1}}|responsive_logo)]#TITRE<span
+		class="read-more hide">[(#ICON{chevron-right,icon-heavy,[<:zcore:lire_la_suite:><:zcore:lire_la_suite_de:>&laquo;(#TITRE)&raquo;]})]</span></a></h3>
+	[<div class="#EDIT{intro} introduction entry-content">(#INTRODUCTION{#ENV{coupe,300}})</div>]
+</section>
+</BOUCLE_resume_mot>

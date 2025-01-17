@@ -1,0 +1,19 @@
+		  <!-- début du menu déroulant rubriques -->
+		  <form name="rubriques">
+		    <select name="rubriques" size="1" class="deroul"  onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+		      <option selected value=""><:rubriques:></option>
+		      <OPTION value=""></OPTION>
+		      <OPTION value="#URL_SITE_SPIP"><:accueil_site:></OPTION>
+			  
+		      <BOUCLE_secteurs(RUBRIQUES) {id_parent=0} {par titre}>
+		      <OPTION value=""></OPTION>
+		      <option value="#URL_RUBRIQUE">[(#TITRE|supprimer_numero|majuscules)]</option>
+			  
+		      <BOUCLE_sous_rubriques_niv1(RUBRIQUES) {id_parent} {par titre}{doublons}>
+		      <option value="#URL_RUBRIQUE">&nbsp;&nbsp;[(#TITRE|supprimer_numero)]</option>
+		      </BOUCLE_sous_rubriques_niv1>
+			  
+		      </BOUCLE_secteurs>
+		    </select>
+		  </form>
+		  <!-- fin du menu déroulant rubriques -->

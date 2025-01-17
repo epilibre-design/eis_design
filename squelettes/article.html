@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<BOUCLE_principale(ARTICLES) {id_article}>
+<html dir="#LANG_DIR" lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+<head>
+	<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+	<title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(INTRODUCTION{150}|attribut_html)">]
+	[<link rel="canonical" href="(#URL_ARTICLE|url_absolue)">]
+	<INCLURE{fond=inclure/head} />
+</head>
+
+<body class="stretched">
+<div id="wrapper">
+
+	<INCLURE{fond=inclure/header,env} />
+
+	<!-- Content
+	============================================= -->
+	[(#SET{squelette,content/article[-(#COMPOSITION)]})]
+	#INCLURE{fond=#GET{squelette},env}
+
+		<INCLURE{fond=inclure/footer,env} />
+
+</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="fa-solid fa-chevron-up"></div>
+
+
+	[(#SET{footer_js,inclure/footer_js[-(#COMPOSITION)]})]
+	#INCLURE{fond=#GET{footer_js},env}
+
+</body>
+</html>
+</BOUCLE_principale>

@@ -1,0 +1,20 @@
+{
+    "name": "spip-contrib/corbeille",
+    "description": "Gestion des documents mis à la corbeille",
+    "license": "GPL-3.0-or-later",
+    "type": "spip-plugin",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpcompatibility/php-compatibility": "^10.x-dev",
+        "phpstan/phpstan": "^1.10",
+        "spip/coding-standards": "^1.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

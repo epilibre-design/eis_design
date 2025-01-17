@@ -1,0 +1,112 @@
+<BOUCLE_principale(SITES){id_syndic}{unique}>
+		<div class="categoriec">
+				<div class="articlecentre">
+				<a name="haut"></a>
+				
+<!-- début chemin hiérarchie -->
+			<div class="cheminacces">
+			<a href="#URL_SITE_SPIP" title="[(#NOM_SITE_SPIP)]"><:accueil_site:></a>
+			<B_cascade>
+			&nbsp;>
+			<BOUCLE_cascade(HIERARCHIE) {id_syndic} {">"}>
+			<a href="#URL_RUBRIQUE" title="[(#DESCRIPTIF*|textebrut|PtoBR|couper{150})]">[(#TITRE|supprimer_numero)]</a>
+			</BOUCLE_cascade>
+			[ &gt; (#TITRE)]
+			</div>  
+<!-- fin chemin hiérarchie -->
+				
+				<br />
+				<a href="#URL_SITE" title="[(#DESCRIPTIF|couper{100})]">[(#LOGO_SITE|right|image_reduire {300,200})]</a>
+				<h1>
+				#NOM_SITE
+				[(<a href="#URL_SITE" class="spip_out"  title="[(#DESCRIPTIF|couper{100})]">(#URL_SITE|lignes_longues{80})</a>)]
+				</h1>
+				
+			[<div class="chapo">(#DESCRIPTIF)</div>]
+			
+			<!-- début de ligne de séparation -->
+			<br />
+			<img src=[(#CHEMIN{images/reglearcenciel.gif})] width="100%" align="absmiddle" height="5">
+			<br />
+			<!-- fin de la ligne de séparation -->
+			
+
+			[(#REM) Articles issus de la syndication ]
+			<B_articles>
+			<div class="">
+			Les derni&egrave;s parutions du site #NOM_SITE
+			</div>
+			#ANCRE_PAGINATION
+			<ul>
+
+					<BOUCLE_articles(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {pagination 10}>
+					<li>
+ 					[<span class="langue">(#LANG)</span>]
+					<span class="titremot">
+					<a href="#URL_ARTICLE" title="[(#DATE|affdate)]" class="spip_out" target="_blank">
+					[(#TITRE)]
+					</a>
+ 					[<div class="enclosures">(#TAGS|afficher_enclosures)</div>]
+					<small>[(#DATE|jour)/][(#DATE|mois)/][(#DATE|annee)][,
+							<:par_auteur:> (#LESAUTEURS)]
+							[&mdash; <em>(#TAGS|afficher_tags)</em>]
+					</small>
+					[<div class="texte">(#DESCRIPTIF|textebrut|PtoBR|image_reduire{300})</div>]
+					</span>
+					</li>
+					</BOUCLE_articles>
+			</ul>
+			Sont r&eacute;f&eacute;renc&eacute;s de ce site #GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'articles','article'})][, affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].
+			</B_articles>
+			
+			[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+
+<!-- début des sites trouves dans la même rubrique -->
+
+		<B_sites_meme_rub>
+		<div class="titrerubsom1">D'autres sites dans la m&ecirc;me rubrique</div>
+		#ANCRE_PAGINATION
+
+		<ul>
+		<BOUCLE_sites_meme_rub(SITES) {id_rubrique}  {par nom_site}  {pagination 20} {unique}>
+		
+	  	<li class="articlecmot">
+		[(#LOGO_SITE|right|image_reduire{50,0})] 
+        <a href="[(#ID_SYNDIC|generer_url_entite{site})]"[ class="(#EXPOSE)"]>#NOM_SITE</a>
+		</li> <!-- articlecmot -->
+
+		
+		</BOUCLE_sites_meme_rub>
+		</ul>
+		Cette rubrique contient #GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'autres sites','autre site'})][, affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].
+		</B_sites_meme_rub>
+		  
+<!-- fin des sites trouves -->
+		<//B_sites>
+			[(#REM) Autres sites web ]
+			<B_tous_sites>
+			<div class="syndic">
+				#ANCRE_PAGINATION
+
+			<div class="titrerubsom1">
+			#GRAND_TOTAL [(#GRAND_TOTAL|>{1}|?{'autres sites sont r&eacute;f&eacute;renc&eacute;s','autre site est r&eacute;f&eacute;renc&eacute;'})][ , affich&eacute;s par #TOTAL_BOUCLE&nbsp;: (#PAGINATION{precedent_suivant})].
+			</div>  [(#REM) titrerubsom1]
+
+      <ul>
+        <BOUCLE_tous_sites(SITES) {par nom_site} {pagination 30} {unique}>
+        <li>
+        <a href="[(#ID_SYNDIC|generer_url_entite{site})]"[ class="(#EXPOSE)"] title="Description et informations sur le site">#NOM_SITE</a>
+				[(<a href="#URL_SITE" class="spip_out" title="[(#DESCRIPTIF|couper{100})]">(#URL_SITE|lignes_longues{80})</a>)]
+        </li>
+        </BOUCLE_tous_sites>
+      </ul>
+			</div> [(#REM) syndic]
+			</B_tous_sites>
+
+			<INCLURE{fond=inc_enhaut}>
+
+					</div> <!-- articlecentre -->
+				</div> <!-- categoriec -->
+</BOUCLE_principale>
+
+<//B_principale>

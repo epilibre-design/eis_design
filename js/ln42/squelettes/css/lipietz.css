@@ -1,0 +1,36 @@
+/*  ------------------------------------------------------------ */
+/*    Feuille de styles principale du site Lipietz.net - 2006    */
+/*  ------------------------------------------------------------ */
+/*  ------------------------------------------------------------ */
+/*                     Feuille de style principale               */
+/* ------------------------------------------------------------- */
+@import url("spip_style.css");
+@import url("spip_admin.css");
+/* @import url("typographie.css"); */
+@import url("habillage.css");
+@import url("bando.css");
+@import url("general.css");
+@import url("aspectdate.css");
+@import url("menu.css");
+@import url("menugauche.css");
+@import url("menudroite.css");
+@import url("article.css");
+@import url("somrub.css");
+@import url("sommaire.css");
+@import url("sommot.css");
+@import url("recherche.css")
+@import url("liste.css");
+@import url("footer.css");
+
+@media print {
+	@import url("impression.css");
+/* Colonnes indesirables
+---------------------------------------------- */
+.articleentete,
+.categorie,
+.categorieg,
+.seperation,
+#outils,
+.categorieb {display: none;}
+
+}

@@ -1,0 +1,162 @@
+[(#REM)
+
+	Ce squelette definit les styles de l'espace prive
+
+	Note: l'entete "Vary:" sert a repousser l'entete par
+	defaut "Vary: Cookie,Accept-Encoding", qui est (un peu)
+	genant en cas de "rotation du cookie de session" apres
+	un changement d'IP (effet de clignotement).
+
+	ATTENTION: il faut absolument le charset sinon Firefox croit que
+	c'est du text/html !
+	<style>
+]
+#SET{claire,##ENV{couleur_claire,edf3fe}}
+#SET{foncee,##ENV{couleur_foncee,3874b0}}
+#SET{left,#ENV{ltr}|choixsiegal{left,left,right}}
+#SET{right,#ENV{ltr}|choixsiegal{left,right,left}}
+
+.skeleditor #page>.largeur {
+	max-width: none;
+	height: calc(100vh - 12.5em);
+
+}
+.skeleditor #page #conteneur {
+	display: flex;
+	flex-direction: row !important;
+	width: 100%;
+	height: 100%;
+}
+
+.skeleditor #page #navigation {
+	flex-basis: 25%;
+	max-width: 25%;
+	height: 100%;
+	overflow: auto;
+}
+.skeleditor #page #extra {
+	display: none;
+}
+.skeleditor #page #contenu {
+	flex-basis: 70%;
+	max-width: 70%;
+	height: 100%;
+	margin-left: auto;
+}
+.skeleditor #page #contenu>* {
+	height: 100%;
+}
+.skeleditor #page #contenu .d-flex-col-100 {
+	display: flex;
+	flex-direction: column !important;
+	width: 100%;
+	height: 100%;
+}
+.d-flex-col-100 .formulaire_squelette {
+	display: flex;
+	flex-direction: column !important;
+	margin-top: 0;
+	flex-basis: 100%;
+	max-height: calc(100% - 6em);
+}
+.d-flex-col-100 .ajax-form-container {
+	height: 100%;
+}
+
+.skeleditor #page #contenu .d-flex-col {
+	display: flex;
+	flex-direction: column !important;
+}
+.skeleditor #page #contenu .h-100 {
+	height: 100%;
+	overflow:hidden;
+}
+
+.formulaire_squelette .actions {overflow:hidden;position: absolute;right: 0;top:0;margin-top: -4.5em;}
+.formulaire_squelette .actions .add {float:#GET{left};}
+.formulaire_squelette .actions .context {float:#GET{right};}
+.formulaire_squelette .actions .btn .picto {margin-#GET{right}:0.5em;}
+
+.formulaire_editer_squelette .infos {float:#GET{right};}
+
+.formulaire_editer_squelette .titrem {position: relative}
+.formulaire_editer_squelette .titrem tt {font-weight:bold;}
+.formulaire_editer_squelette .titrem .btn {margin-#GET{left}:auto;}
+.formulaire_editer_squelette .titrem .explication {position: absolute;top:-2.85em;}
+
+.formulaire_editer_squelette .search-replace-toolbar {position: absolute;z-index: 10;bottom:calc(var(--spip-form-spacing-y) / 2);left:var(--spip-form-spacing-x);}
+
+.formulaire_editer_squelette .renommer .boutons {display: flex;}
+.formulaire_editer_squelette .renommer .boutons .btn_close {margin-#GET{right}: auto;}
+
+.formulaire_squelette .main-form {
+	margin-left: calc(-1 * var(--spip-form-spacing-x));
+	margin-right: calc(-1 * var(--spip-form-spacing-x));
+}
+.formulaire_squelette .main-form .editer-groupe {
+	margin-left:0;
+	margin-right:0;
+}
+.formulaire_squelette .main-form .boutons {
+	margin-left:0;
+	margin-right:0;
+	margin-top:auto;
+}
+
+
+.formulaire_editer_squelette textarea {padding:5px;}
+.formulaire_editer_squelette textarea.readonly {background:#eee;color:#666;}
+.formulaire_editer_squelette .CodeMirror {height: 100% !important;}
+
+.formulaire_editer_squelette .btn_fullscreen {display: none;position: absolute;top:0;right:0;z-index: 1201;overflow:hidden;border:0;text-indent: -10em;background: url(#CHEMIN_IMAGE{se-arrow_out.svg}) no-repeat center;background-size: 100% 100%;}
+.formulaire_editer_squelette .CodeMirror + .btn_fullscreen {display: block}
+
+.skeleditor.skeleditor_fullscreen #bando_haut {visibility: hidden;}
+.skeleditor.skeleditor_fullscreen .formulaire_editer_squelette .btn_fullscreen {position: fixed;background-image: url(#CHEMIN_IMAGE{se-arrow_in.svg});}
+
+
+
+.formulaire_editer_squelette .image-viewer {margin-top: 2rem;}
+.formulaire_editer_squelette .image-viewer .infos {margin-bottom: 1em; text-align: right;}
+.formulaire_editer_squelette .image-viewer .grid {display: flex;width: 100%;justify-content: center;align-items: center;background: url(#CHEMIN_IMAGE{fond-imgs.png}) center repeat;min-height:50vh;margin-bottom: 2rem;}
+.formulaire_editer_squelette .image-viewer .grid img {max-width: 100%;height: auto;max-height: 100%;width: auto;border:1px solid #ccc;object-fit: contain;}
+
+.formulaire_upload_squelette .dropfile_fichier_upload { height: 95%; text-align: center;padding-top: 15%;}
+
+.skeleditor #file-browser .picto {
+	width: 1em;
+	height: 1em;
+	margin-bottom:-2px;
+	margin-#GET{right}:0.25em;
+}
+
+.skeleditor #file-browser .dir {
+	line-height: 12px;
+	border:1px solid #ededed;
+	padding:4px;
+	margin:4px 0;
+}
+
+.skeleditor #file-browser .item-files {}
+.skeleditor #file-browser .item-files .item-file {}
+.skeleditor #file-browser .item-files .item-file.file {}
+.skeleditor #file-browser .item-files .item-file.image {}
+.skeleditor #file-browser .item-files .item-file.readonly {opacity: 0.5}
+.skeleditor #file-browser .item-files .item-file.on {background-color: #ff6;}
+.skeleditor #file-browser .item-files .item-file>a {padding: 0.125em 0.5em; padding-#GET{left}:1.85em;}
+.skeleditor #file-browser .item-files .item-file>a:hover {background: rgba(128,128,128,0.1);}
+
+.skeleditor #file-browser .item-files .item-file.directory {}
+.skeleditor #file-browser .item-files .item-file.directory button.folder {padding-top: var(--spip-btn-padding-y-mini);padding-bottom: var(--spip-btn-padding-y-mini);position: relative;}
+.skeleditor #file-browser .item-files .item-file.directory button.folder .caret {display: block;float: #GET{left};margin-#GET{left}:-0.5em;margin-#GET{right}:0.25em;width:1em;height:1em;background:url([(#CHEMIN_IMAGE{deplier-#GET{right}.svg})]) no-repeat center;background-size:100% 100%;}
+.skeleditor #file-browser .item-files .item-file.directory button.folder.open .caret {background-image:url([(#CHEMIN_IMAGE{deplierhaut.svg})]);}
+.skeleditor #file-browser .item-files .item-file.directory button.folder + .item-files {display:none; margin-left: var(--spip-btn-padding-x); border-left:1px solid #ddd;}
+.skeleditor #file-browser .item-files .item-file.directory button.folder.open + .item-files {display:block;}
+.skeleditor #file-browser .item-files .item-file.directory button.folder:hover {background-color:rgba(128,128,128,0.1);}
+.skeleditor #file-browser .item-files .item-file.directory button.folder:hover + .item-files {border-left:1px solid #888;}
+
+
+.skeleditor #navigation .btn.retour {text-align: #GET{left}}
+.skeleditor #navigation .btn.retour .picto {margin-#GET{right}: 0.5em}
+.skeleditor #navigation .btn.retour span {margin-left: 0.5em;opacity: 0.75;}
+

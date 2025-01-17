@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html dir="#LANG_DIR" lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+<head>
+	<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+	<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)">]
+	[<link rel="canonical" href="(#URL_SITE_SPIP)">]
+	<INCLURE{fond=inclure/head} />
+</head>
+
+<body class="stretched">
+<div id="wrapper">
+
+	<INCLURE{fond=inclure/header,env} />
+
+	<!-- Content
+	============================================= -->
+	#INCLURE{fond=content/sommaire,env}
+
+		<INCLURE{fond=inclure/footer,self=#SELF} />
+
+</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="fa-solid fa-chevron-up"></div>
+
+
+	#INCLURE{fond=inclure/footer_js}
+
+</body>
+</html>

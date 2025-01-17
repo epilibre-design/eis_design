@@ -1,0 +1,153 @@
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">
+			<div class="container">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap">
+
+					<div class="row col-mb-50">
+						<div class="col-lg-8">
+
+							<div class="row col-mb-50">
+								<div class="col-md-4">
+
+									<div class="widget">
+
+										<img src="#CHEMIN{img/logo-inverse-transparent-115x60.png}" alt="Logo sur fond sombre" class="footer-logo">
+
+										<div style="font-size: 14px;">
+RAPPEL : Ce site a pour objet de fournir des informations sur l'épilepsie.  Les informations fournies sur ce site sont destinées à améliorer et non à remplacer la relation existant entre le patient (ou visiteur du site) et son médecin.
+<br>En cas d’urgence, contactez le 15.
+</div>
+
+									</div>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<div class="widget widget_links">
+
+<B_blogroll>
+										<h4>Blogroll</h4>
+										<BOUCLE_blogroll(MENUS){identifiant=blogroll}>
+
+										<ul>
+										<BOUCLE_entrees(MENUS_ENTREES){id_menu}{par rang}>
+											#MENUS_AFFICHER_ENTREE
+										</BOUCLE_entrees>
+										</ul>
+									</BOUCLE_blogroll>
+</B_blogroll>
+
+									</div>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<div class="widget">
+										<h4>Dernières Mises à jour</h4>
+
+										<div class="posts-sm row col-mb-30" id="post-list-footer">
+
+
+<BOUCLE_maj(ARTICLES){!par maj}{0,3}><!-- #ID_ARTICLE : #TITRE : [(#MAJ|affdate)] -->
+	<BOUCLE_rub(RUBRIQUES){id_rubrique}{doublons}>
+											<div class="entry col-12">
+												<div class="grid-inner row">
+													<div class="col">
+														<div class="entry-title">
+															<h4><a href="#URL_RUBRIQUE">#TITRE</a></h4>
+														</div>
+														<div class="entry-meta">
+															<ul>
+																<li>[(#_maj:MAJ|affdate)]</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+	</BOUCLE_rub>
+</BOUCLE_maj>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-lg-4">
+
+							<div class="row col-mb-50">
+
+
+								<div class="col-md-5 col-lg-12">
+									<div class="widget subscribe-widget">
+										<h5><strong>Inscrivez-vous</strong> à notre Newsletter pour recevoir les informations exclusives :</h5>
+										<div><a href="#block-modal-sendinblue" data-lightbox="inline"><img src="#CHEMIN{img/bouton-inscription-newsletter.png}" width="359" height="41"></a></div>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-lg-12">
+									<div class="widget">
+
+										<div class="row col-mb-30">
+											<div class="col-6 col-md-12 col-lg-6 d-flex align-items-center">
+												<a href="https://www.facebook.com/reseauepilepsie" class="social-icon text-white border-transparent bg-facebook me-2 mb-0 float-none">
+													<i class="fa-brands fa-facebook-f"></i>
+													<i class="fa-brands fa-facebook-f"></i>
+												</a>
+												<a href="https://www.facebook.com/reseauepilepsie" class="ms-1"><small class="d-block"><strong>Likez Nous</strong><br>sur Facebook</small></a>
+											</div>
+											<div class="col-6 col-md-12 col-lg-6 d-flex align-items-center">
+												<a href="https://www.instagram.com/epileptique_positif/" class="social-icon text-white border-transparent bg-rss me-2 mb-0 float-none">
+													<i class="fa-brands fa-instagram"></i>
+													<i class="fa-brands fa-instagram"></i>
+												</a>
+												<a href="https://www.instagram.com/epileptique_positif/" class="ms-1"><small class="d-block"><strong>Suivez-nous</strong><br>sur Instagram</small></a>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+				<div class="container">
+
+					<div class="row col-mb-30">
+
+						<div class="col-md-9 text-left text-md-start">
+							Copyrights &copy; 2023 - Epilepsie Info Service.
+							<span class="copyright-links"><a href="#">Mentions légales</a> / <a href="#">Gestion des données</a></span>
+						</div>
+
+						<div class="col-md-3 text-right text-md-start">
+							contact@epilepsie-info-service.fr
+						</div>
+
+
+						</div>
+
+					</div>
+
+				</div>
+			</div><!-- #copyrights end -->
+		</footer><!-- #footer end -->
+
+#INCLURE{fond=inclure/modale-sendinblue}

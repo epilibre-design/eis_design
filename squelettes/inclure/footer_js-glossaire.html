@@ -1,0 +1,39 @@
+
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+<script>
+	jQuery(document).ready(function(){
+		var $faqItems = jQuery('#faqs .faq');
+		if( window.location.hash != '' ) {
+			var getFaqFilterHash = window.location.hash;
+			var hashFaqFilter = getFaqFilterHash.split('#');
+			if( $faqItems.hasClass( hashFaqFilter[1] ) ) {
+				jQuery('.grid-filter li').removeClass('activeFilter');
+				jQuery( '[data-filter=".'+ hashFaqFilter[1] +'"]' ).parent('li').addClass('activeFilter');
+				var hashFaqSelector = '.' + hashFaqFilter[1];
+				$faqItems.css('display', 'none');
+				if( hashFaqSelector != 'all' ) {
+					jQuery( hashFaqSelector ).fadeIn(500);
+				} else {
+					$faqItems.fadeIn(500);
+				}
+			}
+		}
+
+		jQuery('.grid-filter a').on( 'click', function(){
+			jQuery('.grid-filter li').removeClass('activeFilter');
+			jQuery(this).parent('li').addClass('activeFilter');
+			var faqSelector = jQuery(this).attr('data-filter');
+			$faqItems.css('display', 'none');
+			if( faqSelector != 'all' ) {
+				jQuery( faqSelector ).fadeIn(500);
+			} else {
+				$faqItems.fadeIn(500);
+			}
+			return false;
+	   });
+	});
+
+
+</script>

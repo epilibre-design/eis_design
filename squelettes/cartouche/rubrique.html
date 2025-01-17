@@ -1,0 +1,24 @@
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
+	<!-- Page Title
+	============================================= -->
+	<section class="page-title bg-transparent">
+		<div class="container">
+			<div class="page-title-row">
+
+				<div class="page-title-content">
+					<h1>#TITRE</h1>
+					[<span>(#DESCRIPTIF)</span>]
+				</div>
+
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#URL_SITE_SPIP/"><:accueil_site:></a></li>
+						<BOUCLE_ariane(HIERARCHIE){id_rubrique}><li class="breadcrumb-item"><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></li></BOUCLE_ariane>
+						<li class="breadcrumb-item active" aria-current="page">[(#TITRE|couper{80})]</li>
+					</ol>
+				</nav>
+
+			</div>
+		</div>
+	</section><!-- .page-title end -->
+</BOUCLE_principale>

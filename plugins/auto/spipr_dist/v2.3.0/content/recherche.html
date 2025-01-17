@@ -1,0 +1,8 @@
+<section>
+	[(#ENV{cartouche,1}|oui)<INCLURE{fond=cartouche/#ENV{type-page},env} />]
+
+	<div class="main">
+		<INCLURE{fond=liste/articles-recherche,env,ajax} />
+		<INCLURE{fond=liste/rubriques-recherche,env,ajax} />
+	</div>
+</section>

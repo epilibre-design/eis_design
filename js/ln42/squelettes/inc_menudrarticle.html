@@ -1,0 +1,112 @@
+<!-- debut du menu droite article -->
+<BOUCLE_principale(ARTICLES){id_article}>
+<div class="articledroite">
+
+	 <INCLURE {fond=inc_lastblogs}>
+
+
+<!-- debut de la liste des mots cles associes -->					
+		<B_mots_cles_associes>
+		<span class="titreauto">
+		<img height="50px" width="170px" border=0 align="top" src="[(#CHEMIN{/images/m_motscles.gif})]"  alt="Mots-cl&eacute;s associ&eacute;s">
+		</span>
+
+		<ul>
+		<BOUCLE_mots_cles_associes(MOTS) {id_article} {id_groupe!=1} {par titre} {doublons 2}>
+
+		<li>
+		<a href="#URL_MOT" class="motdr" title="[(#DESCRIPTIF|textebrut)]">
+		[(#TITRE*|supprimer_numero)]
+		</a>
+		</li>
+
+		<B_articles_mot_cle>
+		<ul>
+		<BOUCLE_articles_mot_cle(ARTICLES) {id_mot} {0,5} {!par date} {doublons 1}>
+		<li>
+		<span class="date">
+		[[(#DATE|affdate)]]
+		<br />
+		</span>
+		
+		<a href="#URL_ARTICLE" class="textelien" title="[(#DATE|jour)/][(#DATE|mois)/][(#DATE|annee)][:(#INTRODUCTION|couper{150})]">
+		[(#TITRE*|supprimer_numero)]
+		</a>
+		
+		</li>
+		</BOUCLE_articles_mot_cle>
+		</ul>
+		</B_articles_mot_cle>
+
+		</BOUCLE_mots_cles_associes>
+		</ul>
+
+		</B_mots_cles_associes>
+<!-- début des mots-clés associés à l'article d'origine pour un article traduit -->
+		<B_art_origine>
+		<B_mots_cles_art_origine>
+		<BOUCLE_art_origine(ARTICLES){traduction}{origine_traduction}{lang_select=non}>
+		<ul>
+		<BOUCLE_mots_cles_art_origine(MOTS) {id_article} {id_groupe!=1} {par titre} {doublons 2}>
+
+		<li>
+		<a href="#URL_MOT" class="motdr" title="[(#DESCRIPTIF|textebrut)]">
+		[(#TITRE*|supprimer_numero)]
+		</a>
+		</li>
+
+		<ul>
+		<BOUCLE_articles_mot_cle2(ARTICLES) {id_mot} {0,5} {!par date} {doublons 1}>
+		<li>
+
+		<span class="date">
+		[[(#DATE|affdate)]]
+		<br />
+		</span>
+
+		<a href="#URL_ARTICLE" class="textelien" title="[(#DATE|jour)/][(#DATE|mois)/][(#DATE|annee)][:(#INTRODUCTION|couper{150})]">
+		[(#TITRE*|supprimer_numero)]
+		</a>
+		</li>
+		</BOUCLE_articles_mot_cle2>
+		</ul>
+
+		</BOUCLE_mots_cles_art_origine>
+		</ul>
+
+		</BOUCLE_art_origine>
+		</B_mots_cles_art_origine>
+		</B_art_origine>
+
+<!-- fin des mots-clés associés à l'article d'origine pour un article traduit -->
+<!-- fin de la liste des mots cles associes -->					
+
+<!-- debut des articles de la meme rubrique -->					
+		
+		<B_meme_rubrique>
+		<span class="titreauto">
+		<img height="50px" width="170px" border=0 align="top" src="[(#CHEMIN{/images/m_articles.gif})]"  alt="D'autres articles de la m&ecirc;me rubrique">
+		</span>
+
+		<ul>
+		<BOUCLE_meme_rubrique(ARTICLES) {id_rubrique} {0,5} {!par date}  {doublons 1}>
+		
+		<li>
+		<span class="date">
+		[[(#DATE|affdate)]]
+		<br />
+		</span>
+
+		<a href="#URL_ARTICLE" class="textelien" title="[(#DATE|jour)/][(#DATE|mois)/][(#DATE|annee)][:(#INTRODUCTION|couper{150})]">
+		[(#TITRE)]
+		</a>
+		</li>
+		</BOUCLE_meme_rubrique>
+		</ul>
+
+  		</B_meme_rubrique>
+<!-- fin des articles de la meme rubrique -->																							
+
+</div> <!-- articledroite -->
+</BOUCLE_principale>
+<!-- fin du menu droite article -->

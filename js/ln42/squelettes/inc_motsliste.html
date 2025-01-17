@@ -1,0 +1,105 @@
+<!-- début du tableau principal-->
+  
+<table border="2" cellspacing="2" cellpadding="2" align="center" width="95%" bordercolor="#006600">
+<tr>
+    <td align="center">
+<div>
+	<h4>
+    |
+    Par <a href="#dossier">dossier</a> (avec articles associ&eacute;s) |
+      Par <a href="#liste">liste</a> simple |
+      Par <a href="#deroulant">menu d&eacute;roulant</a>  |
+      </h4>
+</div>
+	</td><tr>
+	<tr align="center"><td>
+<a name="deroulant"></a><h1>Tous les mots-clés par menu déroulant</h1>
+<div align="center">
+ 		  <!-- début du menu déroulant mots-clés -->
+		  <B_type_mots_cles>
+		  <form name="mots_cles">
+		    <select name="mots" size="auto" class="deroul" onchange="if (options[selectedIndex].value) { location = options[selectedIndex].value; }">
+		      <option selected value="">Tous les mots-clés par menu déroulant</option>
+		      <BOUCLE_type_mots_cles(MOTS){tout}{par type}>
+		      <B_mots>
+		      <OPTION value=""></OPTION>
+		      <option value="">[(#TYPE|supprimer_numero|majuscules)] (groupe n°[(#ID_GROUPE)])</option>
+		      <BOUCLE_mots(MOTS){type}{par titre}{unique}>
+		      <option value="#URL_MOT">&nbsp;[(#TITRE)] (n°[(#ID_MOT)])</option>
+		      </BOUCLE_mots>
+		      </BOUCLE_type_mots_cles>
+		    </select>
+		  </form>
+		  </B_type_mots_cles>
+		  &nbsp; 
+		  <//B_type_mots_cles>
+		  <!-- fin du menu déroulant mots-clés -->
+</div>
+    </TD><tr>
+
+	<tr align="center"><td>
+      <a name="dossier"></a><h1>Tous les mots-clés (et les articles associ&eacute;s) par dossier &agrave; ouvrir</h1>
+
+<div align="left">
+
+<!-- début du mscript arbre mots-clés -->
+<script type="text/javascript">
+if (document.getElementById) {
+   var mot0 = new WebFXTree('[(#NOM_SITE_SPIP)]');
+   mot0.setBehavior('classic');
+   <BOUCLE_groupe(GROUPES_MOTS) {par titre}>
+    var grp#ID_GROUPE = new WebFXTreeItem('[(#TITRE|texte_script)] (groupe n°[(#ID_GROUPE)])');
+    mot0.add(grp#ID_GROUPE);
+     <BOUCLE_mot(MOTS) {id_groupe}{par titre}>
+      <B_motart>
+      var mot#ID_MOT = new WebFXTreeItem('[(#TITRE|supprimer_numero|texte_script)] (n°[(#ID_MOT)])',"#URL_MOT");
+      grp#ID_GROUPE.add(mot#ID_MOT);
+       <BOUCLE_motart(ARTICLES) {id_mot} {par date}>
+        mot#ID_MOT.add(new WebFXTreeItem('[(#TITRE|supprimer_numero|texte_script)]',"#URL_ARTICLE"));
+        mot#ID_MOT.add(new WebFXTreeItem('[(#DESCRIPTIF|texte_script)]',"#URL_ARTICLE"));
+      </BOUCLE_motart>
+      </B_motart>
+    </BOUCLE_mot>
+   </BOUCLE_groupe>
+   document.write(mot0);
+}
+</script>
+	  
+<!-- fin du script arbre mots-clés -->
+    </div>
+    </TD><tr>
+
+	<tr align="center"><td>
+
+<a name="liste"></a><h1>Tous les mots-clés par liste simple</h1>
+
+<div align="left">
+<BOUCLE_groupes(GROUPES_MOTS){par titre}>
+<h2>[[#TITRE|supprimer_numero)] (groupe n°[(#ID_GROUPE)])</H2>
+
+<BOUCLE_motscles(MOTS){id_groupe}{par titre}>
+<h5> 
+<a href="#URL_MOT"  title="[(#DESCRIPTIF|textebrut)]">&nbsp;[(#TITRE)]</a>
+(n°[(#ID_MOT)])
+</h5>
+</BOUCLE_motscles>
+
+</BOUCLE_groupes>
+</div>
+
+</td></TR>
+
+<tr>
+    <td align="center">
+	<h4>
+    |
+    Par <a href="#dossier">dossier</a> (avec articles associ&eacute;s) |
+      Par <a href="#liste">liste</a> simple |
+      Par <a href="#deroulant">menu d&eacute;roulant</a>  |
+      </h4>
+    </td>
+  <tr>
+
+</TABLE>
+
+<!--Fin tableau principal-->

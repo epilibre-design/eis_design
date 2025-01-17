@@ -1,0 +1,28 @@
+.date td.datedroite             {
+	background-color: transparent;
+	text-align: left;
+	vertical-align: top;
+	width: 170px;
+	color: #454441;
+	font-size: larger;
+	line-height: normal;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-indent: 0px;
+	word-spacing: 0px;
+	letter-spacing: 0px;
+}
+
+.date td.aspectgauche         {
+	background-color: transparent;
+	text-align: left;
+	width: auto;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: larger;
+	margin-bottom: auto;
+}
+
+.datemenug  {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 0.7em;
+	text-align: center;
+}

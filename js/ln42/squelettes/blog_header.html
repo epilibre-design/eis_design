@@ -1,0 +1,64 @@
+<div id="header" class="snap_nopreview">
+	
+	<a id="zone1" href="#URL_SITE_SPIP/" target="_top" title="Accueil du site"></a>
+	<a id="zone2" href="#URL_SITE_SPIP/blog/" target="_top" title="Accueil du blog"></a>
+	
+<!-- debut des moteurs de recherche -->
+	<div id="rech_h">
+	<div id=search>
+	<!-- recherche interne par spip -->
+	<!-- INCLURE{fond=inc_recherche} -->
+	<!-- fin de recherche interne par spip -->
+	<!-- recherche interne par google -->
+	<INCLURE{fond=inc_google}>
+	<!-- fin de recherche interne par google -->
+	</div> <!-- search -->
+	</div> <!--  rech_h-->
+<!-- fin des moteurs de recherche -->
+	
+
+	<div id="menu-prog">
+	<ul>
+			<BOUCLE_articles_menu(ARTICLES){titre_mot=blog_menu}{par titre}>
+			<li>
+			<a href="#URL_ARTICLE"  title="[(#DESCRIPTIF*)]"  class="bouton">[(#TITRE*|supprimer_numero|ucfirst)]</a>
+			</li>
+			</BOUCLE_articles_menu>
+			
+			<BOUCLE_sites_menu(SITES){titre_mot=blog_menu}{par nom_site}>
+			<li>
+			<a href="#URL_SITE"  title="[(#DESCRIPTIF*)]" class="bouton">[(#NOM_SITE*|ucfirst)]</a>
+			</li>
+			</BOUCLE_sites_menu>
+			
+			<BOUCLE_rubriques_menu(RUBRIQUES){titre_mot=blog_menu}{par titre}>
+			<li>
+			<a href="#URL_RUBRIQUE" title="[(#DESCRIPTIF*)]" class="bouton">[(#TITRE*|supprimer_numero|ucfirst)]</a>
+			</li>
+			</BOUCLE_rubriques_menu>		
+			
+			<li>
+			<a href="#URL_SITE_SPIP/?page=blog_plan" title="Les <BOUCLE_compte_blogs(BREVES){titre_mot=blog}></BOUCLE_compte_blogs>#TOTAL_BOUCLE<//B_compte_blogs> blogs" class="bouton">Tous les blogs</a>
+			</li>
+
+			<li>
+			<a href="#URL_SITE_SPIP/?page=plan" title="Plan" class="bouton">Plan du site</a>
+			</li>		
+
+			<BOUCLE_mode_emploi(BREVES){id_breve=7}>
+			<li>
+			<a href="#URL_SITE_SPIP/?page=blog&id_breve=#ID_BREVE" title="[(#INTRODUCTION*|couper{50})]" class="bouton">Usage du blog</a>
+			</li>
+			</BOUCLE_mode_emploi>		
+			
+			<li>
+			<BOUCLE_dernier_paru(BREVES){par date}{inverse}{0,1}{doublons}{titre_mot=blog}>
+			<a href=#URL_BREVE title="[(#TITRE)]" class="bouton">Dernier blog</a>
+			</BOUCLE_dernier_paru>
+			</li>
+			<li>
+			<a href="#URL_SITE_SPIP/" title="[(#NOM_SITE_SPIP*)]" class="bouton">Accueil du site</a>
+			</li>
+	</ul>
+	</div> <!-- de menu-prog -->
+</div> <!-- de header -->

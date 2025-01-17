@@ -1,0 +1,592 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: action/effacer_messagerecu.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/effacer_messagerecu.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: action/effacer_messagerecu.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: action/envoyer_message.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/envoyer_message.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: action/envoyer_message.php
+
+		-
+			message: "#^Function objet_modifier not found\\.$#"
+			count: 1
+			path: action/envoyer_message.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: action/envoyer_message.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 1
+			path: action/quete_autocomplete.php
+
+		-
+			message: "#^Function ajax_retour not found\\.$#"
+			count: 1
+			path: action/quete_autocomplete.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/quete_autocomplete.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: action/quete_autocomplete.php
+
+		-
+			message: "#^Function recuperer_fond not found\\.$#"
+			count: 1
+			path: action/quete_autocomplete.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 3
+			path: action/quete_calendrier_prive.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/quete_calendrier_prive.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: action/quete_calendrier_prive.php
+
+		-
+			message: "#^Function pipeline not found\\.$#"
+			count: 1
+			path: action/quete_calendrier_prive.php
+
+		-
+			message: "#^Function sql_quote not found\\.$#"
+			count: 2
+			path: action/quete_calendrier_prive.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: action/supprimer_message.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/supprimer_message.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: action/supprimer_message.php
+
+		-
+			message: "#^Function objet_modifier not found\\.$#"
+			count: 1
+			path: action/supprimer_message.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: calendrier_quete.json_fonctions.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 1
+			path: formulaires/configurer_messagerie_agenda.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 1
+			path: formulaires/configurer_messagerie_agenda.php
+
+		-
+			message: "#^Function ecrire_meta not found\\.$#"
+			count: 1
+			path: formulaires/configurer_messagerie_agenda.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 2
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 11
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 3
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function formulaires_editer_objet_charger not found\\.$#"
+			count: 2
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function formulaires_editer_objet_traiter not found\\.$#"
+			count: 1
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function formulaires_editer_objet_verifier not found\\.$#"
+			count: 1
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function generer_url_ecrire not found\\.$#"
+			count: 2
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 7
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function objet_modifier not found\\.$#"
+			count: 1
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function set_request not found\\.$#"
+			count: 11
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 2
+			path: formulaires/editer_message.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 4
+			path: inc/date_gestion.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 4
+			path: inc/date_gestion.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: inc/date_gestion.php
+
+		-
+			message: "#^Function recup_date not found\\.$#"
+			count: 1
+			path: inc/date_gestion.php
+
+		-
+			message: "#^Function set_request not found\\.$#"
+			count: 2
+			path: inc/date_gestion.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 2
+			path: inc/messages.php
+
+		-
+			message: "#^Function auteurs_lister_statuts not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function email_valide not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function entites_html not found\\.$#"
+			count: 2
+			path: inc/messages.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 6
+			path: inc/messages.php
+
+		-
+			message: "#^Function job_queue_add not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function objet_associer not found\\.$#"
+			count: 2
+			path: inc/messages.php
+
+		-
+			message: "#^Function objet_qualifier_liens not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function objet_trouver_liens not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function pipeline not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function sql_fetch not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function sql_fetsel not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function sql_in not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function sql_select not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function suivre_invalideur not found\\.$#"
+			count: 1
+			path: inc/messages.php
+
+		-
+			message: "#^Function annee not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 4
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function date_anneemoisjour not found\\.$#"
+			count: 8
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function date_ical not found\\.$#"
+			count: 3
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function generer_objet_url not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function generer_objet_url_ecrire not found\\.$#"
+			count: 3
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function generer_url_ecrire not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 5
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function journum not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function mois not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function session_get not found\\.$#"
+			count: 2
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function sql_allfetsel not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function sql_fetch not found\\.$#"
+			count: 6
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function sql_in not found\\.$#"
+			count: 1
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function sql_select not found\\.$#"
+			count: 6
+			path: inc/quete_calendrier.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 3
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function notifications_envoyer_mails not found\\.$#"
+			count: 1
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function recuperer_fond not found\\.$#"
+			count: 1
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function spip_log not found\\.$#"
+			count: 1
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function sql_allfetsel not found\\.$#"
+			count: 2
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function sql_in not found\\.$#"
+			count: 2
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function trouver_fond not found\\.$#"
+			count: 1
+			path: notifications/instituermessage.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function ecrire_meta not found\\.$#"
+			count: 1
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function effacer_meta not found\\.$#"
+			count: 2
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function maj_plugin not found\\.$#"
+			count: 1
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function sql_alter not found\\.$#"
+			count: 1
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function sql_drop_table not found\\.$#"
+			count: 1
+			path: organiseur_administrations.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 6
+			path: organiseur_autoriser.php
+
+		-
+			message: "#^Function sql_countsel not found\\.$#"
+			count: 4
+			path: organiseur_autoriser.php
+
+		-
+			message: "#^Function sql_fetsel not found\\.$#"
+			count: 1
+			path: organiseur_autoriser.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 2
+			path: organiseur_fonctions.php
+
+		-
+			message: "#^Function calculer_liste not found\\.$#"
+			count: 2
+			path: organiseur_fonctions.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 1
+			path: organiseur_ieconfig.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 2
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function find_in_theme not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function generer_url_ecrire not found\\.$#"
+			count: 2
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function optimiser_sansref not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function recuperer_fond not found\\.$#"
+			count: 3
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function sql_allfetsel not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function sql_fetsel not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function sql_select not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function timestamp not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function url_absolue not found\\.$#"
+			count: 1
+			path: organiseur_pipelines.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: tests/unit/abstract_sql/99_sql_types_tables_id.php
+
+		-
+			message: "#^Function tester_fun not found\\.$#"
+			count: 1
+			path: tests/unit/abstract_sql/99_sql_types_tables_id.php
+
+		-
+			message: "#^Function find_in_path not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/id_table_objet.php
+
+		-
+			message: "#^Function tester_fun not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/id_table_objet.php
+
+		-
+			message: "#^Function find_in_path not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/objet_type.php
+
+		-
+			message: "#^Function tester_fun not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/objet_type.php
+
+		-
+			message: "#^Function find_in_path not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/table_objet.php
+
+		-
+			message: "#^Function tester_fun not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/table_objet.php
+
+		-
+			message: "#^Function find_in_path not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/table_objet_sql.php
+
+		-
+			message: "#^Function tester_fun not found\\.$#"
+			count: 1
+			path: tests/unit/connect_sql/table_objet_sql.php
+

@@ -1,0 +1,16 @@
+<BOUCLE_principale(MOTS) {id_mot} {doublons}>
+	[(#REM) Menu de navigation mots-cles : les autres mots cles du meme groupe ]
+  <B_mots_freres>
+  <div class="liste mots">
+      #ANCRE_PAGINATION
+      <h2 class="h2"><:mots_clefs_meme_groupe:></h2>
+      <ul class="liste-items">
+          <BOUCLE_mots_freres(MOTS) {type} {par titre} {pagination 20}>
+          <li class="item"><a href="#URL_MOT"[ class="(#EXPOSE)"]>#TITRE</a></li>
+          </BOUCLE_mots_freres>
+      </ul>
+      [<div class="pagination">(#PAGINATION)</div>]
+  </div>
+  </B_mots_freres>
+
+</BOUCLE_principale>

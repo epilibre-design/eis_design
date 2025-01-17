@@ -1,0 +1,11 @@
+[(#REM) Affiche les listes, par le groupe de mots xx, des tickets ouverts]
+
+<BOUCLE(MOTS){id_groupe}{par num titre,titre}>
+	[(#LISTE{#ID_MOT}|setenv{groupemots_#ID_GROUPE})]
+	<INCLURE{fond=prive/squelettes/inclure/inc_liste_detaillee,
+	         id_ticket=#ID_TICKET,
+	         titre=#TITRE,
+	         statut=ouvert,
+	         bloc=_bloc#COMPTEUR_BOUCLE,
+           env,ajax}>
+</BOUCLE>

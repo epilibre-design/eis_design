@@ -1,0 +1,48 @@
+<BOUCLE_document (DOCUMENTS) {id_document}>
+[(#REM)
+
+	Modele pour <img>
+
+	Si on est en mode "vignette" ou appele avec embed=oui,
+	on affiche l'image complete ; sinon le logo
+
+	Si un lien est passe #ENV{lien} on ajoute le a href
+	ou on truque le #URL_DOCUMENT
+
+]
+
+#SET{taille,#ENV{taille,350}}
+#SET{fichier,#FICHIER|image_reduire{#GET{taille}}
+
+[(#MODE|=={vignette}|?{' '})
+	#SET{width,#FICHIER|image_reduire{#GET{taille}}|largeur}
+	#SET{height,#FICHIER|image_reduire{#GET{taille}}|hauteur}
+	#SET{lien_class,thickbox}
+	#SET{url,#ENV{lien}}
+]
+
+[(#SET{
+	image,
+		#MODE|=={vignette}
+		|sinon{#ENV{embed}}
+		|?{' '}
+})][
+
+	(#REM) image complete redimensionnée à la taille?
+
+]
+
+
+
+[(#GET{image})
+
+
+<span class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});[ width:(#GET{ width})px;]']>
+<a href="[(#ENV{lien}|sinon{#URL_DOCUMENT})]"  [class="(#GET{lien_class})"][ title="(#TITRE|texte_backend|supprimer_numero)"]><img src='#GET{fichier}' width='#GET{width}' height='#GET{height}' alt='' /></a></span>][
+
+	(#REM) sinon logo document + lien + alt + title etc
+
+][(#GET{image}|?{'',' '})
+<span class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});[ width:(#LOGO_DOCUMENT|largeur)px;]']><a href="[(#ENV{lien}|sinon{#URL_DOCUMENT})]"[ (#ENV{lien}|?{'',type="#MIME_TYPE"})][ title="(#TITRE|texte_backend)"]>[(#LOGO_DOCUMENT|inserer_attribut{alt,#TITRE|strlen|?{#TITRE {#TYPE_DOCUMENT},#TYPE_DOCUMENT}})]</a></span>
+]
+</BOUCLE_document>

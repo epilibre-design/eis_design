@@ -1,0 +1,12 @@
+<div class="widget">
+	<h4>Table des matières</h4>
+	<nav class="sidebar card py-2 mb-4" id="navbar-articles">
+		<ul class="nav flex-column">
+			<BOUCLE_liens_vers_articles(ARTICLES){id_rubrique}{par num titre, titre}>
+			<li class="nav-item">
+				<a class="nav-link" href="\#art#ID_ARTICLE">#TITRE</a>	
+			</li>
+			</BOUCLE_liens_vers_articles>
+		</ul>
+	</nav>
+</div>

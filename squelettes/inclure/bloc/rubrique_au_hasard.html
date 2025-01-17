@@ -1,0 +1,31 @@
+<div id="section-blog" class="page-section">
+<div class="section mb-0">
+<div class="container">
+<div class="row posts-md mt-5 col-mb-50 mb-0">
+
+<div class="row justify-content-center gutter-50 col-mb-50">
+
+<h2 class="text-center text-uppercase fw-light ls-3 font-body">Au hasard sur le site</h2>
+
+
+	<BOUCLE(RUBRIQUES){par hasard}{id_secteur!=47}{id_mot!=71}{0,3}>
+	<div class="col-md-4">
+		<div class="card"><div class="dfcard-img"><a href="#URL_RUBRIQUE">
+			<img src="[(#LOGO_RUBRIQUE
+				|sinon{#LOGO_SITE_SPIP|image_passe_partout{600,600}|image_recadre{600,600,center}}
+				|extraire_attribut{src})]" class="card-img-top" alt="Logo #TITRE"></a></div>
+			<div class="card-body">
+				<h4 class="card-title">#TITRE</h4>
+        #SET{intro,''}
+				<p class="card-text"><BOUCLE_art_accueil(ARTICLES){id_article=#ID_ARTICLE_ACCUEIL}>#SET{intro,#INTRODUCTION}</BOUCLE_art_accueil></B_art_accueil><BOUCLE_art(ARTICLES){id_rubrique}{par num titre,titre}{0,1}>#SET{intro,#INTRODUCTION}</BOUCLE_art></B_art><//B_art_accueil>[(#TEXTE|sinon{#GET{intro}}|couper{200}|PtoBr)]</p>
+				<a href="#URL_RUBRIQUE" class="btn btn-primary">Lire la suite</a>
+			</div>
+		</div>
+	</div>
+	</BOUCLE>
+</div>
+
+</div>
+</div>
+</div>
+</div>

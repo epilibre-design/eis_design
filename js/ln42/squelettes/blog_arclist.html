@@ -1,0 +1,24 @@
+<!-- debut de tous les blogs -->
+<div id="arclist" class="snap_nopreview">
+<B_tous_blog>
+
+<a href="#URL_SITE_SPIP/?page=blog_plan" title="L'int&eacute;gralit&eacute; des blogs" class="">
+<img src="[(#CHEMIN{images/blog/blog_arc.gif})]" width="130" alt="Les archives du blog">
+</a>
+
+<BOUCLE_tous_blog(BREVES){titre_mot=blog}{par date}{inverse}>
+	[<span id="arcan"><br />
+	(#DATE|annee|unique)
+	</span>]
+	[<span id="arcmois"><br />::
+	 <a href="#URL_SITE_SPIP/?page=blog_arc&date=[(#DATE|annee)][/(#DATE|mois)]" class="" title="blogs de [(#DATE|nom_mois)] [(#DATE|annee)]">
+	(#DATE|affdate{'Y-m'}|unique|nom_mois)</a>:</span>]
+	
+	[<span id="arcjour">
+	<a href="#URL_SITE_SPIP/?page=blog&id_breve=#ID_BREVE" class="" title="[(#TITRE)]">(#DATE|jour)</a>:
+	</span>]
+	
+</BOUCLE_tous_blog>
+</B_tous_blog>
+</div> <!-- arclist -->
+<!-- fin de tous les blogs -->
