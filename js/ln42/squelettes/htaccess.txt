@@ -1,9 +1,0 @@
-##############################################################
-# Fichier .htaccess                                fait par Perline                                     #
-#                                                                                                                         #
-# Permet de gerer l'acces au repertoire squelettes                                             #
-##############################################################
-
-################ Interdire ######################
-
-deny from all
