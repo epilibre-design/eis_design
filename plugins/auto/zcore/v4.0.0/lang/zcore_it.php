@@ -3,11 +3,7 @@
 // extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=it
 // ** ne pas modifier le fichier **
 
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'Accoglienza',
@@ -40,5 +36,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'Caricamento in corso...',
-	'zapl_reload_off' => 'Clicca qui se la pagina rimane incompleta (o attiva javascript nel tuo browser)'
-);
+	'zapl_reload_off' => 'Clicca qui se la pagina rimane incompleta (o attiva javascript nel tuo browser)',
+];

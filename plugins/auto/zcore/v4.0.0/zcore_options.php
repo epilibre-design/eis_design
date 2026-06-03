@@ -14,16 +14,18 @@ defined('_ZPIP') || define('_ZPIP', true);
 // la verification de credibilite de var_zajax sera faite dans public_styliser_dist
 // mais ici on s'assure que la variable ne permet pas de faire une inclusion arbitraire
 // avec un . ou un /
-if ($z = _request('var_zajax') AND !preg_match(",[^\w-],", $z)) {
-	if (!isset($GLOBALS['marqueur'])) {
-		$GLOBALS['marqueur'] = "$z:";
+if ($z = _request('var_zajax')) {
+	if (is_string($z) && !preg_match(",[^\w-],", $z)) {
+		if (!isset($GLOBALS['marqueur'])) {
+			$GLOBALS['marqueur'] = "$z:";
+		} else {
+			$GLOBALS['marqueur'] .= "$z:";
+		}
+		$GLOBALS['flag_preserver'] = true;
 	} else {
-		$GLOBALS['marqueur'] .= "$z:";
+		// supprimer cette variable dangereuse
+		set_request('var_zajax', '');
 	}
-	$GLOBALS['flag_preserver'] = true;
-} else {
-	// supprimer cette variable dangereuse
-	set_request('var_zajax', '');
 }
 
 if (!isset($GLOBALS['spip_pipeline']['recuperer_fond'])) $GLOBALS['spip_pipeline']['recuperer_fond'] = '';
@@ -235,6 +237,7 @@ function afficher_icone_svg($name, $class = '', $alt = '') {
 			$svg .= "<use xlink:href=\"$href\"></use>";
 			$svg .= "</svg>";
 		}
+
 		if ($svg) {
 			return "<i class=\"icon{$class_base}" . ($class ? " $class" : "") . "\">$svg</i> ";
 		}

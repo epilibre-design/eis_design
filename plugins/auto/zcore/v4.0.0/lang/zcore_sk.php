@@ -3,11 +3,7 @@
 // extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=sk
 // ** ne pas modifier le fichier **
 
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'Úvodná stránka',
@@ -40,5 +36,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'Vykonávajú sa zmeny',
-	'zapl_reload_off' => 'Ak je stránka nedokončená (alebo vo vašom prehliadači spúšťa javascript), kliknite sem'
-);
+	'zapl_reload_off' => 'Ak je stránka nedokončená (alebo vo vašom prehliadači spúšťa javascript), kliknite sem',
+];

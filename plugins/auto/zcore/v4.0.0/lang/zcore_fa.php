@@ -3,11 +3,7 @@
 // extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=fa
 // ** ne pas modifier le fichier **
 
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'پديرش',
@@ -36,5 +32,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'در حال بارگذاري',
-	'zapl_reload_off' => 'اگر صفحه‌ ناكامل باقي ماند اينجا را كليك كنيد (ا جاوااسكرپيت را در مرورگر خود فعال كنيد)'
-);
+	'zapl_reload_off' => 'اگر صفحه‌ ناكامل باقي ماند اينجا را كليك كنيد (ا جاوااسكرپيت را در مرورگر خود فعال كنيد)',
+];

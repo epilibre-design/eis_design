@@ -6,7 +6,7 @@
 	source="https://git.spip.net/spip-contrib-extensions/z-core.git"
 	reference="fr">
 	<langue code="ar" url="https://trad.spip.net/tradlang_module/zpip?lang_cible=ar" total="17" traduits="17" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
-		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
+		<traducteur nom="George" lien="https://trad.spip.net/auteur/george" />
 	</langue>
 	<langue code="de" url="https://trad.spip.net/tradlang_module/zpip?lang_cible=de" total="17" traduits="17" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="klaus++" lien="https://trad.spip.net/auteur/klaus" />
@@ -23,6 +23,9 @@
 	<langue code="fr" url="https://trad.spip.net/tradlang_module/zpip?lang_cible=fr" total="17" traduits="17" relire="0" modifs="0" nouveaux="0" pourcent="100.00" />
 	<langue code="it" url="https://trad.spip.net/tradlang_module/zpip?lang_cible=it" total="17" traduits="17" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="Alberto" lien="https://trad.spip.net/auteur/alberto" />
+	</langue>
+	<langue code="mg" url="https://trad.spip.net/tradlang_module/zpip?lang_cible=mg" total="17" traduits="17" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="iBesorongola" lien="https://trad.spip.net/auteur/ibesorongola" />
 	</langue>
 	<langue code="nl" url="https://trad.spip.net/tradlang_module/zpip?lang_cible=nl" total="17" traduits="17" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="Hanjo" lien="https://trad.spip.net/auteur/hanjo" />

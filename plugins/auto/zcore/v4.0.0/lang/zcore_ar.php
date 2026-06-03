@@ -3,11 +3,7 @@
 // extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=ar
 // ** ne pas modifier le fichier **
 
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'الأساسية',
@@ -40,5 +36,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'قيد التحميل...',
-	'zapl_reload_off' => 'النقر هنا اذا بقيت الصفحة غير مكتملة (او تفعيل جافاسكريبت في المتصفح)'
-);
+	'zapl_reload_off' => 'النقر هنا اذا بقيت الصفحة غير مكتملة (او تفعيل جافاسكريبت في المتصفح)',
+];

@@ -3,11 +3,7 @@
 // extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=nl
 // ** ne pas modifier le fichier **
 
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'Welkom',
@@ -40,5 +36,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'Wordt geladen...',
-	'zapl_reload_off' => 'Klik hier als de pagina niet volledig is (of activeer Javascript in uw browser)'
-);
+	'zapl_reload_off' => 'Klik hier als de pagina niet volledig is (of activeer Javascript in uw browser)',
+];

@@ -1,11 +1,9 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// Fichier source, a modifier dans https://git.spip.net/spip-contrib-extensions/z-core.git
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
+// extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=mg
+// ** ne pas modifier le fichier **
 
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'Accueil',
@@ -38,5 +36,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'Chargement en cours...',
-	'zapl_reload_off' => 'Cliquer ici si la page reste incomplète (ou activer le javascript dans votre navigateur)'
-);
+	'zapl_reload_off' => 'Cliquer ici si la page reste incomplète (ou activer le javascript dans votre navigateur)',
+];

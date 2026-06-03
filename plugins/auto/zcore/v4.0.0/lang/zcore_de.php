@@ -3,11 +3,7 @@
 // extrait automatiquement de https://trad.spip.net/tradlang_module/zpip?lang_cible=de
 // ** ne pas modifier le fichier **
 
-if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// A
 	'accueil' => 'Startseite',
@@ -26,7 +22,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_nb_commentaires' => '@nb@ Beiträge',
 
 	// L
-	'lire_la_suite' => 'weiter lesen',
+	'lire_la_suite' => 'weiterlesen',
 	'lire_la_suite_de' => ' von ',
 
 	// P
@@ -40,5 +36,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'Wird geladen ...',
-	'zapl_reload_off' => 'Klicken Sie hier, falls die Seite nicht vollständig geladen wird (oder aktivieren Sie Javascript in Ihrem Webbrowser)'
-);
+	'zapl_reload_off' => 'Klicken Sie hier, falls die Seite nicht vollständig geladen wird (oder aktivieren Sie Javascript in Ihrem Webbrowser)',
+];
