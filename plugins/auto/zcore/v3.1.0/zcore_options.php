@@ -235,7 +235,6 @@ function afficher_icone_svg($name, $class = '', $alt = '') {
 			$svg .= "<use xlink:href=\"$href\"></use>";
 			$svg .= "</svg>";
 		}
-
 		if ($svg) {
 			return "<i class=\"icon{$class_base}" . ($class ? " $class" : "") . "\">$svg</i> ";
 		}
