@@ -1,39 +1,53 @@
-
 <script src="js/plugins.min.js"></script>
 <script src="js/functions.bundle.js"></script>
 
 <script>
-	jQuery(document).ready(function(){
-		var $faqItems = jQuery('#faqs .faq');
-		if( window.location.hash != '' ) {
-			var getFaqFilterHash = window.location.hash;
-			var hashFaqFilter = getFaqFilterHash.split('#');
-			if( $faqItems.hasClass( hashFaqFilter[1] ) ) {
-				jQuery('.grid-filter li').removeClass('activeFilter');
-				jQuery( '[data-filter=".'+ hashFaqFilter[1] +'"]' ).parent('li').addClass('activeFilter');
-				var hashFaqSelector = '.' + hashFaqFilter[1];
-				$faqItems.css('display', 'none');
-				if( hashFaqSelector != 'all' ) {
-					jQuery( hashFaqSelector ).fadeIn(500);
-				} else {
-					$faqItems.fadeIn(500);
-				}
-			}
-		}
+jQuery(document).ready(function(){
+    var $faqItems = jQuery('#faqs .faq');
 
-		jQuery('.grid-filter a').on( 'click', function(){
-			jQuery('.grid-filter li').removeClass('activeFilter');
-			jQuery(this).parent('li').addClass('activeFilter');
-			var faqSelector = jQuery(this).attr('data-filter');
-			$faqItems.css('display', 'none');
-			if( faqSelector != 'all' ) {
-				jQuery( faqSelector ).fadeIn(500);
-			} else {
-				$faqItems.fadeIn(500);
-			}
-			return false;
-	   });
-	});
+    function openToggles(selector) {
+        var $targets = (selector === 'all' || selector === '.all') ? $faqItems : jQuery(selector);
+        $targets.find('.toggle-content').show();
+        $targets.find('.toggle-icon .toggle-closed').hide();
+        $targets.find('.toggle-icon .toggle-open').show();
+    }
 
+    function closeAllToggles() {
+        $faqItems.find('.toggle-content').hide();
+        $faqItems.find('.toggle-icon .toggle-closed').show();
+        $faqItems.find('.toggle-icon .toggle-open').hide();
+    }
 
+    function filterAndOpen(selector) {
+        $faqItems.hide();
+        closeAllToggles();
+        if (selector === 'all' || selector === '.all') {
+            $faqItems.show();
+        } else {
+            jQuery(selector).show();
+            openToggles(selector);
+        }
+    }
+
+    // Gestion du hash à l'arrivée sur la page
+    if (window.location.hash !== '') {
+        var hashParts = window.location.hash.split('#');
+        var hashClass = hashParts[1];
+        if ($faqItems.hasClass(hashClass)) {
+            var hashSelector = '.' + hashClass;
+            jQuery('.grid-filter li').removeClass('activeFilter');
+            jQuery('[data-filter="' + hashSelector + '"]').parent('li').addClass('activeFilter');
+            filterAndOpen(hashSelector);
+        }
+    }
+
+    // Clic sur une lettre de l'index
+    jQuery('.grid-filter a').on('click', function() {
+        jQuery('.grid-filter li').removeClass('activeFilter');
+        jQuery(this).parent('li').addClass('activeFilter');
+        var faqSelector = jQuery(this).attr('data-filter');
+        filterAndOpen(faqSelector);
+        return false;
+    });
+});
 </script>
