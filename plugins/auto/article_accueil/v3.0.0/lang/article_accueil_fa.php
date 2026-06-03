@@ -1,0 +1,17 @@
+<?php
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// extrait automatiquement de https://trad.spip.net/tradlang_module/article_accueil?lang_cible=fa
+// ** ne pas modifier le fichier **
+
+return [
+
+	// A
+	'article_accueil' => 'مقاله پذيرش ',
+	'aucun_article_accueil' => 'هيچ مقاله ',
+
+	// L
+	'label_id_article_accueil' => 'مقاله پذيرش', # MODIF
+
+	// R
+	'rubrique_article_en_accueil' => 'مقاله پذيرش :',
+];

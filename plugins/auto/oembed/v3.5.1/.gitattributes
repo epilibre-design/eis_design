@@ -1,0 +1,4 @@
+phpcs.xml.dist export-ignore
+phpstan* export-ignore
+phpunit* export-ignore
+tests export-ignore

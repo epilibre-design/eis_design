@@ -1,0 +1,44 @@
+[(#REM)
+
+	Affiche un navigateur de sélection d’articles ou de rubriques par le biais du sélecteur générique de Spip.
+
+	### /!\ Format des données ###
+	Attention, le sélecteur générique retourne toujours un tableau :
+	_request($name) = array('article|3', 'article|9', 'rubrique|10');
+	Une fonction de SPIP 3 permet de récupérer un tableau d'identifiants par type d'objet :
+	[(#CHAMP|picker_selected{article})]
+	Cette fonction peut être pratique dans une boucle en utilisant le critere IN
+	(picker_selected est dans prive/formulaires/selecteur/generique_fonctions.php de SPIP 3)
+
+  Parametres :
+  - multiple : si oui, on peut selectionner plusieurs rubriques
+  - afficher_langue : si oui, on affiche la langue de l'objet selectionne
+  - afficher_art_dans_langue_interface : si oui, on n'affiche que les articles de la langue de l'interface
+  - afficher_rub_dans_langue_interface : si oui, on n'affiche que les rubriques de la langue de l'interface
+  - defaut : valeur par defaut si pas présente dans l'environnement
+  - valeur_forcee : valeur utilisee meme si une valeur est dans l'environnement
+
+  Exemple d'appel :
+	[(#SAISIE{selecteur_rubrique_article,menu,
+		multiple=1,
+		label=<:plugin:choisir_le_menu:>})]
+]
+[(#SET{val,#ENV{valeur_forcee,#ENV{valeur,#ENV{defaut}}}})]
+
+[(#SET{filtrer_langue_article,[(#ENV{afficher_art_dans_langue_interface,0}|oui) #ENV{lang}]})]
+[(#SET{filtrer_langue_rubrique,[(#ENV{afficher_rub_dans_langue_interface,0}|oui) #ENV{lang}]})]
+
+[(#REM) Donner à manger à CVT-configurer si aucune valeur définie ]
+<input type="hidden" name="[(#ENV{nom,id_item})][]" id="#ENV{id}" value="" disabled="disabled" />
+
+[(#SET{select,[(#ENV{multiple}|?{0,1})]})]
+<INCLURE{fond=formulaires/selecteur/articles,
+	selected=#GET{val},
+	name=#ENV{nom},
+	afficher_langue=#ENV{afficher_langue,''},
+	filtrer_langue_article=#GET{filtrer_langue_article,''},
+	filtrer_langue_rubrique=#GET{filtrer_langue_rubrique,''},
+  select=#GET{select},
+	rubriques=1}
+	/>
+

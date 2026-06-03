@@ -1,0 +1,14 @@
+{
+    "require": {
+        "php": ">=7.4.0"
+    },
+    "require-dev": {
+        "rector/rector": "^2.0",
+        "symplify/easy-coding-standard": "^13.0"
+    },
+    "scripts": {
+        "check-cs": "vendor/bin/ecs check --ansi",
+        "fix-cs": "vendor/bin/ecs check --fix --ansi",
+        "rector": "vendor/bin/rector process --ansi"
+    }
+}

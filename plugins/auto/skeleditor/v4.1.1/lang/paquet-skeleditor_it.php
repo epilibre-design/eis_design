@@ -1,0 +1,11 @@
+<?php
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// extrait automatiquement de https://trad.spip.net/tradlang_module/paquet-skeleditor?lang_cible=it
+// ** ne pas modifier le fichier **
+
+return [
+
+	// S
+	'skeleditor_description' => 'Nello spazio riservato, concede a redattore gli scheletri delle lime',
+	'skeleditor_slogan' => 'Redattore di scheletro',
+];

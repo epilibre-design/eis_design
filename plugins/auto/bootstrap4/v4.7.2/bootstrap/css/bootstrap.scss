@@ -1,0 +1,48 @@
+/*!
+ * Bootstrap v4.6.2 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+@import "css/functions";
+@import "css/variables";
+@import "css/mixins";
+@import "css/root";
+@import "css/reboot";
+@import "css/type";
+@import "css/images";
+@import "css/code";
+@import "css/grid";
+@import "css/tables";
+@import "css/forms";
+@import "css/buttons";
+@import "css/transitions";
+@import "css/dropdown";
+@import "css/button-group";
+@import "css/input-group";
+@import "css/custom-forms";
+@import "css/nav";
+@import "css/navbar";
+@import "css/card";
+@import "css/breadcrumb";
+@import "css/pagination";
+@import "css/badge";
+@import "css/jumbotron";
+@import "css/alert";
+@import "css/progress";
+@import "css/media";
+@import "css/list-group";
+@import "css/close";
+@import "css/toasts";
+@import "css/modal";
+@import "css/tooltip";
+@import "css/popover";
+@import "css/carousel";
+@import "css/spinners";
+@import "css/utilities";
+@import "css/print";
+
+// BootStrap Theming : 2 possible names, Has to be last-last to override when necessary
+@import "css/bootswatch";
+@import "css/boot-theme";

@@ -1,0 +1,17 @@
+<?php
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// extrait automatiquement de https://trad.spip.net/tradlang_module/article_accueil?lang_cible=en
+// ** ne pas modifier le fichier **
+
+return [
+
+	// A
+	'article_accueil' => 'Home article',
+	'aucun_article_accueil' => 'No article',
+
+	// L
+	'label_id_article_accueil' => 'Select an article',
+
+	// R
+	'rubrique_article_en_accueil' => 'Home article:',
+];
