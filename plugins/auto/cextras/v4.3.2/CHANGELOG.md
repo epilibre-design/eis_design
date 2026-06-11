@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.3.2 - 2026-06-05
+
+### Fixed
+
+- permettre l'édition par crayons de la valeur alternative d'une `selection`
+
 ## 4.3.1 - 2026-05-11
 
 ### Fixed

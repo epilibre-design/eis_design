@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.2 - 2026-06-04
+
+### Fixed
+
+- spip-contrib-extensions/identite_extra!2 nommer convenablement (slugify) la fonction js lorsque la valeur `nom` est tabulaire
+
 ## 6.3.1 - 2026-04-05
 
 ### Fixed
