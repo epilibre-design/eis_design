@@ -1,0 +1,11 @@
+/vendor/
+/composer.phar
+/composer.lock
+/.phpunit.cache
+/.php_cs.cache
+/.php_cs.txt
+/coverage
+/ecrire
+/plugins
+.idea/
+

@@ -1,0 +1,145 @@
+/* Le conteneur qui entoure l'ensemble */
+.md-editor {
+	position: relative;
+	margin: 0;
+  width: 100%;
+  max-height: 40em;
+  overflow: auto;
+  border: 1px solid var(--spip-form-input-border-color);
+  border-radius: var(--spip-form-input-border-radius);
+  background-color: var(--spip-color-white);
+}
+
+/* La barre d'outils */
+.md-editor__menu {
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	width: 100%;
+	background-color: white;
+	border-bottom: 1px solid var(--spip-box-sep-color);
+	z-index: 100;
+}
+.md-editor__menu .groupe-btns {
+	margin: 0;
+	align-items: center;
+}
+.md-editor__menu .groupe-btns button {
+	border: 0;
+	border-radius: 0;
+	--spip-btn-padding-x: 0.5rem;
+}
+.md-editor__menu button[disabled] {
+	opacity: 0.25; /* En attendant que ce soit corrigé dans la dist */
+}
+.md-editor__spacer {
+	flex: 1;
+}
+.md-editor__separator {
+	height: 1.5em;
+	border-left: 1px solid var(--spip-box-sep-color);
+}
+
+/* L'éditeur WYSIWYG avec Tiptap et ProseMirror dedans */
+.md-editor__wysiwyg {
+	padding: var(--spip-form-input-padding-y) var(--spip-form-input-padding-x);
+}
+.fullscreen .md-editor__wysiwyg {
+	max-width: 60em;
+	margin: 0 auto;
+	padding: calc(2 * var(--spip-form-spacing-y)) var(--spip-form-spacing-x) var(--spip-form-spacing-y) var(--spip-form-spacing-x);
+	font-size: 1.2em;
+}
+.ProseMirror-focused {
+	outline: none;
+}
+
+/* Le textarea d'origine avec le markdown brut */
+.md-editor__raw {
+	border: 0;
+}
+
+/* Les nodes et marks supplémentaires propres à SPIP */
+
+a[data-spip_autotitle] {
+	cursor: text;
+}
+a[data-spip_autotitle]::before {
+  content: attr(data-spip_autotitle);
+  pointer-events: auto;
+}
+
+.spip-model {
+  background-color: var(--spip-color-theme-lighter);  /* Example styling */
+  padding: 2px 4px;
+  border-radius: var(--spip-border-radius);
+  cursor: pointer;
+}
+.spip-model_id {
+	background-color: var(--spip-color-theme-light);
+}
+.spip-model_compiled {
+	position: relative;
+}
+.spip-model_compiled::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 9;
+}
+.spip-model_compiled:hover::after, .ProseMirror-selectednode .spip-model_compiled::after{
+	background-color: rgba(0,0,0,0.5);
+}
+.spip-model__btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 10;
+}
+
+pre.spip-html {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  color: #d63384;
+}
+
+.spip-multi-inline:before {
+	content: "\003Cmulti\003E";
+	color: var(--spip-color-theme-dark);
+}
+.spip-multi-inline:after {
+	content: "\003C/multi\003E";
+	color: var(--spip-color-theme-dark);
+}
+.spip-multi-block{
+	margin-bottom: var(--spip-form-spacing-y);
+}
+.spip-multi-block:before {
+	content: "\003Cmulti\003E";
+	color: var(--spip-color-theme-dark);
+	display: block;
+}
+.spip-multi-block:after {
+	content: "\003C/multi\003E";
+	color: var(--spip-color-theme-dark);
+	display: block;
+	margin-top: calc(var(--spip-form-spacing-y) * -1);
+}
+span.spip-lang {
+	color: var(--spip-color-theme-dark);
+}
+
+/* Formulaire quand dans un panneau */
+.box_mediabox .formulaire_inserer_modeles {
+	border: 0;
+	box-shadow: none;
+	margin: 1rem -1rem;
+}

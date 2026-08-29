@@ -1,0 +1,45 @@
+{
+    "name": "spip-contrib/saisies",
+    "description": "Écrire facilement des champs de formulaires",
+    "type": "spip-plugin",
+    "homepage": "https://contrib.spip.net/Saisies",
+    "authors": [
+        {
+            "name": "Matthieu Marcillaud",
+            "homepage": "https://contrib.spip.net/Matthieu-Marcillaud"
+        },
+        {
+            "name": "RastaPopoulos",
+            "homepage": "https://contrib.spip.net/RastaPopoulos"
+        },
+        {
+            "name": "Joseph",
+            "homepage": "https://contrib.spip.net/Joseph"
+        },
+        {
+            "name": "Les Développements Durables",
+            "homepage": "https://www.ldd.fr"
+        },
+        {
+            "name": "Maïeul Rouquette",
+            "homepage": "http://www.maieul.net"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Spip\\Saisies\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^10.1",
+        "symfony/yaml": "^6.2",
+        "spip-league/sdk": "^2.0"
+    },
+    "repositories": {
+        "spip": {
+            "type": "composer",
+            "url": "https://get.spip.net/composer/"
+        }
+    }
+}
