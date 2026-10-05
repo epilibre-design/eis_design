@@ -1,0 +1,27 @@
+<paquet
+	prefix="odaiba"
+	categorie="squelette"
+	version="1.2.3"
+	schema="1.0.0"
+	etat="stable"
+	compatibilite="[4.1.0;4.*]"
+	logo="prive/themes/spip/images/odaiba-128.png"
+	documentation="https://contrib.spip.net/5226"
+>
+	<nom>Odaiba</nom>
+	<!-- Squelette Odaiba -->
+	<auteur lien="https://www.erational.org">erational</auteur>
+	<auteur lien="https://mstdn.fr/@Plumf">Plumf</auteur>
+
+	<necessite nom="bellespuces" compatibilite="[0.1.7;]" />
+	<necessite nom="cextras" compatibilite="[3.12.4;[" />
+	<necessite nom="oembed" compatibilite="[2.1.2;]" />
+	<necessite nom="saisies" compatibilite="[3.31.1;]" />
+	<necessite nom="crayons" compatibilite="[2.0.7;]" />
+	<necessite nom="metasplus" compatibilite="[2.3.2;]" />
+	<necessite nom="palette" compatibilite="[4.0.8;]" />
+
+	<pipeline nom="declarer_champs_extras" inclure="base/odaiba.php" />
+
+	<menu nom="configurer_odaiba" titre="odaiba:titre_page_configurer_odaiba" parent="menu_squelette" icone="images/odaiba-16.png" />
+</paquet>

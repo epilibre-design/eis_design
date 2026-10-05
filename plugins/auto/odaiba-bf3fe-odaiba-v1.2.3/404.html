@@ -1,0 +1,68 @@
+[(#REM)
+	page 404
+
+	param:
+	- (rien)
+
+
+]#HTTP_HEADER{HTTP/1.0  #ENV{code,'404 Not Found'}}
+#HTTP_HEADER{"Cache-Control: no-store, no-cache, must-revalidate"}
+#HTTP_HEADER{Pragma: no-cache}<!DOCTYPE html>
+<html lang="#LANG">
+<head>
+	<INCLURE{fond=inc/inc_head,no-bot} />
+	<title><:pass_erreur:> [(#ENV{status, 404}|intval) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+</head>
+
+
+<body>
+<!-- layout: page -->
+<div class="odaiba-page">
+	<INCLURE{fond=inc/inc_aside} />
+
+	<!-- layout: main -->
+	<div class="odaiba-main[(#CONFIG{odaiba/affiche_recherche}|oui) odaiba-main--withsearch]">
+		<!-- layout: main > section -->
+		<section class="odaiba-main-section">
+
+			<!-- headline -->
+			<div class="headline-wrapper">
+				<div class="content container">
+					<div class="row">
+						<div class="col-md-8 col-sm-10 offset-md-1 headline">
+							<h1><:pass_erreur:> [(#ENV{status, 404}|intval)]</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  #headline -->
+
+			<!-- content -->
+			<div class="content container">
+				<div class="row">
+					<!-- content-main -->
+					<div class="col-md-10 offset-md-1 content-main order-2 order-md-1">
+
+						<!-- Fil d'Ariane -->
+						<a name="contenu" accesskey="2"></a>
+
+						<!-- content -->
+						<div class="content-main-wrapper article-texte center">
+							<h2><:odaiba:404_sorry:></h2>
+							[<img src="(#CHEMIN{img/404.png})" alt="<:pass_erreur:> 404" >]
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- #content -->
+
+			<INCLURE{fond=inc/inc_footer} />
+		</section>
+		<!-- #layout: main > section -->
+	</div>
+	<!-- #layout: main -->
+</div>
+<!-- #layout: page -->
+</body>
+</html>

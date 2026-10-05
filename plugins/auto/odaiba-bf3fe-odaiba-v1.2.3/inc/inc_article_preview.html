@@ -1,0 +1,37 @@
+[(#REM)
+	article preview
+
+	param:
+	- id_article
+	- article_preview_short	(facultatif)		affichage allegé
+	- affiche_categorie		(facultatif)        affiche la rubrique non caché
+
+
+]<BOUCLE_art(ARTICLES){id_article}>
+<!-- article-preview #ID_ARTICLE-->
+<div class="article-preview[(#ENV{article_preview_short}|oui) article-preview-short]">
+	<BOUCLE_rub(RUBRIQUES){id_rubrique}{titre !=='^[99]'}{si #ENV{affiche_categorie}|=={oui}|oui}>
+	<div class="article-preview-theme">#TITRE</div>
+	</BOUCLE_rub>
+	<a href="#URL_ARTICLE" class="article-preview-texte">
+			[<div class="article-surtitre">(#SURTITRE|couper{100})</div>]
+			<h1 class="article-preview-titre">#TITRE</h1>
+			<div class="article-preview-img">
+				[(#ENV{article_preview_short}|non)
+					[(#LOGO_ARTICLE|image_passe_partout{300,300}|image_recadre{300,300}|inserer_attribut{class,img-rounded})]
+				]
+			</div>
+			[(#ENV{article_preview_short}|non)
+				<div class="article-preview-intro">
+					[(#INTRODUCTION|couper{300})]
+				</div>
+			]
+	</a>
+	[(#ENV{article_preview_short}|non)
+	<div class="article-preview-meta">
+		[(#DATE|nom_jour|ucfirst) ][(#DATE|affdate)][ - par (#LESAUTEURS)]
+	</div>]
+</div>
+<!-- #article-preview -->
+</BOUCLE_art>
+#FILTRE{trim}

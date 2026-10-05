@@ -1,0 +1,53 @@
+[(#REM)
+	Style dynamique d'Obaiba via le menu configuration du squelette
+
+]
+
+/* barre laterale */
+.odaiba-aside {
+	background-color:#CONFIG{odaiba/couleur_bg_aside,#2478c5a6};
+}
+
+/* barre haute fixe */
+.navbar {
+	background-color: #CONFIG{odaiba/couleur_bg_aside_rwd,#2478c5};
+}
+
+/* ps */
+.ps-wrapper {
+	background-color: #CONFIG{odaiba/couleur_bg_ps,#d3e4ec};
+}
+
+/* pied de page */
+.footer {
+	background-color: #CONFIG{odaiba/couleur_bg_footer,#242423};
+}
+
+/* sous-rubriques */
+.rubrique-title a {
+	background-color: #CONFIG{odaiba/couleur_bg_sub_rubrique,#0e3083};
+}
+
+/* sous-rubriques survol */
+.rubrique-title a:hover {
+	background-color: #CONFIG{odaiba/couleur_bg_sub_rubrique_hover,#071c50};
+}
+
+/* liens */
+a,
+.article-texte a {
+	color: #CONFIG{odaiba/couleur_bg_a,#1042fb};
+}
+
+a:hover,
+.headline-link:hover,
+.article-texte a:hover {
+	color: #CONFIG{odaiba/couleur_bg_a_hover,#122f9d};
+}
+
+/* Survol des liens de catégories & puces */
+.article-preview-titre::before,
+.article-preview-texte:hover, 
+.article-preview-texte:hover .article-preview-titre {
+	color:#CONFIG{odaiba/couleur_bg_li_a_hover,#70a7d9};
+}

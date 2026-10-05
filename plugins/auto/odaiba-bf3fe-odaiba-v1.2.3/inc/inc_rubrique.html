@@ -1,0 +1,78 @@
+[(#REM)
+	rubrique "
+	- on liste les sous-rubrique
+	- on liste les articles par date avec pagination
+
+	param:
+	- id_rubrique
+	- env           support de la pagination / ajax
+
+]<BOUCLE_rub(RUBRIQUES){id_rubrique}>
+<!-- headline -->
+<div class="headline-wrapper">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-10 col-sm-10 offset-md-1 headline">
+				<div class="ariane[(#CONFIG{odaiba/affiche_ariane}|non) ariane--hidden]">
+					<ul>
+						<li class="home"><a href="#URL_SITE_SPIP"><:odaiba:accueil_site:></a><span>/</span></li>
+						<BOUCLE_ariane(HIERARCHIE){id_rubrique}{tout}><li[(#ID_RUBRIQUE|=={#_findArt:ID_RUBRIQUE}|oui) class="on"]><a href="#URL_RUBRIQUE">[(#TITRE|couper{50})]</a>[(#ID_RUBRIQUE|=={#_findArt:ID_RUBRIQUE}|non)<span>/</span>]</li></BOUCLE_ariane>
+					</ul>
+				</div>
+				<h1 class="#EDIT{titre} titre">#TITRE</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  #headline >
+
+<!-- content -->
+<div class="content container">
+	<div class="row">
+		<!-- content-main -->
+		<div class="col-md-8 offset-md-1 content-main order-2 order-md-1">
+
+			<!-- Fil d'Ariane -->
+			<a name="contenu" accesskey="2"></a>
+
+			<!-- content -->
+			<div class="content-main-wrapper article-texte">
+				[<div class="spip #EDIT{texte}">(#TEXTE)</div>]
+
+				<!-- rubrique > sous-rubriques -->
+				<B_ss_rub>
+				<div class="liste-rubriques">
+				<BOUCLE_ss_rub(RUBRIQUES){id_parent}{par num titre, titre}>
+				<h2 class="rubrique-title"><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+				</BOUCLE_ss_rub>
+				</div>
+				</B_ss_rub>
+
+				<!-- rubrique > listes articles -->
+				<div class="liste-articles">
+					[(#ODAIBA_TYPE_RUBRIQUE|=={tri_date}|non) <INCLURE{fond=inc/inc_rubrique_liste_articles_numero, ajax, env}>]
+					[(#ODAIBA_TYPE_RUBRIQUE|=={tri_date}|oui) <INCLURE{fond=inc/inc_rubrique_liste_articles_actu, ajax, env}>]
+				</div>
+				<!-- #rubrique > listes articles -->
+
+
+			</div>
+			<!-- #content -->
+		</div>
+		<!-- #content-main -->
+
+		<!-- content-side -->
+		<div class="col-md-3 content-sidebar order-1 order-md-2">
+			<div class="content-sidebar-logo">
+				[(#LOGO_RUBRIQUE|image_passe_partout{600,600}|image_recadre{600,600}|inserer_attribut{class,img-rounded})]
+			</div>
+		</div>
+		<!-- #content-side -->
+
+
+	</div>
+</div>
+<!-- #content -->
+
+
+</BOUCLE_rub>

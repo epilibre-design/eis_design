@@ -1,0 +1,41 @@
+[(#REM)
+	page recherche sur auteurs et articles
+
+	param:
+	- recherche
+	- env            pagination & ajax
+
+]
+
+<!-- content -->
+<div class="content-main-wrapper">
+	<h2 class="article-title article-title-search">
+		[(#ENV{recherche}|non) <:odaiba:recherche_lancer:>]
+		[(#ENV{recherche}|oui) <:odaiba:recherche_resultat:> <i>#ENV{recherche}</i>]
+	</h2>
+
+	<div class="article-search">
+		#FORMULAIRE_RECHERCHE
+	</div>
+
+	<div class="rubrique-table-matiere">
+		#SET{found_result,false}
+
+		[(#REM) Phase 1: recherche auteurs]
+		<B_s_aut>
+		<h2 class="marger-top"><:odaiba:recherche_auteurs:></h2>
+		<BOUCLE_s_aut(AUTEURS){recherche}{si #ENV{recherche}|oui}>
+				<INCLURE{fond=inc/inc_auteur_preview, id_auteur} />
+		</BOUCLE_s_aut>
+		#SET{found_result,true}
+		</B_s_aut>
+
+		[(#REM) Phase 2: recherche articles]
+		[(#ENV{recherche}|oui)
+			<INCLURE{fond=inc/inc_recherche_liste_articles,found_resultat=#GET{found_result}, env,ajax}>
+		]
+	</div>
+
+
+</div>
+<!-- #content -->

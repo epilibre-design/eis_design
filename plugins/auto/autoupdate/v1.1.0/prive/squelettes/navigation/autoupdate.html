@@ -1,0 +1,18 @@
+#BOITE_OUVRIR{'',raccourcis}
+[(#URL_ECRIRE{configurer_autoupdate}|icone_horizontale{<:autoupdate:lien_configuration:>,configuration-24.svg})]
+[(#URL_ECRIRE{autoupdate_status}|icone_horizontale{<:autoupdate:lien_statut_mises_a_jour:>,autoupdate-24.svg})]
+[(#AUTORISER{webmestre})
+	<br>
+	[(#BOUTON_ACTION{<:autoupdate:bouton_verifier_mises_a_jour:>,[(#URL_ACTION_AUTEUR{autoupdate_check,'',#URL_ECRIRE{autoupdate}})],btn})]
+]
+#BOITE_FERMER
+
+
+#SET{rollback_dispo,#REM|autoupdate_rollback_disponible}
+[(#GET{rollback_dispo}|et{#AUTORISER{webmestre}})
+	#BOITE_OUVRIR{'',info}
+	[(#BOUTON_ACTION{Revenir à la version #GET{rollback_dispo},[(#URL_ACTION_AUTEUR{autoupdate,[(#EVAL{$GLOBALS\['spip_version_branche'\]}|concat{'-',#GET{rollback_dispo}})],#URL_ECRIRE{autoupdate_status}})],btn danger})]
+	<p><:autoupdate:rollback_info_1:></p>
+	<p><:autoupdate:rollback_info_2:></p>
+	#BOITE_FERMER
+]

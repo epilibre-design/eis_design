@@ -1,0 +1,30 @@
+[(#REM)
+	retourner le logo d'un article aux dimensions indiqués
+	sinon retourne une image générique
+
+	param:
+	- id_article
+	- l						largeur - defaut : 500
+	- h						hauteur - defaut : 500
+	- titre
+	- objet (facultatif)  	permet d'etendre à sur d'autres types d'objets que les mots
+]
+[(#SET{l,#ENV{l}|sinon{500}})]
+[(#SET{h,#ENV{h}|sinon{500}})]
+<BOUCLE_a(ARTICLES){id_article}{si #ENV{objet}|non}>
+[(#LOGO_ARTICLE|oui)[(#LOGO_ARTICLE|image_passe_partout{#GET{l},#GET{h}}|image_recadre{#GET{l},#GET{h}}|inserer_attribut{class,''}|inserer_attribut{alt,#ENV{titre}|textebrut})]]
+	<BOUCLE_img(DOCUMENTS){id_article}{extension IN jpg,gif,png}{par rang_lien, num titre, titre}{si #LOGO_ARTICLE|non}{0,1}>
+    [(#FICHIER|image_passe_partout{#GET{l},#GET{h}}|image_recadre{#GET{l},#GET{h}}|image_masque{#GET{masque}}|inserer_attribut{class,#ENV{titre}|textebrut})]]
+	</BOUCLE_img></B_img>
+	[(#LOGO_ARTICLE|non)[(#CHEMIN{img/logo-generique.png}|image_passe_partout{#GET{l},#GET{h}}|image_recadre{#GET{l},#GET{h}}|image_masque{#GET{masque}}|inserer_attribut{class,#ENV{titre}|textebrut})]]
+    <//B_img>
+</BOUCLE_a>
+<BOUCLE_m(MOTS){id_mot}{si #ENV{objet}|=={mot}|oui}>
+[(#LOGO_MOT|oui)[(#LOGO_MOT|image_passe_partout{#GET{l},#GET{h}}|image_recadre{#GET{l},#GET{h}}|inserer_attribut{class,''}|inserer_attribut{alt,#ENV{titre}|textebrut})]]
+[(#LOGO_MOT|non)[(#CHEMIN{img/logo-generique.png}|image_passe_partout{#GET{l},#GET{h}}|image_recadre{#GET{l},#GET{h}}|image_masque{#GET{masque}}|inserer_attribut{class,#ENV{titre}|textebrut})]]
+</BOUCLE_m>
+<BOUCLE_at(AUTEURS){id_auteur}{si #ENV{objet}|=={auteur}|oui}{tout}>
+[(#LOGO_AUTEUR|oui)[(#LOGO_AUTEUR|image_reduire{0,#GET{h}}|image_recadre{#GET{l},#GET{h},'center center'}|inserer_attribut{class,''}|inserer_attribut{alt,#ENV{titre}|textebrut})]]
+[(#LOGO_AUTEUR|non)[(#CHEMIN{img/logo-generique.png}|image_reduire{0,#GET{h}}|image_recadre{#GET{l},#GET{h},'center center'}|image_masque{#GET{masque}}|inserer_attribut{class,#ENV{titre}|textebrut})]]
+</BOUCLE_at>
+#FILTRE{trim}

@@ -1,0 +1,12 @@
+[(#BOITE_OUVRIR{'',notice})]
+	<p><:nouvelle_version_spip{version=#CONFIG{derniere_maj_notifiee}}:></p>
+
+	#SET{autoupdate_dispo,#REM|autoupdate_patch_disponible|oui}
+	[(#GET{autoupdate_dispo})
+		#BOITE_PIED
+		[(#BOUTON_ACTION{<:autoupdate:bouton_mettre_a_jour_automatiquement:>,[(#URL_ACTION_AUTEUR{autoupdate,[(#EVAL{$GLOBALS\['spip_version_branche'\]})],#URL_ECRIRE{autoupdate_status}})],btn float-end right})]
+	][(#GET{autoupdate_dispo}|non)
+		[#BOITE_PIED(#CHEMIN{spip_loader.php}|oui)
+		<a class="btn" href="#URL_SITE_SPIP/spip_loader.php"><:autoupdate:bouton_mettre_a_jour_spip_loader:></a>]
+	]
+[(#BOITE_FERMER)]

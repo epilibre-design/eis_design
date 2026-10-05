@@ -1,0 +1,36 @@
+[(#REM)
+	listing des articles par recherche
+
+	param:
+	- recherche
+	- env				pour pagination ajax
+]
+
+<B_actu>
+<h2 class="marger-top liner-bottom"><:odaiba:resultats_articles:></h2>
+
+<!-- sub-row 1 -->
+
+#ANCRE_PAGINATION
+[(#ENV{afficher_compteur}|oui)
+	[(#GRAND_TOTAL|>{1}|oui)
+		[<div class="inner pagination-top">
+				<span class="pagination-titre">(#GRAND_TOTAL) <:odaiba:pagination_gd_total:></span>
+		</div>]
+	]
+]
+<BOUCLE_actu(ARTICLES){recherche?}{!par date}{pagination 6}>
+	<INCLURE{fond=inc/inc_article_preview, article_preview_short=oui, affiche_categorie=non, id_article, env} />
+</BOUCLE_actu>
+
+<div class="pagination">
+	[<span class="pagination-titre"><:odaiba:pagination_pages:>:</span> (#PAGINATION{page})  -]
+	#GRAND_TOTAL <:odaiba:resultats_out:>
+</div>
+
+</B_actu>
+[(#ENV{recherche}|oui)
+<div class="alert alert-error">
+	<:odaiba:recherche_nomatch:>
+</div>]
+<//B_actu>

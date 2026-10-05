@@ -1,0 +1,145 @@
+#CACHE{0}
+<!DOCTYPE html>
+<html xml:lang="#LANG" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=#CHARSET' />
+	<title>YAML - Démonstration et tests</title>
+	[<link rel="stylesheet" href="(#CSS{demo/demo.css})" type="text/css" />]
+	#INSERT_HEAD
+</head>
+
+<body dir="#LANG_DIR">
+<div id="container">
+	<div id="header">
+		<h1>
+			<img height="48" width="48" title="Plugin YAML" alt="Plugin YAML" src="#CHEMIN{yaml.svg}"/>
+			PLUGIN YAML[&nbsp;((#PLUGIN{YAML, version}))]
+		</h1>
+	</div>
+
+	#SET{menu_tests,
+		#ARRAY{
+			demo, Fichier de démonstration,
+			inclusion, Fichier avec inclusions,
+			noisette, Fichier de noisette,
+			saisie, Fichier de saisie,
+			formulaire, Fichier de formulaire
+		}
+	}
+	#SET{menu_scans,
+		#ARRAY{
+			noisettes, Toutes les noisettes,
+			saisies, Toutes les saisies,
+			pages, Toutes les pages noiZetier
+		}
+	}
+	#SET{menu_vues,
+		#ARRAY{
+			limites, Cas limites de l'API,
+			data, Boucle DATA
+		}
+	}
+
+	#SET{vue, #ENV{vue}}
+	#SET{scan, #ENV{scan}}
+	#SET{test, #ENV{test}}
+	[(#GET{vue}|non)[(#GET{scan}|non)[(#GET{test}|non)
+		#SET{test, demo}
+	]]]
+
+	<div id="wrapper">
+		<div id="content">
+
+		<BOUCLE_vue_limites(CONDITION){si #GET{vue}|=={limites}}>
+			<INCLURE{fond=demo/inc-cas_limites, env} />
+		</BOUCLE_vue_limites>
+
+		<BOUCLE_vue_data(CONDITION){si #GET{vue}|=={data}}>
+			<INCLURE{fond=demo/inc-boucle_data, env} />
+		</BOUCLE_vue_data>
+
+		<BOUCLE_test_simple(CONDITION){si #GET{test}|array_key_exists{#GET{menu_tests}}}>
+			<INCLURE{fond=demo/inc-decode_test,
+				test=#GET{test},
+				fichier=demo/test_#GET{test}.yaml,
+				env} />
+		</BOUCLE_test_simple>
+
+		<BOUCLE_test_scans(CONDITION){si #GET{scan}|array_key_exists{#GET{menu_scans}}}>
+			<INCLURE{fond=demo/inc-decode_scan, scan=#GET{scan}, env} />
+		</BOUCLE_test_scans>
+
+		</div>
+	</div>
+
+	<div id="navigation">
+		<div class="menu" id="vues">
+			<h2 class="h2">Tests de l'API</h2>
+			<p>Les cas limites sont joués pour de vrai à chaque affichage : chaque ligne dit ce
+			qu'elle attend, ce qu'elle obtient, et conclut.</p>
+			<ul class="menu-items">
+			<BOUCLE_menu_vues(DATA) {source table, #GET{menu_vues}}>
+				[<li class="item">
+				(#SELF
+					|parametre_url{vue, #CLE}
+					|parametre_url{test, ''}
+					|parametre_url{scan, ''}
+					|lien_ou_expose{
+						[(#VALEUR)],
+						[(#GET{vue}|=={#CLE})]})
+				</li>]
+			</BOUCLE_menu_vues>
+			</ul>
+		</div>
+
+		<div class="menu" id="tests">
+			<h2 class="h2">Décoder un fichier</h2>
+			<p>Lecture et décodage d'un fichier YAML représentatif d'un usage réel.</p>
+			<ul class="menu-items">
+			<BOUCLE_menu_tests(DATA) {source table, #GET{menu_tests}}>
+				[<li class="item">
+				(#SELF
+					|parametre_url{test, #CLE}
+					|parametre_url{vue, ''}
+					|parametre_url{scan, ''}
+					|lien_ou_expose{
+						[(#VALEUR)],
+						[(#GET{test}|=={#CLE})]})
+				</li>]
+			</BOUCLE_menu_tests>
+			</ul>
+		</div>
+
+		<div class="menu" id="scans">
+			<h2 class="h2">Décoder tout un dossier</h2>
+			<p>Décodage de tous les fichiers YAML d'un type donné présents sur ce site : de quoi
+			éprouver le plugin sur des fichiers qu'il n'a pas choisis.</p>
+			<ul class="menu-items">
+			<BOUCLE_menu_scans(DATA) {source table, #GET{menu_scans}}>
+				[<li class="item">
+				(#SELF
+					|parametre_url{scan, #CLE}
+					|parametre_url{vue, ''}
+					|parametre_url{test, ''}
+					|lien_ou_expose{
+						[(#VALEUR)],
+						[(#GET{scan}|=={#CLE})]})
+				</li>]
+			</BOUCLE_menu_scans>
+			</ul>
+		</div>
+	</div>
+
+	<div id="extra">
+	</div>
+
+	<div id="footer">
+		<h3 class="h3">Documentation</h3>
+		<ul>
+			<li><a href="https://contrib.spip.net/Le-plugin-YAML-v2"><strong>SPIP-Contrib : Le plugin YAML v2</strong></a></li>
+			<li><a href="https://plugins.spip.net/yaml.html"><strong>Plugins SPIP : YAML</strong></a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

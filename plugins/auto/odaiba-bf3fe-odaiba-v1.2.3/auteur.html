@@ -1,0 +1,33 @@
+[(#REM)
+	page auteur
+
+	param:
+	- id_auteur
+]<BOUCLE_auteur(AUTEURS){id_auteur}{tout}><!DOCTYPE html>
+<html lang="#LANG">
+<head>
+	<INCLURE{fond=inc/inc_head} />
+	<title>[(#NOM_AUTEUR|oui)#PRENOM_AUTEUR #NOM_AUTEUR][(#NOM_AUTEUR|non)#NOM][ - (#NOM_SITE_SPIP|textebrut) ]</title>
+	[<meta name="description" content="(#BIO{150}|attribut_html)" />]
+	[<link rel="canonical" href="(#URL_AUTEUR|url_absolue)" />]
+</head>
+
+<body>
+<!-- layout: page -->
+<div class="odaiba-page">
+	<INCLURE{fond=inc/inc_aside} />
+
+	<!-- layout: main -->
+	<div class="odaiba-main[(#CONFIG{odaiba/affiche_recherche}|oui) odaiba-main--withsearch]">
+		<!-- layout: main > section -->
+		<section class="odaiba-main-section">
+			<INCLURE{fond=inc/inc_auteur, id_auteur} />
+			<INCLURE{fond=inc/inc_footer} />
+		</section>
+		<!-- #layout: main > section -->
+	</div>
+	<!-- #layout: main -->
+</div>
+<!-- #layout: page -->
+</body>
+</html></BOUCLE_auteur>

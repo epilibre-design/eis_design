@@ -1,0 +1,95 @@
+[(#REM)
+	contenu page accueil
+
+	correspond à la selection editoriale "accueil-contenu"
+
+]
+<BOUCLE_selection_home_core(SELECTIONS){identifiant=accueil-contenu}>
+
+[(#REM) item 1: exception avec le logo]
+<BOUCLE_selection_first(SELECTIONS_CONTENUS){id_selection}{0,1}{par rang}>
+<!-- home-row-1-1 -->
+<div class="home-row-1 home-row-1-1">
+	<div class="content container">
+
+		<div class="row align-items-center">
+			<div class="col-md-10 offset-md-1 center">
+				[<div class="home-row-1-logo">
+					(#LOGO_SELECTIONS_CONTENU|image_reduire{800,0}|inserer_attribut{class,no-logo})
+				</div>]
+				<div class="home-row-1-titre">#TITRE</div>
+			</div>
+		</div>
+
+		<div class="row align-items-top home-row-1-1-chapo-core">
+			<div class="col-md-5 offset-md-1">
+				[(#DESCRIPTIF|couper_2_parties{1})]
+			</div>
+			<div class="col-md-5">
+				[(#DESCRIPTIF|couper_2_parties{2})]
+			</div>
+		</div>
+
+
+		[<div class="row align-items-center">
+			<div class="col-md-10 offset-md-1 center">
+				<div class="home-row-1-link">
+					<a href="(#URL)" class="btn btn-odaiba"><:odaiba:lire_la_suite:></a>
+				</div>
+			 </div>
+		</div>]
+
+
+
+	</div>
+</div>
+<!-- #home-row-1-1 -->
+</BOUCLE_selection_first>
+
+[(#REM) les autres items
+		on  joue sur le compteur, pour afficher en alternance
+]
+<BOUCLE_selection_next(SELECTIONS_CONTENUS){id_selection}{1,n}{par rang}>
+[(#SET{numero_item,#COMPTEUR_BOUCLE|plus{1}})]
+ <!-- home-row-1-#GET{numero_item} -->
+<div class="home-row-1 home-row-1-#GET{numero_item}[(#GET{numero_item}|modulo{2}|oui) home-row-even]">
+	<div class="content container">
+		<div class="row align-items-center">
+
+			[(#GET{numero_item}|modulo{2}|oui)
+			<div class="col-md-5 offset-md-1">
+				<div class="home-row-1-illus">
+					[(#LOGO_SELECTIONS_CONTENU|image_passe_partout{600,600}|image_recadre{600,600}|inserer_attribut{class,img-rounded})]
+				 </div>
+			</div>]
+
+			<div class="col-md-5[(#GET{numero_item}|modulo{2}|oui) offset-md-1]">
+				<BOUCLE_art(ARTICLES){id_article=#ID_OBJET}{si #OBJET|=={article}|oui}>
+					<BOUCLE_rub(RUBRIQUES){titre !=='^[99]'}{id_rubrique}>
+					<div class="home-row-1-categorie">#TITRE</div>
+					</BOUCLE_rub>
+				</BOUCLE_art>
+				<div class="home-row-1-titre">#TITRE</div>
+				[<div class="home-row-1-chapo">(#DESCRIPTIF|couper{400})</div>]
+
+				[<div class="home-row-1-link">
+					<a href="(#URL)" class="btn btn-odaiba"><:odaiba:lire_la_suite:></a>
+				</div>]
+			</div>
+
+			[(#GET{numero_item}|modulo{2}|non)
+			<div class="col-md-5 offset-md-1">
+				<div class="home-row-1-illus">
+					[(#LOGO_SELECTIONS_CONTENU|image_passe_partout{600,600}|image_recadre{600,600}|inserer_attribut{class,img-rounded})]
+				 </div>
+			</div>]
+
+		 </div>
+	</div>
+</div>
+<!-- #home-row-1-#GET{numero_item} -->
+</BOUCLE_selection_next>
+
+
+
+</BOUCLE_selection_home_core>

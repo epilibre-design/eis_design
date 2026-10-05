@@ -1,0 +1,19 @@
+[(#REM)
+
+  formulaire de recherche
+  
+  
+  param:
+  - recherche (facultatif)  la recherche
+
+
+]<form action="[(#ENV{action})]" method="get" class="search-form">
+	<fieldset>
+		[(#ENV{action}|form_hidden)]
+		<input type="hidden" name="lang" value="#LANG" />
+		<input name="page" value="recherche" type="hidden"/>
+		<input type="search" class="span search" placeholder="Rechercher sur le site" accesskey="4" name="recherche" id="recherche" [ value="(#ENV{recherche})"]>
+		<!-- <input type="submit" class="search-submit" value="OK" />-->
+		<input type="image" class="search-submit" src="#CHEMIN{img/search.svg}" alt="" />
+	</fieldset>
+ </form>

@@ -1,0 +1,22 @@
+[(#REM)
+	listing des articles trié par date
+
+	param:
+	- env				pour pagination ajax
+]<B_actu>
+
+#ANCRE_PAGINATION
+
+[(#ENV{id_auteur}|oui)<h3 class="spip marger-top"><:odaiba:auteur_articles:></h3>]
+[(#ENV{id_rubrique}|oui)<h3 class="spip marger-top"><:odaiba:rubrique_articles:></h3>]
+
+
+<BOUCLE_actu(ARTICLES){id_auteur ?}{id_mot?}{id_rubrique?}{recherche?}{id_mot ?}{!par date}{pagination 6}>
+	<INCLURE{fond=inc/inc_article_preview, id_article, env} />
+</BOUCLE_actu>
+[<div class="pagination">
+			<span class="pagination-titre"><:odaiba:pagination_pages:>:</span>
+			(#PAGINATION{page})
+			- #GRAND_TOTAL <:odaiba:resultats_out:>
+</div>]
+</B_actu>

@@ -1,0 +1,103 @@
+<div class="formulaire_spip formulaire_configurer formulaire_#FORM">
+
+	<h3 class="titrem"><:odaiba:cfg_titre_parametrages:></h3>
+
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+	<form method="post" action="#ENV{action}">
+	<div>
+		#ACTION_FORMULAIRE
+		<fieldset>
+			<legend><:odaiba:cfg_accueil:></legend>
+			[(#SAISIE{selecteur_article, homepage_article,
+					label=<:odaiba:cfg_homepage_article:>,
+					explication=<:odaiba:cfg_homepage_article_explication:>})]
+		</fieldset>
+
+		<fieldset>
+			<legend><:odaiba:cfg_couleurs:></legend>
+			[(#SAISIE{couleur, couleur_bg_aside,
+					label=<:odaiba:cfg_couleur_bg_aside:>,
+					defaut=rgba(36, 120, 197, 0.65)})]
+
+			[(#SAISIE{couleur, couleur_bg_aside_rwd,
+					label=<:odaiba:cfg_couleur_bg_aside_rwd:>,
+					defaut=rgba(36, 120, 197, 1)})]
+
+			[(#SAISIE{couleur, couleur_bg_ps,
+					label=<:odaiba:cfg_couleur_bg_ps:>,
+					defaut=#d3e4ec})]
+
+			[(#SAISIE{couleur, couleur_bg_footer,
+					label=<:odaiba:cfg_couleur_bg_footer:>,
+					defaut=#242423})]
+
+			[(#SAISIE{couleur, couleur_bg_sub_rubrique,
+					label=<:odaiba:cfg_couleur_bg_sub_rubrique:>,
+					defaut=#0e3083})]
+
+			[(#SAISIE{couleur, couleur_bg_sub_rubrique_hover,
+					label=<:odaiba:cfg_couleur_bg_sub_rubrique_hover:>,
+					defaut=#071c50})]
+
+			[(#SAISIE{couleur, couleur_bg_a,
+					label=<:odaiba:cfg_couleur_a:>,
+					defaut=#1042fb})]
+
+			[(#SAISIE{couleur, couleur_bg_a_hover,
+					label=<:odaiba:cfg_couleur_a_hover:>,
+					defaut=#122f9d})]
+
+			[(#SAISIE{couleur, couleur_bg_li_a_hover,
+					label=<:odaiba:cfg_couleur_li_a_hover:>,
+					defaut=#70a7d9})]			
+		</fieldset>
+
+
+		<fieldset>
+			<legend><:odaiba:cfg_presentation:></legend>
+			[(#SAISIE{oui_non, affiche_ariane,
+					label=<:odaiba:cfg_affiche_ariane:>})]
+		</fieldset>
+
+		<fieldset>
+			<legend><:odaiba:cfg_menus:></legend>
+			[(#SAISIE{oui_non, affiche_menu_lien_accueil,
+					label=<:odaiba:cfg_affiche_menu_lien_accueil:>})]
+			[(#SAISIE{radio, menu_rwd,
+					label=<:odaiba:cfg_menu_rwd:>,
+					defaut=fixe,
+					data=#ARRAY{
+					lateral,<:odaiba:cfg_menu_rwd_lateral:>,
+					fixe,<:odaiba:cfg_menu_rwd_fixe:>}
+					})]
+		</fieldset>
+
+		<fieldset>
+			<legend><:odaiba:cfg_article:></legend>
+			[(#SAISIE{oui_non, affiche_date_article,
+					label=<:odaiba:cfg_affiche_date_article:>})]
+			[(#SAISIE{oui_non, affiche_auteur_article,
+					label=<:odaiba:cfg_affiche_auteur_article:>})]
+		</fieldset>
+
+		<fieldset>
+			[(#SAISIE{oui_non, affiche_recherche,
+					label=<:odaiba:cfg_affiche_recherche:>})]
+
+			<legend><:odaiba:cfg_footer:></legend>
+			[(#SAISIE{selecteur_article, footer_articles,
+					multiple=oui,
+					label=<:odaiba:cfg_footer_articles:>,
+					explication=<:odaiba:cfg_footer_articles_explication:>})]
+
+		</fieldset>
+
+		<input type="hidden" name="_meta_casier" value="odaiba" />
+		<p class="boutons"><span class="image_loading">&nbsp;</span><input type="submit" class="submit" value="<:bouton_enregistrer:>" /></p>
+	</div>
+	</form>
+</div>
+
+<div style="padding:1rem;background-color:#eee"><:odaiba:ours:></div>

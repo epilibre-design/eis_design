@@ -1,0 +1,51 @@
+[(#REM)
+	aside : banniere et barre de navigation
+
+	param:
+	- id_rubrique (facultatif)  expose les rubriques
+	- id_mot (facultatif)       expose les mots-clés
+
+
+]	<!-- layout: aside -->
+[(#CONFIG{odaiba/menu_rwd}|=={lateral}|oui)
+	<a href="#" class="js-odaiba-nav-toggle odaiba-nav-toggle"><i></i></a>
+]
+<aside class="odaiba-aside">
+		<h1 class="odaiba-logo">
+			<a href="#URL_SITE_SPIP">
+				<span class="odaiba-logo-img">#LOGO_SITE_SPIP</span>
+				#NOM_SITE_SPIP
+			</a>
+		</h1>
+		<nav class="odaiba-main-menu" role="navigation">
+			<ul>
+				[(#CONFIG{odaiba/affiche_menu_lien_accueil}|oui)<li><a href="#URL_SITE_SPIP"><:odaiba:accueil_site:></a></li>]
+				<BOUCLE_nav(RUBRIQUES){titre !=='^[99]'}{par num titre}{racine}>
+				<li[(#EXPOSE|oui) class="odaiba-active"]><a href="#URL_RUBRIQUE">#TITRE</a></li>
+				</BOUCLE_nav>
+			</ul>
+		</nav>
+</aside>
+<!-- #layout: aside -->
+
+<BOUCLE_is_menu_rwd_fixe(ARTICLES){0,1}{si #CONFIG{odaiba/menu_rwd}|=={lateral}|non}> </BOUCLE_is_menu_rwd_fixe>
+<!-- header responsive (fixed navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top rwd-show">
+	<a class="navbar-brand" href="#URL_SITE_SPIP">
+		[(#LOGO_SITE_SPIP|inserer_attribut{class,header-logo-rwd})]
+		<span class="header-name-rwd">#NOM_SITE_SPIP</span>
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+ 	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
+			<BOUCLE_nav_rwd(RUBRIQUES){titre !=='^[99]'}{par num titre}{racine}>
+			<li  class="nav-item"><a href="#URL_RUBRIQUE" class="nav-link[ (#EXPOSE)]">#TITRE</a></li>
+			</BOUCLE_nav_rwd>
+		</ul>
+	</div>
+</nav>
+<!-- header responsive -->
+</B_is_menu_rwd_fixe>
+#FILTRE{trim}

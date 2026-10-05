@@ -1,0 +1,75 @@
+<div class="formulaire_spip formulaire_configurer formulaire_#FORM formulaire_#FORM">
+<h3 class='titrem'><img src="#CHEMIN_IMAGE{autoupdate-24.svg}" class="cadre-icone"><:autoupdate:titre_autoupdate:></h3>
+	[<div class="reponse_formulaire reponse_formulaire_ok" role="status">(#ENV*{message_ok})</div>]
+	[<div class="reponse_formulaire reponse_formulaire_erreur" role="alert">(#ENV*{message_erreur})</div>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'><div>
+		#ACTION_FORMULAIRE
+		<div class="editer-groupe">
+			#SET{name,mode}#SET{defaut,manuel}#SET{erreurs,#ENV*{erreurs/#GET{name}}}
+			<div class="editer editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label><:autoupdate:label_autoupdate_mode:></label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]<div class="choix">
+					<input type="radio" name="#GET{name}" id="#GET{name}_auto" value="auto"
+						[(#ENV{#GET{name},#GET{defaut}}|=={manuel}|non)checked="checked"]
+					/><label for="#GET{name}_auto"><:autoupdate:label_autoupdate_mode_auto:></label>
+				</div>
+				<div class="choix">
+					<input type="radio" name="#GET{name}" id="#GET{name}_manuel" value="manuel"
+				       [(#ENV{#GET{name},#GET{defaut}}|=={manuel}|oui)checked="checked"]
+					/><label for="#GET{name}_manuel"><:autoupdate:label_autoupdate_mode_manuel:></label>
+				</div>
+			</div>
+
+			#SET{name,ignore_changed_files}#SET{obli,''}#SET{defaut,''}#SET{erreurs,#ENV**{erreurs/#GET{name}}}#SET{id,#GET{name}|concat{#ENV{suffixe}}}
+			<div class="editer pleine_largeur editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]<p class="explication" id="#GET{name}_explication"><:autoupdate:explication_autoupdate_ignore_changed_files:></p>
+				#SET{val,0}
+				<input type="hidden" name="#GET{name}" value="#GET{val}" />
+				#SET{val,1}
+				<div class="choix">
+					<input type="checkbox" name="#GET{name}" class="checkbox" id="#GET{id}_#GET{val}" value="#GET{val}" aria-describedby="#GET{name}_explication" [(#ENV{#GET{name},#GET{defaut}}|=={#GET{val}}|oui)checked="checked"] />
+					<label for="#GET{id}_#GET{val}"><:autoupdate:label_autoupdate_ignore_changed_files_1:></label>
+				</div>
+			</div>
+
+			#SET{name,report_auto}#SET{obli,''}#SET{defaut,''}#SET{erreurs,#ENV**{erreurs/#GET{name}}}#SET{id,#GET{name}|concat{#ENV{suffixe}}}
+			<div class="editer pleine_largeur editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]#SET{val,0}
+				<input type="hidden" name="#GET{name}" value="#GET{val}" />
+				#SET{val,1}
+				<div class="choix">
+					<input type="checkbox" name="#GET{name}" class="checkbox" id="#GET{id}_#GET{val}" value="#GET{val}" aria-describedby="#GET{name}_explication" [(#ENV{#GET{name},#GET{defaut}}|=={#GET{val}}|oui)checked="checked"] />
+					<label for="#GET{id}_#GET{val}"><:autoupdate:label_autoupdate_report_auto_1:></label>
+				</div>
+			</div>
+
+			<!--
+			#SET{name,canal}#SET{defaut,stable}#SET{erreurs,#ENV*{erreurs/#GET{name}}}
+			<div class="editer editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label><:autoupdate:label_autoupdate_canal:></label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]
+				<div class="explication">(Non implémenté pour le moment)</div>
+				<div class="choix">
+					<input type="radio" name="#GET{name}" id="#GET{name}_test" value="test"
+						[(#ENV{#GET{name},#GET{defaut}}|=={test}|oui)checked="checked"]
+					/><label for="#GET{name}_oui"><:autoupdate:label_autoupdate_canal_test:></label>
+				</div>
+				<div class="choix">
+					<input type="radio" name="#GET{name}" id="#GET{name}_stable" value="stable"
+				       [(#ENV{#GET{name},#GET{defaut}}|=={test}|non)checked="checked"]
+					/><label for="#GET{name}_non"><:autoupdate:label_autoupdate_canal_stable:></label>
+				</div>
+			</div>
+			-->
+		</div>
+	  [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+	  <!--extra-->
+	  <p class='boutons'><span class='image_loading'>&nbsp;</span><input type='submit' class='btn submit' value='<:bouton_enregistrer:>'></p>
+	</div></form>
+	]
+</div>

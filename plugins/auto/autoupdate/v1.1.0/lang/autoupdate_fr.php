@@ -1,0 +1,70 @@
+<?php
+
+return [
+	'titre_autoupdate' => 'Mises à jour automatique de SPIP',
+	'titre_menu_autoupdate' => 'Auto Update',
+	'titre_etat' => 'État',
+	'titre_mises_a_jour_recentes' => 'Mises à jour récentes',
+	'label_autoupdate_mode' => 'Mises à jour automatique de SPIP',
+	'label_autoupdate_mode_auto' => 'Appliquer automatiquement les mises à jour mineure/de sécurité',
+	'label_autoupdate_mode_manuel' => 'Je déclencherai manuellement les mises à jour',
+	'label_autoupdate_canal' => 'Chronologie des mises à jour',
+	'label_autoupdate_canal_test' => 'Dès leurs disponibilités (test)',
+	'label_autoupdate_canal_stable' => 'Dès qu\'elles sont jugées stables',
+	'label_autoupdate_ignore_changed_files_1' => 'Appliquer les mises à jour même si des modifications locales sont présentes',
+	'explication_autoupdate_ignore_changed_files' => 'Par défaut, la mise à jour est refusée si un fichier du core a été modifié ou supprimé par vos soins. Cocher cette option écrase les modifications locales lors de la mise à jour.',
+	'label_autoupdate_report_auto_1' => "Envoyer automatiquement un rapport de debug après chaque mise à jour (réussie ou echouée)",
+	'mise_a_jour_version_spip' => 'Mise à jour vers la version @version@ de SPIP',
+	'echec_mise_a_jour_version_spip' => 'Échec de la mise à jour vers la version @version@ de SPIP',
+	'notification_mise_a_jour_terminee' => 'Bonjour,
+
+Le site @adresse_site@ a été mis à jour avec succès vers la version de SPIP @version@.
+
+@warnings@
+',
+	'notification_mise_a_jour_echouee' => 'Bonjour,
+
+La mise à jour du site @adresse_site@ vers la version de SPIP @version@ a échoué.
+Le site n’a pas été mis à jour.
+
+@erreurs@
+',
+	'warning_htaccess' => 'Attention : htaccess.txt a été mis à jour, mais votre fichier .htaccess diffère (personnalisations locales). Vérifiez manuellement s’il faut reporter des changements de htaccess.txt vers .htaccess, sans écraser vos réglages.',
+	'titre_warnings' => 'Avertissements :',
+	'rollback_info_1' => 'Le retour en arrière de version ne concerne que les fichiers de SPIP.',
+	'rollback_info_2' => 'Si la mise à jour a entrainé une mise à jour de la base de données, il n\'est pas garanti que ce retour en arrière soit fonctionnel.',
+	'bouton_verifier_mises_a_jour' => 'Vérifier les mises à jour',
+	'bouton_mettre_a_jour_automatiquement' => 'Mettre à jour automatiquement',
+	'bouton_mettre_a_jour_spip_loader' => 'Mettre à jour avec Spip Loader',
+	'check_a_jour' => 'SPIP est à jour : aucune nouvelle version n’est disponible.',
+	'check_disponible' => 'Une nouvelle version de SPIP est disponible. Aucun patch de mise à jour automatique n’est proposé pour votre version actuelle.',
+	'check_disponible_patch' => 'Une nouvelle version de SPIP est disponible, avec un patch de mise à jour automatique.',
+	'check_erreur' => 'Impossible de joindre le serveur des mises à jour. Réessayez plus tard.',
+	'info_version_spip' => 'Version SPIP installée : @version@',
+	'info_mode_manuel' => 'Mode : mises à jour manuelles.',
+	'info_mode_auto' => 'Mode : mises à jour automatiques des versions mineures / de sécurité.',
+	'info_spip_a_jour' => 'Aucune nouvelle version n’est signalée pour le moment.',
+	'info_maj_disponible' => 'Une nouvelle version est signalée : @version@.',
+	'info_maj_patch_disponible' => 'Un patch de mise à jour automatique est disponible pour votre version.',
+	'info_aucune_maj_recente' => 'Aucune mise à jour récente enregistrée.',
+	'lien_configuration' => 'Configuration',
+	'lien_statut_mises_a_jour' => 'Statut des mises à jour',
+	'lien_voir_detail_statuts' => 'Voir le détail des statuts',
+	'titre_bloc_mise_a_jour' => 'Mise à jour <tt>@hash@</tt>',
+	'titre_erreurs' => 'Il y a eu des erreurs :',
+	'info_status' => 'Statut : @status@',
+	'info_rapport_envoye' => 'Rapport de debug envoyé le @date@',
+	'bouton_rapport_debug' => 'Envoyer un rapport de debug',
+	'bouton_finir_mise_a_jour' => 'Finir la mise à jour',
+	'status_unknown' => 'inconnue',
+	'status_none' => 'indéfinie',
+	'status_preparing' => 'en préparation',
+	'status_ready' => 'prête',
+	'status_processing' => 'en cours de déploiement',
+	'status_patched_ok' => 'patch appliqué',
+	'status_patched_errors' => 'patch appliqué (mais il y a des erreurs)',
+	'status_finished' => 'finie',
+	'status_finished_upgraded' => 'finie avec mise à jour de base',
+	'status_failed_rollback' => 'le patch n\'a pas pu être entièrement appliqué, les modifications ont été rollback',
+	'status_failed' => 'échouée',
+];

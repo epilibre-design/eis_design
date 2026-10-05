@@ -1,0 +1,66 @@
+[(#REM)
+	noisette auteur
+
+	param:
+	- id_mot
+
+]<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+
+<!-- headline -->
+<div class="headline-wrapper">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8 col-sm-10 offset-md-1 headline">
+				<div class="ariane[(#CONFIG{odaiba/affiche_ariane}|non) ariane--hidden]">
+					<ul>
+						<li class="home"><a href="#URL_SITE_SPIP"><:odaiba:accueil_site:></a><BOUCLE_is_ariane(HIERARCHIE){id_article}{titre !=='^[99]'}> </BOUCLE_is_ariane><span>/</span></B_is_ariane></li>
+						<BOUCLE_ariane(HIERARCHIE){id_article}{titre !=='^[99]'}><li[(#ID_RUBRIQUE|=={#_findArt:ID_RUBRIQUE}|oui) class="on"]><a href="#URL_RUBRIQUE">[(#TITRE|couper{50})]</a>[(#ID_RUBRIQUE|=={#_findArt:ID_RUBRIQUE}|non)<span>/</span>]</li></BOUCLE_ariane>
+					</ul>
+				</div>
+				<h1 class="#EDIT{nom}">#NOM</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  #headline -->
+
+
+
+<!-- content -->
+<div class="content container">
+	<div class="row">
+
+		<!-- content-main -->
+		<div class="col-md-8 offset-md-1 content-main order-2 order-md-1">
+
+			<!-- Fil d'Ariane -->
+			<a name="contenu" accesskey="2"></a>
+
+			<!-- content -->
+			<div class="content-main-wrapper article-texte">
+
+				[<div class="#EDIT{bio} article-texte">(#BIO)</div>]
+				[<div class="#EDIT{hyperlien} article-hyperlien">URL: <a href="(#URL_SITE)" class="spip_out">#URL_SITE</a></div>]
+				[<div class="notes articles-notes">(#NOTES)</div>]
+
+				<!-- auteur contact ? -->
+				[<br /><div class="spacer"></div>(#FORMULAIRE_ECRIRE_AUTEUR)]
+
+			</div>
+			<!-- #content -->
+		</div>
+		<!-- #content-main -->
+
+		<!-- content-side -->
+		<div class="col-md-3 content-sidebar order-1 order-md-2">
+			<div class="content-sidebar-logo">
+				[(#LOGO_AUTEUR|image_passe_partout{400,400}|image_recadre{400,400}|inserer_attribut{class,img-rounded})]
+			</div>
+		</div>
+		<!-- #content-side -->
+
+
+	</div>
+</div>
+<!-- #content -->
+</BOUCLE_auteur>

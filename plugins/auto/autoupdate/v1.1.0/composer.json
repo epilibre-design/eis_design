@@ -1,0 +1,55 @@
+{
+    "name": "spip/autoupdate",
+    "description": "Mises à jour automatiques de SPIP",
+    "license": "GPL-3.0-only",
+    "type": "spip-plugin",
+    "authors": [
+        {
+            "name": "Collectif SPIP",
+            "homepage": "https://discuter.spip.net/c/spip-dev/5",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "spip-league/qa-tools": "^1.0",
+        "spip-league/sdk": "^1.1"
+    },
+    "repositories": [
+        {
+            "name": "spip",
+            "type": "composer",
+            "url": "https://get.spip.net/composer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Spip\\Plugin\\Autoupdate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spip\\Plugin\\Autoupdate\\Tests\\": "tests/"
+        },
+        "files": [
+            "vendor/spip-league/sdk/src/Stub/functions.php"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.33"
+        }
+    },
+    "scripts": {
+        "analyse": "phpstan --memory-limit=1G",
+        "baseline": "phpstan --memory-limit=1G --generate-baseline --allow-empty-baseline",
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --fix --ansi",
+        "rector": "rector process --ansi",
+        "rector-dry-run": "rector process --dry-run --ansi",
+        "test": "phpunit --colors --no-coverage",
+        "test-coverage": "XDEBUG_MODE=coverage phpunit --colors"
+    }
+}

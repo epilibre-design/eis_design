@@ -1,0 +1,119 @@
+[(#REM)
+	article entier
+	- contenu (compatible crayons)
+	- la barre outils est inspiree de  inspi plugin outils_article http://www.spip-contrib.net/Boite-a-outils-pour-article,1
+	- traduction
+	- avec portfolio
+	- forums & petitions
+
+	 on affichage par le surtitre (reserve pour le pied intitue court)
+
+ 	logo: on affiche le logo FR
+
+	param:
+	- id_article
+
+]<BOUCLE_findArt(ARTICLES){id_article}>
+
+
+<!-- headline -->
+<div class="headline-wrapper">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8 col-sm-10 offset-md-1 headline">
+				<div class="ariane[(#CONFIG{odaiba/affiche_ariane}|non) ariane--hidden]">
+					<ul>
+						<li class="home"><a href="#URL_SITE_SPIP"><:odaiba:accueil_site:></a><BOUCLE_is_ariane(HIERARCHIE){id_article}{titre !=='^[99]'}> </BOUCLE_is_ariane><span>/</span></B_is_ariane></li>
+						<BOUCLE_ariane(HIERARCHIE){id_article}{titre !=='^[99]'}><li[(#ID_RUBRIQUE|=={#_findArt:ID_RUBRIQUE}|oui) class="on"]><a href="#URL_RUBRIQUE">[(#TITRE|couper{50})]</a>[(#ID_RUBRIQUE|=={#_findArt:ID_RUBRIQUE}|non)<span>/</span>]</li></BOUCLE_ariane>
+					</ul>
+				</div>
+				<BOUCLE_rub(RUBRIQUES){titre !=='^[99]'}{id_rubrique}>
+				[(#_findArt:TITRE|=={#TITRE}|non)<div class="headline-context"><a href="#URL_RUBRIQUE" class="headline-link">#TITRE</a></div>]
+				</BOUCLE_rub>
+				<h1 class="#EDIT{titre}">#TITRE</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  #headline -->
+
+
+<!-- content -->
+<div class="content container">
+	<div class="row">
+		<!-- content-main -->
+		<div class="col-md-8 offset-md-1 content-main order-2 order-md-1">
+
+			<!-- Fil d'Ariane -->
+			<a name="contenu" accesskey="2"></a>
+
+			<!-- content -->
+			<div class="content-main-wrapper article-texte">
+				[<h2 class="#EDIT{soustitre}  article-soustitre">(#SOUSTITRE)</h2>]
+				[<div class="#EDIT{descriptif}  article-descriptif">(#DESCRIPTIF)</div>]
+				[<div class="#EDIT{chapo} article-chapo">(#CHAPO)</div>]
+				[<div class="#EDIT{texte} article-texte">(#TEXTE|image_reduire{1200,0}|image_format{webp})</div>]
+				[<div class="hypertxt"><strong>URL: </strong> <a href="#URL_SITE" class="spip_out">(#NOM_SITE)</a></div>]
+				[<div class="article-notes">(#NOTES)</div>]
+
+				[(#REM) Portfolio: album d'images avec visionneuse fancybox]
+				<B_doc><div class="portfolio">
+				<BOUCLE_doc(DOCUMENTS){id_article}{extension IN png,jpg,gif}{mode=document}{par num titre, date}{vu=non}>
+				<div class="portfolio-item">[<a href="[(#URL_DOCUMENT)]" type="#MIME_TYPE" rel="fancy-g1"[ title="(#TITRE|attribut_html) [ - (#DESCRIPTIF|attribut_html)]"]>(#FICHIER|copie_locale|image_reduire{0,160}|image_recadre{110,110,center}|image_aplatir{jpg,ffffff})</a>]</div></BOUCLE_doc>
+				</div></B_doc>
+				<BOUCLE_doc_exclure_img(DOCUMENTS){id_article}{extension IN png,jpg,gif}{mode=document}{doublons}> </BOUCLE_doc_exclure_img>
+
+
+
+				[<!-- autre doc -->(#REM) Autres documents joints a l'article]
+				<B_docjoint><div class='spacer'></div>
+				<BOUCLE_docjoint(DOCUMENTS){id_article}{mode=document}{doublons}>
+				<div class="docjoint">
+					<div><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE" download>#LOGO_DOCUMENT</a>
+					<small>#TYPE_DOCUMENT[ - (#TAILLE|taille_en_octets)]</small></div>
+					[<strong><a href="#URL_DOCUMENT">(#TITRE)</a></strong><br />]
+					[(#DESCRIPTIF)]
+				</div>
+				</BOUCLE_docjoint>
+				<div class="spacer"></div>
+
+				<!-- article meta -->
+				<div class="date">
+					[(#CONFIG{odaiba/affiche_date_article}|oui)	[<:odaiba:posted:> (#DATE|affdate)]]
+					[(#CONFIG{odaiba/affiche_auteur_article}|oui)	[<:par:> (#LESAUTEURS)]]
+				</div>
+
+
+			</div>
+			<!-- #content -->
+		</div>
+		<!-- #content-main -->
+
+		<!-- content-side -->
+		<div class="col-md-3 content-sidebar order-1 order-md-2">
+			<div class="content-sidebar-logo">
+				[(#LOGO_ARTICLE|image_passe_partout{600,600}|image_recadre{600,600}|inserer_attribut{class,img-rounded})]
+			</div>
+		</div>
+		<!-- #content-side -->
+
+
+	</div>
+</div>
+<!-- #content -->
+
+
+[<!-- ps -->
+<div class="ps-wrapper">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8 offset-md-1 ps">
+				<div class="#EDIT{ps} article-ps">(#PS)</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  #ps -->]
+
+
+</BOUCLE_findArt>

@@ -1,0 +1,16 @@
+[(#REM)
+	listing des articles d'une rubrique par date
+
+	param:
+	- id_rubrique
+	- env				pour pagination ajax
+
+]<B_actu>
+
+<BOUCLE_actu(ARTICLES){id_auteur ?}{id_mot?}{id_rubrique?}{recherche?}{id_mot ?}{!par date}{pagination 9}>
+<INCLURE{fond=inc/inc_article_preview, article_preview_short=oui, id_article, env} />
+</BOUCLE_actu>
+[<nav class="pagination">
+	<span class="pagination-titre"><:odaiba:pagination_pages:>:</span>	(#PAGINATION{page})
+</nav>]
+</B_actu>

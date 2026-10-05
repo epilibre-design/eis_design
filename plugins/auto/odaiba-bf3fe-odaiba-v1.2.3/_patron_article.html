@@ -1,0 +1,170 @@
+[(#REM)
+	patron de la page article
+
+
+]<!doctype html>
+<html lang="#LANG">
+<head>
+	<title>#NOM_SITE_SPIP - Page Patron ARTICLE </title>
+	<INCLURE{fond=inc/inc_head,no-bot=oui} />
+</head>
+<body>
+<!-- layout: page -->
+<div class="odaiba-page">
+	<INCLURE{fond=inc/inc_aside} />
+
+	<!-- layout: main -->
+	<div class="odaiba-main">
+		<!-- layout: main > section -->
+		<section class="odaiba-main-section">
+
+			<!-- headline -->
+			<div class="headline-wrapper">
+				<div class="content container">
+					<div class="row">
+						<div class="col-md-8 col-sm-10 offset-md-1 headline">
+							<div class="ariane[(#CONFIG{odaiba/affiche_ariane}|non) ariane--hidden]">
+								<ul>
+									<li class="home"><a href="#URL_SITE_SPIP"><:odaiba:accueil_site:></a> <span>/</span></li>
+									<li class="on"><a href="#">Démonstration</a></li>
+								</ul>
+							</div>
+							<h1 class="#EDIT{titre}">Le squelette Odaiba</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  #headline -->
+
+
+			<!-- content -->
+			<div class="content container">
+				<div class="row">
+					<!-- content-main -->
+					<div class="col-md-8 offset-md-1 content-main order-2 order-md-1">
+
+						<a name="contenu" accesskey="2"></a>
+
+						<!-- content -->
+						<div class="content-main-wrapper article-texte">
+
+
+
+							<h2 class="spip">Qu'est ce que Odaiba ?</h2>
+							<p>Ceci est le contenu du champs <strong class="spip">Texte de l'article</strong> éditable par le crayon.<br />Lorem ipsum dolor sit amet consectetuer dignissim pretium porttitor ullamcorper Nam. Urna Pellentesque porttitor eu eros risus vitae metus interdum risus Vivamus. Orci congue Cras pretium ipsum convallis quam ut mattis Integer id. Donec ac egestas lobortis consectetuer Sed fringilla orci sed dui pretium. Suspendisse pede et orci nibh ipsum pede.</p>
+							<p>Sagittis congue ac amet orci ut Donec nec <a href="#">turpis urna risus</a>. Augue eros est dui orci porttitor nunc Mauris Quisque Vestibulum Vestibulum. Turpis elit orci non nec lobortis eros ut justo leo at. Eu feugiat vitae molestie Nam metus Nunc condimentum id nunc in. Pede urna metus nibh elit dis risus enim neque Curabitur Aenean. Sem ligula hendrerit Integer.</p>
+
+
+							<h2 class="spip">Les objectifs</h2>
+							<p>Turpis pretium ante nibh ligula ut sed justo Pellentesque metus Vivamus. Id vel fermentum eu tincidunt sed enim lorem magnis sapien senectus. Et interdum justo orci a dui Nam tincidunt Suspendisse Ut nibh. Massa Mauris ut Duis ornare quis magnis gravida amet in tincidunt. Tincidunt eu vel Vestibulum pretium justo et urna.</p>
+							 A l’issue de la formation, le stagiaire sera capable de&nbsp;:
+							<ul class='spip'>
+								<li>Concevoir, fabriquer et documenter une réalisation technique numérique.</li>
+								<li>Concevoir et documenter un parcours pédagogique mobilisant cette réalisation technique, adapté à son contexte professionnel.</li>
+								<li>D’utiliser les base de l’électronique programmable (Arduino) pour fabriquer des projets</li>
+								<li>Connaitre et mobiliser des compétences et ressources en fabrication numérique sur son territoire.</li>
+								<li>Se constituer un réseau d’homologue sur le territoire en vue de projets collaboratifs.</li>
+							</ul>
+
+
+							<h2 class="spip">Des graphes aussi</h2>
+							<p>
+							<span class='spip_document_15941 spip_documents spip_documents_center'>
+								[(#CHEMIN{img/test.jpg}|balise_img)]
+							</span></p>
+
+							<p>Eu sagittis In sed leo Cras Nunc vel aliquam Curabitur Sed. Sed ut non accumsan orci nunc rutrum lorem nibh cursus mauris. Egestas faucibus elit Sed tempus Nullam natoque massa eu lorem et. Id consectetuer risus elit massa ac vitae faucibus laoreet ligula tristique. Ante Vivamus hac volutpat fringilla eget sem ipsum vel hac turpis. </p>
+							<p>Dui Vestibulum id Proin id Nunc orci augue id leo et. Augue congue adipiscing aliquam quis lobortis enim at dui scelerisque egestas. Vitae et cursus semper ornare sollicitudin cursus orci Vestibulum Nam at. Euismod mauris convallis porta tristique et neque Sed venenatis pellentesque vel. Magna accumsan sit at porttitor pharetra semper condimentum tortor elit vitae. Ut et vitae habitant quam et Aenean elit Mauris.</p>
+							<p>Nibh ut scelerisque accumsan Vestibulum interdum tristique elit condimentum nisl tellus. A Lorem mauris facilisis vel aliquam sed justo sed tempus ligula. Morbi magnis vitae Phasellus egestas Duis rutrum cursus ac sit eu. Donec porta metus velit Nam Donec vel nec montes eros rhoncus. Massa quis convallis convallis semper sed consectetuer habitant gravida Duis.</p>
+
+							<blockquote class="spip">
+							<p>La finalité est de permettre aux stagiaires de se construire une culture numérique sur la fabrication numérique dans la perspective de transposer dans le domaine professionnel.</p>
+							</blockquote>
+
+							<p>Felis vitae elit ut sem quam orci Vestibulum ante nibh nec. Enim ridiculus tincidunt Nam dui metus sed In ipsum nec et. Habitasse ultrices id Suspendisse ligula dui leo elit Maecenas quis nibh. Justo auctor eget neque dapibus aliquam Aenean purus orci tincidunt In. Vivamus metus semper interdum ante pellentesque est nibh eu ac.</p>
+
+
+
+							<h2 class="spip">Exemple de tableaux</h2>
+
+
+							<table class="spip">
+							<thead>
+								<tr>
+									<th>Parfum</th>
+									<th>Valeur</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class='row_odd odd'>
+									<td>Vanille</td>
+									<td>15.05</td>
+								</tr>
+								<tr class='row_even even'>
+									<td>Chocolat</td>
+									<td>25.05</td>
+								</tr>
+								<tr class='row_odd odd'>
+									<td>Fraise</td>
+									<td>5.25</td>
+								</tr>
+								<tr class='row_even even'>
+									<td>Mangue</td>
+									<td>25.05</td>
+								</tr>
+							</tbody>
+							</table>
+
+							<p>Neque Cum Suspendisse mi consequat tempus id congue fringilla Vivamus eros. Proin eget nulla Nullam Curabitur platea mauris amet faucibus consequat lorem. Laoreet turpis condimentum sagittis id odio Vivamus Maecenas dui quis est. Neque justo et pretium nisl augue tincidunt consequat Sed ligula sociis. Vel ac molestie enim orci ante Morbi volutpat ante tempus tristique. Tincidunt interdum.</p>
+
+
+
+							<!-- article meta -->
+							<div class="date">
+								Posté le 5 janvier 2020 par <span class="vcard author"><a class="url fn spip_in" href="auteur1.html">Emmanuel de Moura</a></span>
+							</div>
+
+
+						</div>
+						<!-- #content -->
+					</div>
+					<!-- #content-main -->
+
+					<!-- content-side -->
+					<div class="col-md-3 content-sidebar order-1 order-md-2">
+						<div class="content-sidebar-logo">
+							[(#CHEMIN{img/test-logo.jpg}|balise_img|inserer_attribut{class,img-rounded})]
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+			<!-- #content -->
+
+			<!-- ps -->
+			<div class="ps-wrapper">
+				<div class="content container">
+					<div class="row">
+						<div class="col-md-8 offset-md-1 ps">
+							<p>Ceci le contenu du champs <strong class="spip">PS de l'article</strong> qui est facultatif.</p>
+							<p>Nibh ut scelerisque accumsan Vestibulum interdum tristique elit condimentum nisl tellus. A Lorem mauris facilisis vel aliquam sed justo sed tempus ligula. Morbi magnis vitae Phasellus egestas Duis rutrum cursus ac sit eu. Donec porta metus velit Nam Donec vel nec montes eros rhoncus. Massa quis convallis convallis semper sed consectetuer habitant gravida Duis.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- #ps -->
+
+		</section>
+		<!--  #layout: main > section -->
+
+		<INCLURE{fond=inc/inc_footer} />
+	</div>
+	<!-- #layout: main -->
+
+
+</div>
+<!-- #layout: page -->
+</body>
+</html>

@@ -1,0 +1,36 @@
+[(#REM)
+	rubrique
+
+	param:
+	- id_rubrique
+	- env               pagination, etc ....
+
+]<BOUCLE_rub(RUBRIQUES){id_rubrique}><!DOCTYPE html>
+<html lang="#LANG">
+<head>
+	<INCLURE{fond=inc/inc_head} />
+	<title>[(#TITRE|couper{50,'&nbsp;\[...\]'}|textebrut)] - [(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION{130}|attribut_html)" />]
+	[<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
+</head>
+
+<body>
+<!-- layout: page -->
+<div class="odaiba-page">
+	<INCLURE{fond=inc/inc_aside,id_rubrique} />
+
+	<!-- layout: main -->
+	<div class="odaiba-main[(#CONFIG{odaiba/affiche_recherche}|oui) odaiba-main--withsearch]">
+		<!-- layout: main > section -->
+		<section class="odaiba-main-section">
+			<INCLURE{fond=inc/inc_rubrique, env} />
+		</section>
+		<!-- #layout: main > section -->
+
+		<INCLURE{fond=inc/inc_footer} />
+	</div>
+</div>
+<!-- #layout: page -->
+</body>
+</html>
+</BOUCLE_rub>

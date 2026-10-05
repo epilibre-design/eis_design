@@ -1,0 +1,11 @@
+[(#REM)
+	page sommaire : on redirige sur l'article de la une
+
+	param:
+	- (aucun)
+
+
+]<BOUCLE_last_art(ARTICLES){!par date}{0,1}>#SET{url_article_home,#URL_ARTICLE|url_absolue|filtrer_entites}</BOUCLE_last_art>
+<BOUCLE_art_home(ARTICLES){id_article IN #CONFIG{odaiba/homepage_article}|picker_selected{article}}>#SET{url_article_home,#URL_ARTICLE|url_absolue|filtrer_entites}</BOUCLE_art_home>
+[(#EVAL{0}|sinon_interdire_acces{#GET{url_article_home},301})]
+#FILTRE{trim}

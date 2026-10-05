@@ -1,0 +1,40 @@
+[(#REM)
+	pied de page
+
+	param:
+		(aucun)
+
+
+]
+
+#SET{is_footer_visible,false}
+[(#CONFIG{odaiba/affiche_recherche}|oui)   #SET{is_footer_visible,true}]
+<BOUCLE_is_art_lien(ARTICLES){id_article IN #CONFIG{odaiba/footer_articles}|picker_selected{article}}{0,1}>#SET{is_footer_visible,true}</BOUCLE_is_art_lien>
+
+<!-- footer -->
+<footer class="footer[(#GET{is_footer_visible}|=={false}|oui) footer--transparent]">
+	<div class="container">
+		[<div class="go-top">
+			<a href="#top"><img src="(#CHEMIN{img/but-top.png})" alt="haut de page" width="50" height="50" /></a>
+		</div>]
+
+		[(#CONFIG{odaiba/affiche_recherche}|oui)
+		<!-- footer-row-1 -->
+		<div class="row justify-content-center footer-row-1">
+			<div class="col-10">
+				#FORMULAIRE_RECHERCHE
+			</div>
+		</div>]
+
+		<!-- footer-row-2 -->
+		<div class="row footer-row-2">
+			<B_art_lien><ul class="footer-link">
+			<BOUCLE_art_lien(ARTICLES){id_article IN #CONFIG{odaiba/footer_articles}|picker_selected{article}}>
+				<li><a href="#URL_ARTICLE">#TITRE</a></li>
+			</BOUCLE_art_lien>
+			</ul></B_art_lien>
+		</div>
+	</div>
+</footer>
+<!-- #footer -->
+#FILTRE{trim}

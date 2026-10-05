@@ -1,0 +1,28 @@
+[(#REM)
+	noisette auteur preview
+
+	param:
+	- id_mot
+
+]<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+	<!-- aut #ID_AUTEUR -->
+	<div class="auteur-preview">
+		<a href="#URL_AUTEUR" class="auteur-preview-title">
+			<div class="auteur-preview-img">
+				[(#LOGO_AUTEUR|oui)
+					[(#LOGO_AUTEUR|image_passe_partout{200,200}|image_recadre{200,200}|inserer_attribut{alt,#TITRE}|inserer_attribut{class,logo-auteur})]
+				]
+
+				[(#LOGO_AUTEUR|non)
+					[(#CHEMIN{img/logo_auteur.png}|image_passe_partout{200,200}|image_recadre{200,200}|inserer_attribut{alt,#TITRE}|inserer_attribut{class,logo-auteur})]
+				]
+			</div>
+			<div class="auteur-preview-text">
+				<h1>#NOM</h1>
+				[<div class="auteur-preview-bio">(#BIO|couper{200})</div>]
+			</div>
+		</a>
+
+	</div>
+	<!-- aut #ID_AUTEUR -->
+</BOUCLE_auteur>
