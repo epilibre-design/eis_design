@@ -1,0 +1,12 @@
+[(#SET{cron,[(#VAL|majplugins_drapeau_cron)]})]
+[(#GET{cron}|oui)
+[(#BOITE_OUVRIR{[(#CHEMIN_IMAGE{majplugins-xx.svg}|balise_img|ajouter_class{cadre-icone})] <:majplugins:info_drapeau_cron:>,'note majplugins_drapeau'})]
+<ul class="liste-items">
+	<li class="item">
+		[(#GET{cron}=={en_cours}|oui)<:majplugins:info_drapeau_en_cours:>]
+		[(#GET{cron}=={termine}|oui)<:majplugins:info_drapeau_termine:>]
+		<:majplugins:info_drapeau_message:>
+	</li>
+</ul>
+#BOITE_FERMER
+]

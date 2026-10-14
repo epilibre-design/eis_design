@@ -1,0 +1,36 @@
+[(#AUTORISER{webmestre}|sinon_interdire_acces)]
+
+<h1 class="grostitre"><:autoupdate:lien_statut_mises_a_jour:></h1>
+
+<style>
+.autoupdate-log-details {
+	margin-bottom: 1em;
+	background-color: var(--spip-color-gray-lightest);
+	padding: var(--spip-alert-spacing-y) var(--spip-alert-spacing-x);
+	border-radius: var(--spip-border-radius);
+	border-inline-start: 0.5rem solid var(--spip-color-gray-light);
+}
+.autoupdate-log-details summary {
+	font-weight: bold;
+	cursor: pointer;
+}
+.autoupdate-log-details[open] summary {
+	border-bottom: 1px solid var(--spip-color-gray-light);
+	padding-bottom: calc(var(--spip-spacing-y) / 2);
+	margin-bottom: calc(var(--spip-spacing-y) / 2);
+}
+.autoupdate-log-details pre {
+	margin: 0;
+}
+.autoupdate-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: flex-end;
+}
+.autoupdate-report-preview pre {
+	max-height: 32rem;
+	overflow: auto;
+}
+</style>
+<INCLURE{fond=prive/squelettes/inclure/autoupdate,env,ajax} />

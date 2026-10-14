@@ -1,0 +1,36 @@
+<div class="formulaire_spip formulaire_#FORM">
+	[<div class="reponse_formulaire reponse_formulaire_ok" role="status">(#ENV*{message_ok})</div>]
+	[<div class="reponse_formulaire reponse_formulaire_erreur" role="alert">(#ENV*{message_erreur})</div>]
+
+	<form method="post" action="#ENV{action}"><div>
+		#ACTION_FORMULAIRE
+		<div class="editer-groupe">
+			<div class="editer editer_password obligatoire[(#ENV{erreurs/password}|oui) erreur]">
+				<label for="autoupdate_rollback_password"><:entree_mot_passe:></label>
+				[<span class="erreur_message">(#ENV*{erreurs/password})</span>]
+				<input type="password" name="password" id="autoupdate_rollback_password" value="" class="text" autocomplete="current-password" />
+				<p class="explication"><:autoupdate:explication_password_rollback:></p>
+			</div>
+			[<span class="erreur_message">(#ENV*{erreurs/to})</span>]
+		</div>
+
+		<p class="boutons">
+		<BOUCLE_rollback_principal(DATA){source table, #ENV*{_versions}}{0,1}>
+			<button type="submit" name="to" value="#VALEUR" class="btn danger submit">[(#VAL{autoupdate:bouton_rollback_vers}|_T{#ARRAY{version,#VALEUR}})]</button>
+		</p>
+		</BOUCLE_rollback_principal>
+
+		[(#ENV*{_versions}|count|>{1}|oui)
+			<details class="autoupdate-rollbacks-autres">
+				<summary><:autoupdate:lien_autres_rollbacks:></summary>
+				<ul class="liste-items">
+					<BOUCLE_rollbacks_autres(DATA){source table, #ENV*{_versions}}{1,10}>
+					<li class="item">
+						<button type="submit" name="to" value="#VALEUR" class="btn danger btn_mini submit">[(#VAL{autoupdate:bouton_rollback_vers}|_T{#ARRAY{version,#VALEUR}})]</button>
+					</li>
+					</BOUCLE_rollbacks_autres>
+				</ul>
+			</details>
+		]
+	</div></form>
+</div>
